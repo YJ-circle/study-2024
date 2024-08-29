@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>servletexcercise_20240902_kht</name>
+	<name>servletexcercise_20240902_1</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -28,17 +28,4 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>web</name>
-			<type>2</type>
-			<locationURI>copy_PARENT/web</locationURI>
-		</link>
-	</linkedResources>
-	<variableList>
-		<variable>
-			<name>copy_PARENT</name>
-			<value>$%7BPARENT-1-PROJECT_LOC%7D</value>
-		</variable>
-	</variableList>
 </projectDescription>
