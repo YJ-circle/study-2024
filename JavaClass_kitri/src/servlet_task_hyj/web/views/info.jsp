@@ -9,12 +9,12 @@
 </head>
 <body>
 	<table border="1">
-	<c:forEach var="list" items="${list}">
+	<c:forEach var="student" items="${list}">
 		<tr>
-			<td>${list.id}</td>
-			<td>${list.name}</td>
-			<td>${list.majorCode}</td>
-			<td>${list.majorName}</td>
+			<td>${student.id}</td>
+			<td>${student.name}</td>
+			<td>${student.majorCode}</td>
+			<td>${student.majorName}</td>
 		</tr>
 	</c:forEach>
 	</table>
