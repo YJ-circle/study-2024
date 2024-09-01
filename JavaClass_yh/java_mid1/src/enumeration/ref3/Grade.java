@@ -2,7 +2,7 @@ package enumeration.ref3;
 
 public enum Grade {
     // 열거형 상수 선언 + 생성자로 만듬
-    BASIC(10), GOLD(20), DIAMOND(30); // 3_4용, VIP(40);
+    BASIC(10), GOLD(20), DIAMOND(30), VIP(40);; // 3_4용, VIP(40);
     private final int discountPercent;
 
 
