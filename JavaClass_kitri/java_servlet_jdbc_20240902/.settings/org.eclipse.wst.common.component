@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="java_servlet_jdbc_20240902">
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/" source-path="/web"/>
+        <dependent-module archiveName="ojdbc6.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/kitri03/Desktop/kitri/Git/JavaClass_Kitri/javajdbc_20240902/ojdbc6.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="java_servlet_jdbc_20240902"/>
+        <property name="java-output-path" value="/java_servlet_jdbc_20240902/build/classes"/>
+    </wb-module>
+</project-modules>
