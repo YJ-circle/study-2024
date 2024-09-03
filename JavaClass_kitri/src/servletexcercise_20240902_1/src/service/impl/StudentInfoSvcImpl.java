@@ -17,7 +17,8 @@ public class StudentInfoSvcImpl implements IStudentInfoSvc {
 		IStudentInfoDao studDao = new StudentInfoDaoImpl();
 		
 		StudentInfoDto sidto = null;
-		
+		String s = "";
+		s.toLowerCase().charAt(0);
 		List<StudentInfoEntity> studentList = studDao.getStudentInfo();
 		for(StudentInfoEntity se:studentList) {
 			sidto = new StudentInfoDto();
