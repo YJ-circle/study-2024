@@ -60,9 +60,37 @@ public class PracticeMain {
 			cnt = pstmt.executeUpdate();
 			System.out.println("영향을 받는 행 수: " + cnt);
 			conn.commit();
+						
+			PreparedStatement pstmt2 = conn.prepareStatement(INSERT02);
+			System.out.println("동적 배치 처리");
+			while(true) {
+				System.out.print("학번을 입력하세요: (-1 입력시 종료 후 저장)");
+				stuId = sc.nextInt();
+				sc.nextLine();
+				
+				if(stuId == -1) break;
+				
+				System.out.println();
+				System.out.print("전공코드를 입력하세요 (1 or 2): ");
+				stuMajor = sc.nextInt();
+				sc.nextLine();
+				System.out.println();
+				System.out.print("이름을 입력하세요: ");
+				stuName = sc.nextLine();
+				System.out.println();
+				System.out.print("휴대폰 번호 (010-1234-1234): ");
+				stuPhone = sc.nextLine();
+				pstmt2.setInt(1, stuId);
+				pstmt2.setInt(2, stuMajor);
+				pstmt2.setString(3, stuName);
+				pstmt2.setString(4, stuPhone);
+				pstmt2.addBatch();
+			}
+			pstmt2.executeBatch();
+			conn.commit();
 			stmt.close();
+			pstmt.close();
 			conn.close();
-			
 
 		} catch (SQLException e) {
 			e.printStackTrace();

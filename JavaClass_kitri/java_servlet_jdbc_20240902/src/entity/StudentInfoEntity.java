@@ -8,7 +8,6 @@ public class StudentInfoEntity {
 	
 	public StudentInfoEntity() {}
 	public StudentInfoEntity(int stu_id, int stu_major, String stu_name, String stu_phone) {
-		super();
 		this.stu_id = stu_id;
 		this.stu_major = stu_major;
 		this.stu_name = stu_name;

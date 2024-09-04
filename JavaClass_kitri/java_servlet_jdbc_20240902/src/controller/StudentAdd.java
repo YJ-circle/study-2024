@@ -19,7 +19,7 @@ import dto.StudentDto;
 import entity.StudentInfoEntity;
 import service.StudentSvcimpl;
 
-@WebServlet("/addstudent")
+@WebServlet("/addstudentLeagacy")
 public class StudentAdd extends HttpServlet{
 	private final static String DB_URL = "jdbc:oracle:thin:@192.168.10.247:1521:xe";
 	private final static String USER = "test";

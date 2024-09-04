@@ -23,5 +23,21 @@ public class StudentSvcimpl implements StudentSvc {
 		}
 		return stuDto;
 	}
+	
+	public ArrayList<StudentDto> addStudent(int stu_id, int stu_major, String stu_name, String stu_phone){
+		
+		ArrayList<StudentDto> stuDto = new ArrayList<StudentDto>();
+		StudentDao stuDao = new StudentDaoImpl(); 
+		StudentDto stuinfo = null;
+		
+		StudentInfoEntity addedStuInfo = stuDao.addStudent(stu_id, stu_major, stu_name, stu_phone);
+		if(addedStuInfo != null) {
+			stuinfo = new StudentDto();
+			stuinfo.setStu_id(addedStuInfo.getStu_id());
+			stuinfo.setStu_name(addedStuInfo.getStu_name());
+			stuDto.add(stuinfo);
+		}
+		return stuDto;
+	}
 
 }
