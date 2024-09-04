@@ -7,6 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>마일리지 추가: 결과 페이지</title>
+<style>
+body{
+margin-left:25px;
+margin-top:5%;
+}
+</style>
 </head>
 <body>
 <c:choose>
@@ -52,6 +58,7 @@
 	<h2>${resultMsg}</h2>
 	</c:otherwise>
 </c:choose>
+<br />
 <button onclick="location.href='./'" class="btn-primary">메인으로</button >
 <button onclick="location.href='./addCoupon.html'" class="btn-primary">쿠폰 등록으로</button >
 </body>

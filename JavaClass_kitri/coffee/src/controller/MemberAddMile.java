@@ -46,7 +46,7 @@ public class MemberAddMile extends HttpServlet{
 		
 		MemberSvc svc = new MemberSvc();
 		ArrayList<MemberInfoDto> beforeMemberList = svc.getMember(id);
-		ArrayList<MemberInfoDto> afterMemberList = svc.addMileSvc(id, mileCnt);
+		ArrayList<MemberInfoDto> afterMemberList = svc.addMile(id, mileCnt);
 		if(afterMemberList != null) {
 			req.setAttribute("beforeList", beforeMemberList);
 			req.setAttribute("afterList", afterMemberList);

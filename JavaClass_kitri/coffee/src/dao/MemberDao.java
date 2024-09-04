@@ -6,9 +6,9 @@ import entity.MemberInfoEntity;
 import setting.DBInfo;
 
 public class MemberDao {
-	private static final String DB_URL = DBInfo.TABLE_MEMBER.getDBURL();
-	private static final String DB_USER = DBInfo.TABLE_MEMBER.getUSER();
-	private static final String DB_PASS = DBInfo.TABLE_MEMBER.getPASS();
+	private static final String DB_URL = DBInfo.MEMBER.getDBURL();
+	private static final String DB_USER = DBInfo.MEMBER.getUSER();
+	private static final String DB_PASS = DBInfo.MEMBER.getPASS();
 	
 	
 	public ArrayList<MemberInfoEntity> getMember(){

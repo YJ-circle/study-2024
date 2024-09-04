@@ -4,18 +4,24 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+body{
+margin-left:25px;
+margin-top:5%;
+}
 input{
 width: 25%;
 }
 </style>
 </head>
 <body>
+<h1>마일리지 증정</h1>
 <!-- 메인 메뉴 -->
 <form action="./addmile" method="POST">
 <input type="text" name="id" minlength='11' maxlength='13' placeholder="회원 연락처(ID)" required/>
 <input type="number" name="mile" min='0' max='50' placeholder="마일리지 추가 개수" required/>
 <input type="submit" value="등록" >
 </form>
+<br />
 <button onclick="location.href='./'" class="btn-primary">메인으로</button >
 </body>
 </html>

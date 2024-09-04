@@ -20,7 +20,7 @@ public class MemberSvc {
 		return daoToDto(memberList);
 	}
 	
-	public ArrayList<MemberInfoDto> addMileSvc(String id, int mileCnt){
+	public ArrayList<MemberInfoDto> addMile(String id, int mileCnt){
 		MemberDao memberDao = new MemberDao();
 		
 		if(memberDao.isMemberId(id)) {
