@@ -10,11 +10,14 @@
 <style>
 body{
 margin-left:25px;
-margin-top:5%;
+margin-top:30px;
 }
 </style>
 </head>
 <body>
+	<button onclick="location.href='./'" class="btn-primary">메인으로</button >
+	<button onclick="location.href='./search.html'" class="btn-primary">아이디로 회원 찾기</button >
+
 	<c:choose>
 		<c:when test="${resultCode == 200}">
 			<table border="1" style="text-align:center;">
@@ -44,7 +47,5 @@ margin-top:5%;
 		</c:otherwise>
 	</c:choose>
 	<br />
-	<button onclick="location.href='./'" class="btn-primary">메인으로</button >
-	<button onclick="location.href='./search.html'" class="btn-primary">아이디로 회원 찾기</button >
 </body>
 </html>

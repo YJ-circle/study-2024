@@ -51,8 +51,8 @@ public class MemberAddMile extends HttpServlet{
 			req.setAttribute("beforeList", beforeMemberList);
 			req.setAttribute("afterList", afterMemberList);
 		} else {
-			resp.setStatus(400);
-			req.setAttribute("resultCode", 400);
+			resp.setStatus(404);
+			req.setAttribute("resultCode", 404);
 			req.setAttribute("resultMsg", "등록되지 않은 아이디 입니다.");
 			dispatcher.forward(req, resp);
 			return;

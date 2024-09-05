@@ -53,11 +53,12 @@ public class MemberList extends HttpServlet{
 			memberList = svc.getMember(id);
 			
 			/*List size가 0이면 (일치하는 회원이 없으면)
-			  204 : 요청은 받았지만 반환값 없음을 보내줍니다.
+			  404 : 요청은 받았지만 반환값 없음을 보내줍니다.
 			  */
 			if(memberList.size()==0) {
-				req.setAttribute("resultCode", 204);
+				req.setAttribute("resultCode", 404);
 				req.setAttribute("resultMsg", "일치하는 회원이 없습니다");
+				System.out.println(req.getMethod());
 				dispatcher.forward(req, resp);
 				return;
 			}

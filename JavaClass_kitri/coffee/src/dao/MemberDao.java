@@ -1,24 +1,43 @@
 package dao;
 
+import java.io.PrintWriter;
 import java.sql.*;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import entity.MemberInfoEntity;
 import setting.DBInfo;
 
 public class MemberDao {
-	private static final String DB_URL = DBInfo.MEMBER.getDBURL();
-	private static final String DB_USER = DBInfo.MEMBER.getUSER();
-	private static final String DB_PASS = DBInfo.MEMBER.getPASS();
+	private final String DB_URL = DBInfo.MEMBER.getDBURL();
+	private final String DB_USER = DBInfo.MEMBER.getUSER();
+	private final String DB_PASS = DBInfo.MEMBER.getPASS();
+	private static HashMap<String, ArrayList<MemberInfoEntity>> cache = new HashMap<>();
+	private static HashMap<String, Instant> vaildTime = new HashMap<>();
 	
 	
 	public ArrayList<MemberInfoEntity> getMember(){
 		String query = "SELECT * FROM member";
+		if(isVaildCahche(query)) {
+			if(isVaildTime(query)) {
+				System.out.println("Cache Return");
+				return cache.get(query);	
+			} else {System.out.println("Cache invaild. SQL Return");}
+			
+		} else {System.out.println("SQL Return");}
 		ArrayList<MemberInfoEntity> memberList = executeGetQuery(query, null);
 		return memberList;
 	}
 
 	public ArrayList<MemberInfoEntity> getMember(String id){
 		String query = "SELECT * FROM member WHERE id = ?";
+		if(isVaildCahche(query + id)) {
+			if(isVaildTime(query + id)) {
+				System.out.println("Cache Return");
+				return cache.get(query + id);
+			} else {System.out.println("Cache invaild. SQL Return");}
+		}  else {System.out.println("SQL Return");}
 		ArrayList<MemberInfoEntity> memberList = executeGetQuery(query, id);
 		return memberList;
 	}
@@ -52,6 +71,9 @@ public class MemberDao {
 			 	  e.printStackTrace(); 
 		}
 		if (cnt > 0) {
+			cache = new HashMap<>();
+			vaildTime = new HashMap<>();
+			System.out.println("init cache");
 			return getMember(id);
 		}
 		return null;
@@ -65,13 +87,14 @@ public class MemberDao {
 		}
 		
 		ArrayList<MemberInfoEntity> memberList = new ArrayList<MemberInfoEntity>();
-		
+		String saveKey = query;
 		try	{ 
 			Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
 			conn.setAutoCommit(false);
 			PreparedStatement stmt = conn.prepareStatement(query);
 			if(id!=null) {
 				stmt.setString(1, id);
+				saveKey += id;
 			}
 			ResultSet rs = stmt.executeQuery();
 				while (rs.next()) { 
@@ -87,10 +110,27 @@ public class MemberDao {
 				rs.close();
 				stmt.close();
 				conn.close();
+
 			} catch (SQLException e) { 
 		 	  e.printStackTrace(); 
 			}
+		cache.put(saveKey, memberList);
+		vaildTime.put(saveKey, Instant.now().plusSeconds(3600));
 		return memberList;
 	}
+	
+	private boolean isVaildCahche(String query) {
+		if(cache.size() > 0 ) {
+			return cache.containsKey(query);
+		} 
+		return false;
+	}
+	
+	private boolean isVaildTime(String query) {
+		Instant now = Instant.now();
+		return now.isBefore(vaildTime.get(query));
+	}
+
+
 	
 }

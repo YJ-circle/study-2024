@@ -9,27 +9,19 @@ import entity.MemberInfoEntity;
 
 public class MemberSvc {
 	public ArrayList<MemberInfoDto> getMember(){
-		MemberDao memberDao = new MemberDao();
-		ArrayList<MemberInfoEntity> memberList = memberDao.getMember();
-		return daoToDto(memberList);
+		return daoToDto(new MemberDao().getMember());
 	}
 	
 	public ArrayList<MemberInfoDto> getMember(String id){
-		MemberDao memberDao = new MemberDao();
-		ArrayList<MemberInfoEntity> memberList = memberDao.getMember(id);
-		return daoToDto(memberList);
+		return daoToDto(new MemberDao().getMember(id));
 	}
 	
 	public ArrayList<MemberInfoDto> addMile(String id, int mileCnt){
 		MemberDao memberDao = new MemberDao();
-		
 		if(memberDao.isMemberId(id)) {
-			ArrayList<MemberInfoEntity> mileAddInfo = memberDao.addMile(id, mileCnt);
-			ArrayList<MemberInfoDto> memberList = daoToDto(mileAddInfo);
-			return memberList;
+			return daoToDto(memberDao.addMile(id, mileCnt));
 		} 
 		return null;
-
 	}
 
 
