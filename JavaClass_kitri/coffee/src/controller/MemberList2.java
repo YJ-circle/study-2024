@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dto.MemberInfoDto;
 import service.MemberSvc;
+import views.View;
 
 public class MemberList2 implements Ctrl {
 
@@ -21,8 +22,8 @@ public class MemberList2 implements Ctrl {
 		String id = req.getParameter("id");
 		MemberSvc svc = new MemberSvc();
 		ArrayList<MemberInfoDto> memberList = null;
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member_info.jsp");
-		
+		View view = new View("/WEB-INF/views/member_info.jsp");
+
 		if(id == null) {
 			// id 파라미터 값이 없으면 전체 회원 목록을 반환 합니다.
 			memberList = svc.getMember();
@@ -34,7 +35,7 @@ public class MemberList2 implements Ctrl {
 				resp.setStatus(400); //상태코드 400설정
 				req.setAttribute("resultCode", 400); // HTML 출력용 상태코드
 				req.setAttribute("resultMsg", "입력한 id 길이가 유효하지 않습니다."); // HTML 출력 메시지
-				dispatcher.forward(req, resp);
+				view.render(req, resp);
 				return;
 				
 			/*id 길이가 13인 경우 핸드폰번호에 "-"가 포함될 가능성이 높으므로
@@ -54,7 +55,7 @@ public class MemberList2 implements Ctrl {
 				req.setAttribute("resultCode", 404);
 				req.setAttribute("resultMsg", "일치하는 회원이 없습니다");
 				System.out.println(req.getMethod());
-				dispatcher.forward(req, resp);
+				view.render(req, resp);
 				return;
 			}
 			
@@ -62,7 +63,7 @@ public class MemberList2 implements Ctrl {
 		
 		req.setAttribute("resultCode", 200);
 		req.setAttribute("list", memberList);
-		dispatcher.forward(req, resp);
+		view.render(req, resp);
 		
 		
 	}

@@ -58,3 +58,8 @@ END;
 SELECT COUNT(*) AS total_rows
 FROM member;
 
+
+-- 시퀸스 사용
+INSERT INTO loginlog(sn, name)
+VALUES (seqlogin.NEXTVAL
+           , 'ㅎㅎ')

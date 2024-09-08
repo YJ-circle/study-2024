@@ -9,12 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import views.SendJsp;
+import views.View;
 
 @WebServlet("/front/*")
 public class Front extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private SendJsp jsp = new SendJsp();
 	private Map<String, Ctrl> ctrlMap = new HashMap<>();
 	public Front() {
 		ctrlMap.put("/1", new MemberList2());
@@ -24,10 +23,11 @@ public class Front extends HttpServlet {
 		resp.setContentType("text/html");
 		resp.setCharacterEncoding("UTF-8");
 		req.setCharacterEncoding("UTF-8");
-		
+		System.out.println(ctrlMap.size());
 		Ctrl ctrl = ctrlMap.get(req.getPathInfo());
 		if(ctrl == null) { resp.setStatus(404); return; }
 		else { ctrl.process(req, resp);}
+		
 		
 		
 		
