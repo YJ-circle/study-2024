@@ -10,7 +10,7 @@
     <meta name="generator" content="Hugo 0.88.1">
     <title>== YJ SHOP LOGIN ==</title>
   
-	<link href="../css/bootstrap.min.css" rel="stylesheet">
+	<link href="/yjshop/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -30,13 +30,13 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="../css/signin.css" rel="stylesheet">
+    <link href="/yjshop/css/signin.css" rel="stylesheet">
   </head>
   <body class="text-center">
     
 <main class="form-signin">
-  <form action="./login" method="POST">
-    <img class="mb-4" src="../img/logo.png" alt="" width="70%" style="margin-bottom:0!important">
+  <form action="/yjshop/shop/login" method="POST">
+    <img class="mb-4" src="/yjshop/img/logo.png" alt="" width="70%" style="margin-bottom:0!important">
     <div class="form-floating">
       <input type="text" class="form-control" id="floatingInput" placeholder="Id" name="id" required>
       <label for="floatingInput">아이디 입력</label>

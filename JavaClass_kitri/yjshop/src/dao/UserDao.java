@@ -34,12 +34,11 @@ public class UserDao {
 		
 		
 		List<UserEntity> matchUserList = sqlMatchId(id);
+			if(matchUserList == null) { return null; }
 			if(matchUserList.size() == 1) {
 				return matchUserList.get(0);
 			}
-			
-
-		return null;
+			return null;
 	}
 
 	private List<UserEntity> sqlMatchId(String id) {
@@ -66,16 +65,12 @@ public class UserDao {
 	}
 	
 	public int sqlInsertLoginId(String id) {
-		
-		//다른 ID 로그아웃
-		System.out.println("INSERT SQL");
 		String loginSql = "INSERT INTO loginlog(sn, id, status) "
 				   + "VALUES (seqlogin.NEXTVAL, ?, 'Y')";
-		String logoutSql = "UPDATE loginlog SET status = 'N' WHERE status = 'Y'";
 		try {
-			PreparedStatement pstmt = conn.prepareStatement(logoutSql);
-			pstmt.executeUpdate();
-			pstmt = conn.prepareStatement(loginSql);
+			//다른 ID 로그아웃
+			logout(null);
+			PreparedStatement pstmt = conn.prepareStatement(loginSql);
 			pstmt.setString(1, id);
 			int result = pstmt.executeUpdate();
 			return result;
@@ -85,5 +80,55 @@ public class UserDao {
 		return -1;
 
 	}
+	
+	public int logout(String id) {
+		String logoutSql = "UPDATE loginlog SET status = 'N' WHERE status = 'Y'";
 
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(logoutSql);
+			if(id != null) {
+				logoutSql += " AND id = ? ";
+				pstmt = conn.prepareStatement(logoutSql);
+				pstmt.setString(1, id);
+			}
+			System.out.println(logoutSql);
+			int result = pstmt.executeUpdate();
+			System.out.println(result);
+			return result;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return -1;
+
+	}
+	
+	public UserEntity isLoginCheck() {
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		if (conn == null) {
+			try {
+				conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.10.247:1521:xe", "coffee", "1234");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		try {
+			String sql = "SELECT * FROM loginlog WHERE status = 'Y'";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs != null && rs.next()) {
+				return sqlMatchId(rs.getString("id")).get(0);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

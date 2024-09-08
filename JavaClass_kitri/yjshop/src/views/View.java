@@ -20,9 +20,9 @@ public class View {
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html");
+		
 		System.out.println("VIEW RENDER");
 		RequestDispatcher dispatcher = req.getRequestDispatcher(viewPath);
-		//공통 추가 가능할듯.
 		dispatcher.forward(req, resp);
 		
 	}

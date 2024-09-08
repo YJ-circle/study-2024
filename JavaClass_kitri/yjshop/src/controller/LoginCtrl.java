@@ -21,7 +21,7 @@ public class LoginCtrl implements Controller {
 		
 		//로그인 상태 체크
 		if(svc.isLoginStatus()) {
-			return new View("/WEB-INF/views/login_result.jsp");
+			return new View("/WEB-INF/views/login_already.jsp");
 		}
 		
 		if(req.getMethod().equals("GET")) {

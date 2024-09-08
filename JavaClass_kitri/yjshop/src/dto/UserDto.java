@@ -1,11 +1,11 @@
 package dto;
 
-public class UserDto {
+public class UserDto implements Dto{
 	String id;
 	String name;
 	String address;
 	public UserDto() {}
-	public UserDto(String id, String password, String name, String address) {
+	public UserDto(String id, String name, String address) {
 		this.id = id;
 		this.name = name;
 		this.address = address;
