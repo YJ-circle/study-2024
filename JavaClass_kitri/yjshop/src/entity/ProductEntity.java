@@ -1,14 +1,14 @@
 package entity;
 
 public class ProductEntity{
-	int code;
+	String code;
 	String name;
 	int price;
 	String factory;
 	int categoryCode;
 	String category;
 	String imgPath;
-	public ProductEntity(int code, String name, int price, String factory, int categoryCode, String category, String imgPath) {
+	public ProductEntity(String code, String name, int price, String factory, int categoryCode, String category, String imgPath) {
 		this.code = code;
 		this.name = name;
 		this.price = price;
@@ -17,10 +17,10 @@ public class ProductEntity{
 		this.category = category;
 		this.imgPath = imgPath;
 	}
-	public int getCode() {
+	public String getCode() {
 		return code;
 	}
-	public void setCode(int code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 	public String getName() {

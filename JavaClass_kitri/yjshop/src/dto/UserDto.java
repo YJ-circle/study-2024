@@ -1,6 +1,6 @@
 package dto;
 
-public class UserDto implements Dto{
+public class UserDto {
 	String id;
 	String name;
 	String address;

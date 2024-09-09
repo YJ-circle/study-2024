@@ -1,4 +1,4 @@
-package controller;
+package controller.impl;
 
 import java.io.IOException;
 import java.util.List;
@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controller.IController;
 import dto.ProductDto;
 import dto.UserDto;
 import service.ILoginService;
@@ -15,7 +16,7 @@ import service.impl.LoginService;
 import service.impl.ProductSerivice;
 import views.View;
 
-public class ProductCtrl implements Controller{
+public class ProductCtrl implements IController{
 
 	@Override
 	public View process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

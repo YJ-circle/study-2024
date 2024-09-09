@@ -18,21 +18,8 @@ public class UserDao {
 	
 	public UserEntity getUserFromId(String id) {
 		
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		if (conn == null) {
-			try {
-				conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.10.247:1521:xe", "coffee", "1234");
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		
+		oracleDriverLoad();		
+		oracleConnect();
 		List<UserEntity> matchUserList = sqlMatchId(id);
 			if(matchUserList == null) { return null; }
 			if(matchUserList.size() == 1) {
@@ -41,7 +28,13 @@ public class UserDao {
 			return null;
 	}
 
+
+
+
+
 	private List<UserEntity> sqlMatchId(String id) {
+		oracleDriverLoad();		
+		oracleConnect();
 		String sql = "SELECT * FROM shopuser WHERE id=?";
 		
 		try {
@@ -56,6 +49,8 @@ public class UserDao {
 								rs.getString("name"),
 								rs.getString("address")
 								));
+			rs.close();
+			pstmt.close();
 			return matchUserList;
 				}
 		} catch (SQLException e) {
@@ -65,6 +60,8 @@ public class UserDao {
 	}
 	
 	public int sqlInsertLoginId(String id) {
+		oracleDriverLoad();		
+		oracleConnect();
 		String loginSql = "INSERT INTO loginlog(sn, id, status) "
 				   + "VALUES (seqlogin.NEXTVAL, ?, 'Y')";
 		try {
@@ -73,6 +70,7 @@ public class UserDao {
 			PreparedStatement pstmt = conn.prepareStatement(loginSql);
 			pstmt.setString(1, id);
 			int result = pstmt.executeUpdate();
+			pstmt.close();
 			return result;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -82,6 +80,8 @@ public class UserDao {
 	}
 	
 	public int logout(String id) {
+		oracleDriverLoad();		
+		oracleConnect();
 		String logoutSql = "UPDATE loginlog SET status = 'N' WHERE status = 'Y'";
 
 		try {
@@ -91,9 +91,8 @@ public class UserDao {
 				pstmt = conn.prepareStatement(logoutSql);
 				pstmt.setString(1, id);
 			}
-			System.out.println(logoutSql);
 			int result = pstmt.executeUpdate();
-			System.out.println(result);
+			pstmt.close();
 			return result;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -103,21 +102,8 @@ public class UserDao {
 	}
 	
 	public UserEntity isLoginCheck() {
-		
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		if (conn == null) {
-			try {
-				conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.10.247:1521:xe", "coffee", "1234");
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
+		oracleDriverLoad();
+		oracleConnect();
 		
 		try {
 			String sql = "SELECT * FROM loginlog WHERE status = 'Y'";
@@ -130,5 +116,23 @@ public class UserDao {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	private void oracleDriverLoad() {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void oracleConnect() {
+		if (conn == null) {
+			try {
+				conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.10.247:1521:xe", "coffee", "1234");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }

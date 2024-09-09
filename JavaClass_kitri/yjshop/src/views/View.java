@@ -13,15 +13,11 @@ public class View {
 	public View(String viewPath) {
 		this.viewPath = viewPath;
 	}
-
-	
 	
 	public void render(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html");
-		
-		System.out.println("VIEW RENDER");
 		RequestDispatcher dispatcher = req.getRequestDispatcher(viewPath);
 		dispatcher.forward(req, resp);
 		

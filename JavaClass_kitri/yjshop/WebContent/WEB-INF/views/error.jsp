@@ -17,7 +17,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:900" rel="stylesheet">
 
 
-	<link type="text/css" rel="stylesheet" href="../css/404.css" />
+	<link type="text/css" rel="stylesheet" href="/yjshop/css/404.css" />
 
 
 </head>

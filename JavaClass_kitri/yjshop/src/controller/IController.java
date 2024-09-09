@@ -8,6 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import views.View;
 
-public interface Controller{
+public interface IController{
 	View process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException;
 }

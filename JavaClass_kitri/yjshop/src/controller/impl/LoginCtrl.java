@@ -1,4 +1,4 @@
-package controller;
+package controller.impl;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -8,12 +8,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controller.IController;
 import entity.UserEntity;
 import service.ILoginService;
 import service.impl.LoginService;
 import views.View;
 
-public class LoginCtrl implements Controller {
+public class LoginCtrl implements IController {
 
 	@Override
 	public View process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

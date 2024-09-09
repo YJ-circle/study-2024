@@ -2,14 +2,14 @@ package dto;
 
 import java.text.NumberFormat;
 
-public class ProductDto implements Dto{
-	int code;
+public class ProductDto {
+	String code;
 	String name;
 	int price;
 	String category;
 	String imgPath;
 	
-	public ProductDto(int code, String name, int price, String category, String imgPath) {
+	public ProductDto(String code, String name, int price, String category, String imgPath) {
 		super();
 		this.code = code;
 		this.name = name;
@@ -18,7 +18,7 @@ public class ProductDto implements Dto{
 		this.imgPath = imgPath;
 	}
 
-	public int getCode() {
+	public String getCode() {
 		return code;
 	}
 	public String getName() {
@@ -40,6 +40,5 @@ public class ProductDto implements Dto{
         String formattedNumber = numberFormat.format(price);
 		return formattedNumber;
 	}
-	
 	
 }
