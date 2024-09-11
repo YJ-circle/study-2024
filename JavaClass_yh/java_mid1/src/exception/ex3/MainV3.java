@@ -7,7 +7,8 @@ import java.util.Scanner;
 public class MainV3 {
 
     public static void main(String[] args) throws NetworkClientExceptionV3 {
-        NetworkSeviceV3_1 networkSevice = new NetworkSeviceV3_1();
+//        NetworkSeviceV3_1 networkSevice = new NetworkSeviceV3_1();
+        NetworkSeviceV3_2 networkSevice = new NetworkSeviceV3_2();
         Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.print("전송할 문자: ");
