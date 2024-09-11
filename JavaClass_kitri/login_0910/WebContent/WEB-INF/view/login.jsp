@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1>5초 안에 로그인 하면 60분 동안만 페이지를 볼 수 있다.</h1>
 <form action="./sessiontest" method="post">
 id: <input type="text" name="id" required/>
 pw: <input type="text" name="pwd" required/>
