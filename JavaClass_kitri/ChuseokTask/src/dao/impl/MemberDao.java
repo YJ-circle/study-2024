@@ -12,7 +12,7 @@ public class MemberDao implements Dao {
 		List<MemberEntity> memberList = null;
 		PreparedStatement pstmt = null;
 		try(Database db = new Database();){
-			pstmt = db.getStatement("SELECT * FROM shopuser");
+			pstmt = db.setStatement("SELECT * FROM shopuser");
 			for(MemberEntity m : memberList) {
 				System.out.println(m.getName());
 			}

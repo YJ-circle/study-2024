@@ -1,10 +1,9 @@
-package error.login;
+package error;
 
-public class LoginError extends RuntimeException{
+public class AccessViolation extends RuntimeException{
 	private static final long serialVersionUID = 1L;
 	private String message;
-	
-	public LoginError(String message) {
+	public AccessViolation(String message) {
 		super();
 		this.message = message;
 	}

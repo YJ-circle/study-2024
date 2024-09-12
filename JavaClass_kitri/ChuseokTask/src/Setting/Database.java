@@ -61,33 +61,42 @@ public class Database implements AutoCloseable{
 			entityList.add(e);
 		}
 		System.out.println(entityList.size());
+		for(T e : entityList) {
+			System.out.println("제너릭 안에서");
+			e.getClass();
+			System.out.println("조회");
+		}
 		return entityList;
 	}
 	
 	
 	public <T extends IEntity> List<T> sqlSelectListCount(Class<T> entity, int count) 
-			throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, 
-			  	   InvocationTargetException, NoSuchMethodException, SecurityException {
+			throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException 
+			 {
 		rs = pstmt.executeQuery();
-		int rowCount = rs.getFetchSize();
-		System.out.println(rowCount + "카운트입니다");
-		List<T> entityList = new ArrayList<>();
 		
+		List<T> entityList = new ArrayList<>();
+		int rowCount = 0;
 		while(rs.next()) {
+			rowCount++;
+			if (rowCount > count) {
+				break;
+			}
 			T e = entity.getConstructor().newInstance();
 			e.setEntity(rs);
 			entityList.add(e);
 		}
-		
 		return entityList;
 	}
 
 	@Override
-	public void close() throws Exception {
+	public void close() throws SQLException {
 		System.out.println("클로즈");
 		rs.close();
 		pstmt.close();
 		conn.close();
 		
 	}
+	
+	
 }

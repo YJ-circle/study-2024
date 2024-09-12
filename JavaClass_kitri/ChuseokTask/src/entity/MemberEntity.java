@@ -43,6 +43,7 @@ public class MemberEntity implements IEntity {
 			pw = sqlResult.getString("pw");
 			name = sqlResult.getString("name");
 			address = sqlResult.getString("address");
+//			sqlResult.close();
 		}
 	
 }
