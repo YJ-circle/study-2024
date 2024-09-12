@@ -33,7 +33,6 @@
        Documentation at /docs/jndi-resources-howto.html
   -->
   <GlobalNamingResources>
-      <Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" initialSize="0" maxIdle="20" maxTotal="20" maxWaitMillis="5000" minIdle="5" name="dbcp_myoracle" password="1234" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:xe" username="root"/>
     <!-- Editable user database that can also be used by
          UserDatabaseRealm to authenticate users
     -->
@@ -161,7 +160,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="yjshop" path="/yjshop" reloadable="true" source="org.eclipse.jst.jee.server:yjshop"/><Context docBase="coffee" path="/coffee" reloadable="true" source="org.eclipse.jst.jee.server:coffee"/><Context docBase="login_0910" path="/login_0910" reloadable="true" source="org.eclipse.jst.jee.server:login_0910"/><Context docBase="jsp_list_0910" path="/jsp_list_0910" reloadable="true" source="org.eclipse.jst.jee.server:jsp_list_0910"/></Host>
+      <Context docBase="ChuseokTask" path="/chu" reloadable="true" source="org.eclipse.jst.jee.server:ChuseokTask"/><Context docBase="coffee" path="/coffee" reloadable="true" source="org.eclipse.jst.jee.server:coffee"/></Host>
     </Engine>
   </Service>
 </Server>
