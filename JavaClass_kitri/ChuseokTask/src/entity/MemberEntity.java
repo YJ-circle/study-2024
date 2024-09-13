@@ -4,10 +4,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class MemberEntity implements IEntity {
+	private boolean init;
 	private String id;
 	private String pw;
 	private String name;
 	private String address;
+	
 	
 	public MemberEntity() {
 		
@@ -43,7 +45,11 @@ public class MemberEntity implements IEntity {
 			pw = sqlResult.getString("pw");
 			name = sqlResult.getString("name");
 			address = sqlResult.getString("address");
-//			sqlResult.close();
+			init = true;
 		}
+	
+	public boolean isinit() {
+		return init;
+	}
 	
 }

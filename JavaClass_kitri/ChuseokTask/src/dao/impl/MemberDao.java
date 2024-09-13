@@ -1,34 +1,26 @@
 package dao.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 import Setting.Database;
 import dao.Dao;
+import dao.IMemberDao;
 import entity.MemberEntity;
 
-public class MemberDao implements Dao {
-	public void login(String id, String password) throws Exception {
-		List<MemberEntity> memberList = null;
-		PreparedStatement pstmt = null;
+public class MemberDao implements IMemberDao {
+	public MemberEntity login(String inputId, String inputPassword) throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		try(Database db = new Database();){
-			pstmt = db.setStatement("SELECT * FROM shopuser");
-			for(MemberEntity m : memberList) {
-				System.out.println(m.getName());
-			}
+			db.setStatement("SELECT * FROM shopuser WHERE id = ?"); //  WHERE id = ?
+			System.out.println("db 연결");
+			db.sqlAddString(1, inputId);
+			System.out.println("SQL 완성!");
+			System.out.println();
+			MemberEntity member = db.sqlSelectEntity(MemberEntity.class);
+			return member;
 		}
-		finally {
-			pstmt.close();
-		}
-		
-		if(idInvalid(memberList)) {
-			
-		}
-		
-	}
-
-	private boolean idInvalid(List<MemberEntity> memberList) {
-		return memberList == null;
 	}
 
 }

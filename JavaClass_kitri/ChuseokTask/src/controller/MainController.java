@@ -23,6 +23,7 @@ public class MainController extends HttpServlet{
 	
 	public MainController(){
 		ctrlMap.put("/login", new LoginCtrl());
+		ctrlMap.put("/product", new ProductMainCtrl());
 	}
 
 	@Override
@@ -32,9 +33,12 @@ public class MainController extends HttpServlet{
 		
 		try {
 			String rootPath = req.getContextPath();
-			req.setAttribute("WEB_ROOT", rootPath);
-			req.setAttribute("servlet", req.getServletPath());
 			String inPath = req.getPathInfo();
+			System.out.println(req.getPathInfo());
+			req.setAttribute("WEB_ROOT", rootPath);
+			req.setAttribute("servlet", rootPath + req.getServletPath());
+			req.setAttribute("inPath", inPath);
+			
 			
 
 			if(inPath == null) {
@@ -44,7 +48,11 @@ public class MainController extends HttpServlet{
 			
 			IController ctrl = ctrlMap.get(req.getPathInfo());;
 			view = ctrl.process(req, resp);
-			view.render(req, resp);
+			
+			if(view != null) {
+				view.render(req, resp);	
+			}
+			
 		}
 		catch (ServletException e) {
 			errorHandler(e, req, resp);

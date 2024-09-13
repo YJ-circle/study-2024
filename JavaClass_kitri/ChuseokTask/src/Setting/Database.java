@@ -70,23 +70,14 @@ public class Database implements AutoCloseable{
 	}
 	
 	
-	public <T extends IEntity> List<T> sqlSelectListCount(Class<T> entity, int count) 
+	public <T extends IEntity> T sqlSelectEntity(Class<T> entity) 
 			throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException 
-			 {
-		rs = pstmt.executeQuery();
-		
-		List<T> entityList = new ArrayList<>();
-		int rowCount = 0;
-		while(rs.next()) {
-			rowCount++;
-			if (rowCount > count) {
-				break;
-			}
-			T e = entity.getConstructor().newInstance();
-			e.setEntity(rs);
-			entityList.add(e);
-		}
-		return entityList;
+			 {T e = entity.getConstructor().newInstance();
+			 rs = pstmt.executeQuery();
+			 if(rs.next()) {
+				 e.setEntity(rs);
+			 }
+		return e;
 	}
 
 	@Override

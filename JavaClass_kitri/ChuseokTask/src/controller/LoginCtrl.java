@@ -1,6 +1,8 @@
 package controller;
 
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,7 +16,7 @@ import view.View;
 public class LoginCtrl implements IController{
 
 	@Override
-	public View process(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+	public View process(HttpServletRequest req, HttpServletResponse resp) throws Exception, IOException{
 		HttpSession session = req.getSession();
 		if(isLogin(session)){
 			
@@ -24,26 +26,30 @@ public class LoginCtrl implements IController{
 		
 		String method = req.getMethod();
 		
-		if(methodError(method)) { throw new AccessViolation("잘못된 접근입니다."); }
 		
 		if(isGetRequest(method)) {
 			System.out.println("GET");
-			return new View("/WEB-INF/login.jsp");
-		}
+			return loginPage(); }
 		
 		if(isPostRequest(method)) {
 			System.out.println("POST");
 			String inputId = req.getParameter("id");
 			String inputPw = req.getParameter("password");
 			ILoginService svc = new LoginService(inputId, inputPw);
-			try{ svc.login(req, resp);}
+			try{ svc.login(req, resp);
+				 return null;}
 			catch(LoginError e) {
 				req.setAttribute("loginResult", e.getMessage());
-				return new View("/WEB-INF/login.jsp");
+				return loginPage();
 			}
 			
 		}
-		return new View("/product");
+		throw new AccessViolation("잘못된 접근입니다.");
+		
+	}
+
+	private View loginPage() {
+		return new View("/WEB-INF/views/login.jsp");
 	}
 
 	private boolean isLogin(HttpSession session) {

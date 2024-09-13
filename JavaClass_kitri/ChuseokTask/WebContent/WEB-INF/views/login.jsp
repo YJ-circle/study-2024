@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -13,7 +11,8 @@
     <meta name="generator" content="Hugo 0.88.1">
     <title>== YJ SHOP LOGIN ==</title>
   
-	<link href="${WEB_ROOT}/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${WEB_ROOT}/assert/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${WEB_ROOT}/assert/css/signin.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -33,14 +32,14 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="${WEB_ROOT}/css/signin.css" rel="stylesheet">
-    <script src="${WEB_ROOT}/js/login.js"></script>
+
+    <script src="${WEB_ROOT}/assert/js/login.js"></script>
   </head>
   <body class="text-center">
     
 <main class="form-signin">
-  <form action="${WEB_ROOT}${servlet}/login" method="POST">
-    <img class="mb-4" src="${WEB_ROOT}/img/logo.png" alt="" width="70%" style="margin-bottom:0!important">
+  <form action="${servlet}/login" method="POST">
+    <img class="mb-4" src="${WEB_ROOT}/assert/img/logo.png" alt="" width="70%" style="margin-bottom:0!important">
     <div class="form-floating">
       <input type="text" class="form-control" id="floatingInput" placeholder="Id" name="id" required>
       <label for="floatingInput">아이디 입력</label>
@@ -54,7 +53,7 @@
 	    <h1>${loginResult}</h1>
 	    <script type="text/javascript">
 	        alert('${loginResult}');
-	        location.href='${WEB_ROOT}${servlet}/login';
+	        location.href='${servlet}/login';
 	    </script>
 	</c:if>
 
