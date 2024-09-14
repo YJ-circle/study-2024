@@ -7,53 +7,57 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dto.MemberDto;
 import error.AccessViolation;
 import error.login.LoginError;
 import service.ILoginService;
 import service.impl.LoginService;
 import view.View;
+import view.ViewMethod;
 
 public class LoginCtrl implements IController{
 
 	@Override
 	public View process(HttpServletRequest req, HttpServletResponse resp) throws Exception, IOException{
 		HttpSession session = req.getSession();
-		if(isLogin(session)){
-			
-		}
-		
+
 		System.out.println("로그인 컨트롤러");
 		
 		String method = req.getMethod();
 		
 		
 		if(isGetRequest(method)) {
-			System.out.println("GET");
+			if(isLogin(session)){
+				return new View (req.getAttribute("servlet") + "/product", ViewMethod.REDIRECT);
+			}
 			return loginPage(); }
 		
 		if(isPostRequest(method)) {
-			System.out.println("POST");
 			String inputId = req.getParameter("id");
 			String inputPw = req.getParameter("password");
+			
+			MemberDto memberDto = null;
 			ILoginService svc = new LoginService(inputId, inputPw);
-			try{ svc.login(req, resp);
-				 return null;}
+			try{ memberDto = svc.login(req, resp);}
 			catch(LoginError e) {
 				req.setAttribute("loginResult", e.getMessage());
 				return loginPage();
 			}
 			
+			session.setAttribute("userId", inputId);
+			session.setAttribute("userName", memberDto.getName());
+			return new View (req.getAttribute("servlet") + "/product", ViewMethod.REDIRECT);
 		}
 		throw new AccessViolation("잘못된 접근입니다.");
 		
 	}
 
 	private View loginPage() {
-		return new View("/WEB-INF/views/login.jsp");
+		return new View("/WEB-INF/views/login_inpage.jsp");
 	}
 
 	private boolean isLogin(HttpSession session) {
-		return session.getAttribute("loginId") != null;
+		return session.getAttribute("userId") != null;
 	}
 
 	private boolean isPostRequest(String method) {
@@ -62,9 +66,5 @@ public class LoginCtrl implements IController{
 
 	private boolean isGetRequest(String method) {
 		return method.equals("GET");
-	}
-	
-	private boolean methodError(String method) {
-		return !(isGetRequest(method)||method.equals("POST"));
 	}
 }

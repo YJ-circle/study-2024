@@ -12,11 +12,11 @@
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="../css/productList.css" rel="stylesheet" />
+        <link href="${WEB_ROOT}/assert/css/productList.css" rel="stylesheet" />
     </head>
     <body>
         <!-- Navigation-->
-		<jsp:include page="navi.jsp" />>
+		<jsp:include page="navi.jsp" />
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
@@ -25,7 +25,7 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top" src="/yjshop/img/${product.imgPath}" />
+                            <img class="card-img-top" src="${WEB_ROOT}/assert/img/${product.imgPath}" />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -53,12 +53,8 @@
             </div>
         </section>
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; YJ SHOP 2024</p></div>
-        </footer>
+		<jsp:include page="footer.jsp" />
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="../js/product.js"></script>
     </body>
 </html>

@@ -1,6 +1,10 @@
 package controller;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,57 +20,47 @@ import view.View;
 public class ResourceHandler extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	private static final String VIEWS_FOLDER = "C:/Users/kitri03/Desktop/kitri/Git/JavaClass_Kitri/ChuseokTask/WebContent/WEB-INF/views";
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("assert 서블릿");
 		req.setAttribute("WEB_ROOT", req.getContextPath());
 		String path = req.getPathInfo();
-		String page = "";
-		System.out.println(path);
 		String referer = req.getHeader("Referer");
 		System.out.println(referer);
-		View view = null;
+		File file = null;
 		
-		if (referer == null) {
-			 page = "/WEB-INF/views/error.jsp";
-		}
 		
-		else if (path.contains("404.css")) {
+		//Referer Check
+		if (path.contains("404.css")) {
 			resp.setContentType("text/css");
-			page = "/WEB-INF/views"+ path;
+		}
+
+		
+		else if (referer == null || !referer.contains("/chu/web")) {
+			 errorPage(req, resp); return;
 		}
 		
-		else if(referer.contains("/chu/web")) {
-			System.out.println("refer통과");
-			page = "/WEB-INF/views"+ path;
-			
-		}
 		
-		else {
-			resp.setContentType("text/html");
-			page = "/WEB-INF/views/error.jsp";
-		}
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher(page);
-		dispatcher.forward(req, resp);
-		
-
+		file = new File(VIEWS_FOLDER + path);
+		InputStream inputStream = new FileInputStream(file);
+		OutputStream outStream = resp.getOutputStream();
+		byte[] buffer = new byte[1024];
+		int bytes = -1;
+		while((bytes = inputStream.read(buffer)) != -1) {
+			outStream.write(buffer, 0, bytes);
+		}
 	}
 
-	private View printAssert(String path) {
-		View view;
-		view = new View("/WEB-INF/views"+ path);
-		return view;
-	}
 
-	private View errorPage(HttpServletRequest req) {
-		View view;
+	private void errorPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setAttribute("errorMsg", "잘못된 접근입니다.");
-		view = new View("/WEB-INF/views/error.jsp");
-		return view;
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		new View("/WEB-INF/views/error.jsp").render(req, resp);
 	}
 
 

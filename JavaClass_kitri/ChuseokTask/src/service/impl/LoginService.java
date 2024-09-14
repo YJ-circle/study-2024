@@ -13,6 +13,7 @@ import Setting.Database;
 import dao.Dao;
 import dao.IMemberDao;
 import dao.impl.MemberDao;
+import dto.MemberDto;
 import entity.MemberEntity;
 import error.login.LoginError;
 import service.ILoginService;
@@ -31,7 +32,7 @@ public class LoginService implements ILoginService {
 		this.inputPassword = pw;
 	}
 
-	public void login(HttpServletRequest req, HttpServletResponse resp) throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, IOException{
+	public MemberDto login(HttpServletRequest req, HttpServletResponse resp) throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, IOException{
 		
 		IMemberDao dao = new MemberDao();
 		memberInfo = dao.login(inputId, inputPassword);
@@ -44,10 +45,10 @@ public class LoginService implements ILoginService {
 			throw new LoginError("비밀번호가 틀렸습니다");
 		}
 		
-		HttpSession session = req.getSession();
-		session.setAttribute("loginId", inputId);
-		resp.sendRedirect(req.getAttribute("WEB_ROOT") + "/product");
-		return;
+		MemberDto memberDto = new MemberDto();
+		memberDto.setDto(memberInfo);
+		
+		return memberDto;
 	}
 
 	private boolean pwErrorCheck() {

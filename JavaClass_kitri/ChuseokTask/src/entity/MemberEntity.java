@@ -51,5 +51,12 @@ public class MemberEntity implements IEntity {
 	public boolean isinit() {
 		return init;
 	}
+	@Override
+	public String toString() {
+		return "MemberEntity [init=" + init + ", id=" + id + ", pw=" + pw + ", name=" + name + ", address=" + address
+				+ "]";
+	}
+	
+	
 	
 }

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Setting.SessionFunc;
 import error.AccessViolation;
 import error.login.LoginError;
 import view.View;
@@ -28,7 +29,8 @@ public class MainController extends HttpServlet{
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) {
-		
+		SessionFunc session = new SessionFunc(req);
+		session.setReqAttr(req);
 		View view = null;
 		
 		try {
@@ -37,6 +39,7 @@ public class MainController extends HttpServlet{
 			System.out.println(req.getPathInfo());
 			req.setAttribute("WEB_ROOT", rootPath);
 			req.setAttribute("servlet", rootPath + req.getServletPath());
+			System.out.println("servlet = " + rootPath+req.getServletPath());
 			req.setAttribute("inPath", inPath);
 			
 			
