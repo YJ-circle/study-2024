@@ -7,17 +7,14 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import Setting.Database;
 import dao.Dao;
-import dao.IMemberDao;
 import dao.impl.MemberDao;
-import dto.MemberDto;
+import dto.IMemberDto;
+import dto.impl.MemberDto;
 import entity.MemberEntity;
 import error.login.LoginError;
 import service.ILoginService;
-import view.View;
 
 public class LoginService implements ILoginService {
 	private String inputId;
@@ -32,23 +29,24 @@ public class LoginService implements ILoginService {
 		this.inputPassword = pw;
 	}
 
-	public MemberDto login(HttpServletRequest req, HttpServletResponse resp) throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, IOException{
+	public IMemberDto login(HttpServletRequest req, HttpServletResponse resp) throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, IOException{
 		
-		IMemberDao dao = new MemberDao();
-		memberInfo = dao.login(inputId, inputPassword);
-		
+		List<MemberEntity> memberList = new MemberDao().getByIndex(inputId);
+		memberInfo = memberList.get(0);
+		System.out.println("로그인 서비스 완료");
 		if(idErrorCheck()) {
 			throw new LoginError("등록 되지 않은 사용자 입니다.");
 		}
 		
 		if(pwErrorCheck()) {
+			System.out.println("비번틀림");
 			throw new LoginError("비밀번호가 틀렸습니다");
 		}
 		
-		MemberDto memberDto = new MemberDto();
-		memberDto.setDto(memberInfo);
+		IMemberDto dto = new MemberDto();
+		dto.setDto(memberInfo);
 		
-		return memberDto;
+		return dto;
 	}
 
 	private boolean pwErrorCheck() {

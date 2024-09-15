@@ -49,36 +49,16 @@ public class Database implements AutoCloseable{
 			throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, 
 			  	   InvocationTargetException, NoSuchMethodException, SecurityException {
 		rs = pstmt.executeQuery();
-		System.out.println("SQL실행 못해!!!!");
 		List<T> entityList = new ArrayList<>();
-		int count = 1;
 		while(rs.next()) {
-			System.out.println(count++);
-			System.out.println(rs.getString("id"));
 			T e = entity.getConstructor().newInstance();
 			e.setEntity(rs);
 			System.out.println(e);
 			entityList.add(e);
 		}
-		System.out.println(entityList.size());
-		for(T e : entityList) {
-			System.out.println("제너릭 안에서");
-			e.getClass();
-			System.out.println("조회");
-		}
 		return entityList;
 	}
 	
-	
-	public <T extends IEntity> T sqlSelectEntity(Class<T> entity) 
-			throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException 
-			 {T e = entity.getConstructor().newInstance();
-			 rs = pstmt.executeQuery();
-			 if(rs.next()) {
-				 e.setEntity(rs);
-			 }
-		return e;
-	}
 
 	@Override
 	public void close() throws SQLException {

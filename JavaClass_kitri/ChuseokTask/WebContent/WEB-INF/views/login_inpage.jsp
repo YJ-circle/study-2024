@@ -19,7 +19,7 @@
 </head>
 <style>
 form input, button {
-margin-top: 10px;
+	margin-top: 10px;
 }
 </style>
 <body>
@@ -43,6 +43,13 @@ margin-top: 10px;
 							for="floatingPassword">비밀번호 입력</label>
 					</div>
 					<button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
+					<c:if test="${loginResult != null}">
+						<h1>${loginResult}</h1>
+						<script type="text/javascript">
+							alert('${loginResult}');
+							location.href = '${servlet}/login';
+						</script>
+					</c:if>
 				</form>
 			</div>
 

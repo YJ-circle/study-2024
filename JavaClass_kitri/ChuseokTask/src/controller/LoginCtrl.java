@@ -7,7 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dto.MemberDto;
+import dto.Dto;
+import dto.IMemberDto;
+import dto.impl.MemberDto;
+import entity.MemberEntity;
 import error.AccessViolation;
 import error.login.LoginError;
 import service.ILoginService;
@@ -36,16 +39,16 @@ public class LoginCtrl implements IController{
 			String inputId = req.getParameter("id");
 			String inputPw = req.getParameter("password");
 			
-			MemberDto memberDto = null;
+			IMemberDto dto = null;
 			ILoginService svc = new LoginService(inputId, inputPw);
-			try{ memberDto = svc.login(req, resp);}
+			try{ dto = svc.login(req, resp);}
 			catch(LoginError e) {
 				req.setAttribute("loginResult", e.getMessage());
 				return loginPage();
 			}
 			
 			session.setAttribute("userId", inputId);
-			session.setAttribute("userName", memberDto.getName());
+			session.setAttribute("userName", dto.getName());
 			return new View (req.getAttribute("servlet") + "/product", ViewMethod.REDIRECT);
 		}
 		throw new AccessViolation("잘못된 접근입니다.");

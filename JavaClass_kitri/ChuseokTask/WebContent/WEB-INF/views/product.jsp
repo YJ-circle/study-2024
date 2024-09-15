@@ -25,12 +25,12 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top" src="${WEB_ROOT}/assert/img/${product.imgPath}" />
+                            <img class="card-img-top" src="${WEB_ROOT}/assert/img/${product.getImgPath()}" />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h6 class="fw-bolder">${product.name}</h6>
+                                    <h6 class="fw-bolder">${product.getName()}</h6>
                                     <%  %>
                                     ${product.priceToString()} 원
                                 </div>
@@ -39,9 +39,10 @@
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
                                 	<form action="/yjshop/shop/purchase" method="POST" id ="purchaseForm">                                	
-                                		<input type="hidden" name="price" value="${product.price}">
-                                		<input type="hidden" name="code" value="${product.code}">
-                                		<input type="hidden" name="userId" value="${userId}">
+                                		<input type="hidden" name="price" value="${product.getPrice()}">
+                                		<input type="hidden" name="code" value="${product.getCode()}">
+                                		<input type="hidden" name="userId" value="<%= session.getAttribute("userId")%>">
+                                		<input type="hidden" name="sessionId" value="<%= session.getId()%>">
                                 		<a class="btn btn-outline-dark mt-auto" href="#" onclick="document.getElementById('purchaseForm').submit(); return false;">구매하기</a>
                                 	</form>
                                 </div>

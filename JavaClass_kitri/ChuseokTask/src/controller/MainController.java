@@ -10,11 +10,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpUtils;
 
 import Setting.SessionFunc;
 import error.AccessViolation;
 import error.login.LoginError;
 import view.View;
+import view.ViewMethod;
 
 
 @WebServlet("/web/*")
@@ -25,6 +27,7 @@ public class MainController extends HttpServlet{
 	public MainController(){
 		ctrlMap.put("/login", new LoginCtrl());
 		ctrlMap.put("/product", new ProductMainCtrl());
+		ctrlMap.put("/logout", new LogoutCtrl());
 	}
 
 	@Override
@@ -36,16 +39,14 @@ public class MainController extends HttpServlet{
 		try {
 			String rootPath = req.getContextPath();
 			String inPath = req.getPathInfo();
-			System.out.println(req.getPathInfo());
+			String servlet = rootPath + req.getServletPath();
 			req.setAttribute("WEB_ROOT", rootPath);
-			req.setAttribute("servlet", rootPath + req.getServletPath());
-			System.out.println("servlet = " + rootPath+req.getServletPath());
+			req.setAttribute("servlet", servlet);
 			req.setAttribute("inPath", inPath);
-			
-			
+			req.setAttribute("requrl", req.getRequestURL());
 
 			if(inPath == null) {
-				resp.sendRedirect(rootPath + req.getServletPath() + "/login");
+				new View(servlet + "/product",ViewMethod.REDIRECT).render(req, resp);
 				return;
 			}
 			
