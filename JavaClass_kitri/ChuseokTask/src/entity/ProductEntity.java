@@ -12,6 +12,7 @@ public class ProductEntity implements IEntity {
 	int categoryCode;
 	String category;
 	String imgPath;
+	String detail;
 	
 	public ProductEntity() {}
 	
@@ -28,6 +29,7 @@ public class ProductEntity implements IEntity {
 		categoryCode = sqlResult.getInt("categoryCode");
 		category = sqlResult.getString("category");
 		imgPath = sqlResult.getString("imgPath");
+		detail = sqlResult.getString("detail");
 		init = true;
 	}
 	
@@ -77,6 +79,15 @@ public class ProductEntity implements IEntity {
 		return imgPath;
 	}
 
+	
+
+
+
+
+	public String getDetail() {
+		return detail;
+	}
+
 
 
 
@@ -84,10 +95,15 @@ public class ProductEntity implements IEntity {
 	@Override
 	public String toString() {
 		return "ProductEntity [init=" + init + ", code=" + code + ", name=" + name + ", price=" + price + ", factory="
-				+ factory + ", categoryCode=" + categoryCode + ", category=" + category + ", imgPath=" + imgPath + "]";
+				+ factory + ", categoryCode=" + categoryCode + ", category=" + category + ", imgPath=" + imgPath
+				+ ", detail=" + detail + "]";
 	}
-	
-	
+
+
+
+
+
+
 	
 	
 	

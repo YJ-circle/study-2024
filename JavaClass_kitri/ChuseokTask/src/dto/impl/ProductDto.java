@@ -13,6 +13,7 @@ public class ProductDto implements IProductDto{
 	int price;
 	String category;
 	String imgPath;
+	String detail;
 	@Override
 	public <E extends IEntity> void setDto(E entity) {
 		if(!(entity instanceof ProductEntity)) {
@@ -24,6 +25,7 @@ public class ProductDto implements IProductDto{
 		this.price = product.getPrice();
 		this.category = product.getCategory();
 		this.imgPath = product.getImgPath();
+		this.detail = product.getDetail();
 	}
 	public String getCode() {
 		return code;
@@ -40,9 +42,15 @@ public class ProductDto implements IProductDto{
 	public String getImgPath() {
 		return imgPath;
 	}
+	
+	public String getDetail() {
+		return detail;
+	}
 	@Override
 	public String priceToString() {
 		return NumberFormat.getInstance().format(price);
 	}
-	
+	public String nameTwoLine() {
+		return name.replace("]", "] <br />");
+	}
 }

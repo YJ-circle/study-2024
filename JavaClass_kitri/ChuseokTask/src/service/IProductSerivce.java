@@ -10,5 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import dto.IProductDto;
 
 public interface IProductSerivce {
-	public List<IProductDto> getProductList(HttpServletRequest req, HttpServletResponse resp) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, SQLException;
+	public List<IProductDto> getProduct(HttpServletRequest req, HttpServletResponse resp) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, SQLException;
+	public IProductDto getDetail(HttpServletRequest req, HttpServletResponse resp) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, SQLException;
 }

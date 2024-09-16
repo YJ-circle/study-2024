@@ -16,13 +16,13 @@ import service.IProductSerivce;
 
 public class ProductSerivice implements IProductSerivce {
 	
-	public List<IProductDto> getProductList(HttpServletRequest req, HttpServletResponse resp) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, SQLException {
+	public List<IProductDto> getProduct(HttpServletRequest req, HttpServletResponse resp) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, SQLException {
 		List<ProductEntity> productList = null;
 		String category = req.getParameter("category");
 		if(category == null) {
 			productList = new ProductDao().getByAll();
 		} else {
-			productList = new ProductDao().getByCategory("c.code", category);
+			productList = new ProductDao().getByCategory(category);
 		}
 		
 		List<IProductDto> dto = new ArrayList<>();
@@ -31,6 +31,17 @@ public class ProductSerivice implements IProductSerivce {
 			productDto.setDto(p);
 			dto.add(productDto);
 		}
+		return dto;
+	}
+	
+	public IProductDto getDetail(HttpServletRequest req, HttpServletResponse resp) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, SQLException {
+		
+		String item = req.getParameter("items");
+		List<ProductEntity> productList = 
+				new ProductDao().getByItem(item);
+		IProductDto dto = new ProductDto();
+		dto.setDto(productList.get(0));
+		
 		return dto;
 	}
 

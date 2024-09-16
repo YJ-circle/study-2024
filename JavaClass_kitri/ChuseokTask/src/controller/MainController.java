@@ -28,6 +28,7 @@ public class MainController extends HttpServlet{
 		ctrlMap.put("/login", new LoginCtrl());
 		ctrlMap.put("/product", new ProductMainCtrl());
 		ctrlMap.put("/logout", new LogoutCtrl());
+		ctrlMap.put("/productDetail", new ProductDetailCtrl());
 	}
 
 	@Override
@@ -39,6 +40,7 @@ public class MainController extends HttpServlet{
 		try {
 			String rootPath = req.getContextPath();
 			String inPath = req.getPathInfo();
+			System.out.println(inPath);
 			String servlet = rootPath + req.getServletPath();
 			req.setAttribute("WEB_ROOT", rootPath);
 			req.setAttribute("servlet", servlet);
@@ -50,7 +52,7 @@ public class MainController extends HttpServlet{
 				return;
 			}
 			
-			IController ctrl = ctrlMap.get(req.getPathInfo());;
+			IController ctrl = ctrlMap.get(req.getPathInfo());
 			view = ctrl.process(req, resp);
 			
 			if(view != null) {
@@ -82,7 +84,7 @@ public class MainController extends HttpServlet{
 		}
 		
 
-		if (e instanceof SQLException || e instanceof ServletException) {
+		if (e instanceof Exception) {
 			req.setAttribute("errorMsg", "알 수 없는 오류");
 		}
 		e.printStackTrace(System.out);

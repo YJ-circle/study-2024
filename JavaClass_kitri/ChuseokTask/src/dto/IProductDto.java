@@ -8,5 +8,6 @@ public interface IProductDto extends Dto{
 	public String getCategory();
 	public String getImgPath();
 	public String priceToString();
-	
+	public String getDetail();
+	public String nameTwoLine();
 }

@@ -53,7 +53,6 @@ public class Database implements AutoCloseable{
 		while(rs.next()) {
 			T e = entity.getConstructor().newInstance();
 			e.setEntity(rs);
-			System.out.println(e);
 			entityList.add(e);
 		}
 		return entityList;
