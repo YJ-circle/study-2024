@@ -22,7 +22,7 @@ public class ProductSerivice implements IProductSerivce {
 		if(category == null) {
 			productList = new ProductDao().getByAll();
 		} else {
-			productList = new ProductDao().getByColSetString("c.code", category);
+			productList = new ProductDao().getByCategory("c.code", category);
 		}
 		
 		List<IProductDto> dto = new ArrayList<>();
