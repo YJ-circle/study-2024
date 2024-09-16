@@ -31,15 +31,12 @@ public class LoginService implements ILoginService {
 
 	public IMemberDto login(HttpServletRequest req, HttpServletResponse resp) throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, IOException{
 		
-		List<MemberEntity> memberList = new MemberDao().getByIndex(inputId);
-		memberInfo = memberList.get(0);
-		System.out.println("로그인 서비스 완료");
+		memberInfo = new MemberDao().getMemberInfoById(inputId);
 		if(idErrorCheck()) {
 			throw new LoginError("등록 되지 않은 사용자 입니다.");
 		}
 		
 		if(pwErrorCheck()) {
-			System.out.println("비번틀림");
 			throw new LoginError("비밀번호가 틀렸습니다");
 		}
 		

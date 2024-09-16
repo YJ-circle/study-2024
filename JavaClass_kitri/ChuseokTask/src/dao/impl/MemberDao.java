@@ -5,15 +5,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 import Setting.Database;
-import dao.Dao;
-import entity.IEntity;
+import dao.IMemberDao;
 import entity.MemberEntity;
 import error.login.LoginError;
 
-public class MemberDao implements Dao {
+public class MemberDao implements IMemberDao {
 
-	@Override
-	public List<MemberEntity> getByIndex(String id) throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+
+	public MemberEntity getMemberInfoById(String id) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, SQLException {
 		try(Database db = new Database();){
 			db.setStatement("SELECT * FROM shopuser WHERE id = ?"); //  WHERE id = ?
 			db.sqlAddString(1, id);
@@ -21,22 +20,12 @@ public class MemberDao implements Dao {
 			if(memberList.size() != 1) {
 				throw new LoginError("유효하지 않은 사용자입니다");
 			}
-			return memberList;
+			return memberList.get(0);
 		}
 	}
 
-	@Override
-	public List<MemberEntity> getByAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public List<MemberEntity> getByCustomCol(String columName, String targetName)
-			throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException,
-			InvocationTargetException, NoSuchMethodException, SecurityException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+
 
 }
