@@ -26,7 +26,7 @@
 			<div
 				class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 				<c:forEach var="product" items="${list}">
-					<div class="col mb-5"  onclick="location.href='/items=${product.getCode()}}';">
+					<div class="col mb-5"  onclick="location.href='${servlet}/product/items=${product.getCode()}';">
 						<div class="card h-100">
 							<!-- Product image-->
 							<img class="card-img-top"
