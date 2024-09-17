@@ -6,5 +6,5 @@ import java.util.List;
 import entity.CartEntity;
 
 public interface ICartDao {
-	public List<CartEntity> findCartByColum(String colName, String findTarget) throws SQLException;
+	public CartEntity getExistCart(String colum, String findId, String findItem) throws SQLException;
 }

@@ -13,6 +13,7 @@ import service.ICartService;
 
 public class CartService implements ICartService{
 	public List<ICartDto> addCartSession(HttpServletRequest req, HttpServletResponse resp) throws SQLException {
+		// Check already added cart
 		String item = req.getParameter("items");
 		String id = (String) req.getAttribute("userId");
 		String colName = "userId";
@@ -23,7 +24,7 @@ public class CartService implements ICartService{
 		}
 		
 		ICartDao dao = new CartDao();
-		dao.findCartByColum(colName, id);
+		dao.getExistCart(colName, id, item);
 		return null;
 		
 	}

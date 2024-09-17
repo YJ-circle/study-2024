@@ -20,13 +20,15 @@ public class CartDao implements ICartDao {
 		}
 	}
 
-	public List<CartEntity> findCartByColum(String colName, String findTarget) throws SQLException {
+	public CartEntity getExistCart(String colum, String findId, String findItem) throws SQLException {
 		try (Database db = new Database();) {
-			String sql ="SELECT * FROM cart WHERE ";
-			sql += colName + " = ? ";
+			String sql ="SELECT * FROM cart WHERE "
+			            + colum + "  = ? "
+			            + "goodscode = ?"; 
 			db.setStatement(sql);
-			db.sqlAddString(1, findTarget);
-			
+			db.sqlAddString(1, findId);
+			db.sqlAddString(2, findItem);
+			db.sqlSelectList(CartEntity.class);
 			return null;
 
 		}
