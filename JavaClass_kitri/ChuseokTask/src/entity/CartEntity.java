@@ -8,7 +8,7 @@ public class CartEntity implements IEntity {
 	String goodscode;
 	String userid;
 	int qty;
-	int cartPrice;
+	int price;
 	String active;
 	String recentdate;
 	String category;

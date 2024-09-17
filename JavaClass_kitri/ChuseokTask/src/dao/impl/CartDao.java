@@ -1,5 +1,6 @@
 package dao.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -20,15 +21,20 @@ public class CartDao implements ICartDao {
 		}
 	}
 
-	public CartEntity getExistCart(String colum, String findId, String findItem) throws SQLException {
+	public CartEntity getExistCart(String colum, String findId, String findItem) throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		try (Database db = new Database();) {
-			String sql ="SELECT * FROM cart WHERE "
-			            + colum + "  = ? "
-			            + "goodscode = ?"; 
+			String sql ="SELECT * "
+					    + "FROM cart c, product p "
+					    + "WHERE c." + colum + "  = ? "
+			            + "AND c.goodscode = ? "
+			            + "AND c.active = 'Y' "; 
 			db.setStatement(sql);
 			db.sqlAddString(1, findId);
 			db.sqlAddString(2, findItem);
-			db.sqlSelectList(CartEntity.class);
+			List<CartEntity> cartList = db.sqlSelectList(CartEntity.class);
+			if(cartList.size() == 1) {
+				return cartList.get(0);
+			}
 			return null;
 
 		}
