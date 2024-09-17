@@ -7,11 +7,8 @@ import error.DtoConvertError;
 
 public class CartDto implements ICartDto {
 	String goodscode;
-	String userid;
 	int qty;
 	int cartPrice;
-	String active;
-	String recentdate;
 	String category;
 	String imgPath;
 
@@ -25,11 +22,8 @@ public class CartDto implements ICartDto {
 		}
 		CartEntity cart = (CartEntity) entity;
 		this.goodscode = cart.getGoodscode();
-		this.userid = cart.getUserid();
 		this.qty = cart.getQty();
-		this.cartPrice = cart.getCartPrice();
-		this.active = cart.getActive();
-		this.recentdate = cart.getRecentdate();
+		this.cartPrice = cart.getPrice();
 		this.category = cart.getCategory();
 		this.imgPath = cart.getImgPath();
 	}
@@ -37,25 +31,12 @@ public class CartDto implements ICartDto {
 	public String getGoodscode() {
 		return goodscode;
 	}
-
-	public String getUserid() {
-		return userid;
-	}
-
 	public int getQty() {
 		return qty;
 	}
 
 	public int getCartPrice() {
 		return cartPrice;
-	}
-
-	public String getActive() {
-		return active;
-	}
-
-	public String getRecentdate() {
-		return recentdate;
 	}
 
 	public String getCategory() {
@@ -68,9 +49,10 @@ public class CartDto implements ICartDto {
 
 	@Override
 	public String toString() {
-		return "CartDto [goodscode=" + goodscode + ", userid=" + userid + ", qty=" + qty + ", cartPrice=" + cartPrice
-				+ ", active=" + active + ", recentdate=" + recentdate + ", category=" + category + ", imgPath="
-				+ imgPath + "]";
+		return "CartDto [goodscode=" + goodscode + ", qty=" + qty + ", cartPrice=" + cartPrice + ", category="
+				+ category + ", imgPath=" + imgPath + "]";
 	}
+
+
 
 }

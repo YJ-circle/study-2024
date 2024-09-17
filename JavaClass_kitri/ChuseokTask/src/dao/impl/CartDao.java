@@ -10,6 +10,7 @@ import dao.ICartDao;
 import entity.CartEntity;
 
 public class CartDao implements ICartDao {
+	private boolean existOld;
 	public List<CartEntity> addCart() throws SQLException {
 
 		// Login User
@@ -21,22 +22,49 @@ public class CartDao implements ICartDao {
 		}
 	}
 
-	public CartEntity getExistCart(String colum, String findId, String findItem) throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
-		try (Database db = new Database();) {
-			String sql ="SELECT * "
-					    + "FROM cart c, product p "
+	public CartEntity getExistCartItem(CartEntity newCart) throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+		try (Database db = new Database()) {
+			String colum = "userid";
+			
+			if(newCart.getUserid() == null) {
+				colum = "sessionid";
+			}
+			
+			String sql ="SELECT c.goodscode, c.userid, c.qty, p.price, "
+					    + "c. active, c.recentdate, ca.name category, p.imgpath "
+					    + "FROM cart c, product p, category ca "
 					    + "WHERE c." + colum + "  = ? "
 			            + "AND c.goodscode = ? "
-			            + "AND c.active = 'Y' "; 
+			            + "AND c.active = 'Y' " 
+						+ "AND c.goodscode = p.code "
+						+ "AND p.category = ca.code ";
 			db.setStatement(sql);
-			db.sqlAddString(1, findId);
-			db.sqlAddString(2, findItem);
+			db.sqlAddString(1, newCart.getUserid());
+			db.sqlAddString(2, newCart.getGoodscode());
 			List<CartEntity> cartList = db.sqlSelectList(CartEntity.class);
 			if(cartList.size() == 1) {
+				existOld = true;
 				return cartList.get(0);
 			}
 			return null;
 
 		}
+	}
+	
+	public boolean addCart(CartEntity newCart) throws SQLException {
+		try(Database db = new Database()){
+			String sql = null;
+			if(existOld) {
+				sql = "INSERT INTO cart (goodscode, userid, sessionid, qty, active,recentdate) "
+					+ "VALUES (?, ?, ?, ?, 'Y', ?) ";
+			} else {
+				sql = "UPDATE cart "
+					+ "SET goodscode = ? ";
+				
+					//+ "WHERE userid = ? "
+					//+ "AND sessionid = ? "
+			}
+		}
+		return false;
 	}
 }

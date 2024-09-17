@@ -10,24 +10,29 @@ import javax.servlet.http.HttpServletResponse;
 import dao.ICartDao;
 import dao.impl.CartDao;
 import dto.ICartDto;
+import dto.impl.CartDto;
+import entity.CartEntity;
 import service.ICartService;
 
 public class CartService implements ICartService{
-	public List<ICartDto> addCartSession(HttpServletRequest req, HttpServletResponse resp) throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+	public boolean addCart(HttpServletRequest req, HttpServletResponse resp) throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+		CartEntity newCart = new CartEntity();
 		// Check already added cart
 		String item = req.getParameter("items");
-		String id = (String) req.getAttribute("userId");
-		String colName = "userId";
+		String userId = (String) req.getAttribute("userId");
+		String sessionId = (String) req.getAttribute("sessionId");
+		int qty = (int) req.getAttribute("qty");
 		
-		if(id == null) {
-			id = (String) req.getAttribute("sessionId");
-			colName = "sessionId";
-		}
+		newCart.setGoodscode(item);
+		newCart.setUserid(userId);
+		newCart.setSessionid(sessionId);
 		
 		ICartDao dao = new CartDao();
-		dao.getExistCart(colName, id, item);
-		return null;
+		CartEntity oldCart = dao.getExistCartItem(newCart);
 		
+		newCart.oldToNew(oldCart);
+		
+		return dao.addCart(newCart);		
 	}
 
 
