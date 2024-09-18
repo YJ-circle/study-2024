@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Setting.SessionFunc;
 import dto.IProductDto;
 import service.IProductSerivce;
 import service.impl.ProductSerivice;
@@ -21,6 +22,7 @@ public class ProductDetailCtrl implements IController{
 		IProductSerivce svc = new ProductSerivice();
 		IProductDto product = svc.getDetail(req, resp);
 		req.setAttribute("item", product);
+		req.setAttribute("requrl", req.getRequestURL() + "?items=" + product.getCode()) ;
 		return new View("/WEB-INF/views/productDetail.jsp");
 	}
 

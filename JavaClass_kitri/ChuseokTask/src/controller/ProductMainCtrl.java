@@ -22,7 +22,7 @@ public class ProductMainCtrl implements IController{
 	public View process(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, InstantiationException, IllegalAccessException, IllegalArgumentException,
 			InvocationTargetException, NoSuchMethodException, SecurityException, SQLException, Exception {
-		
+
 		IProductSerivce svc = new ProductSerivice();
 		List<IProductDto> product = svc.getProduct(req, resp);
 		req.setAttribute("list", product);

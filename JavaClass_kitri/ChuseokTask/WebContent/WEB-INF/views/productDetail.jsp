@@ -35,14 +35,18 @@
 					</div>
 					<p class="lead">${item.getDetail()}</p>
 					<div class="d-flex">
-						<form>
+						<form action="${servlet}/addCart" method="POST" id = "addCart">
 							<div class="form-group row">
 								<div class="col">
-									<input class="form-control text-center me-3" id="inputQuantity"
-										type="num" value="1" style="max-width: 3rem" />
+									<input class="form-control text-center me-3" id="qty"
+										type="num" value="1" style="max-width: 3rem" name = "qty" />
+									<input type="hidden" name="items" value="${item.getCode()}" />
+									<input type="hidden" name="return" value="${requrl}" />
 								</div>
-								<div class="col" style="min-width:300px!important; margin-left:-25px">
+								<div class="col"
+									style="min-width: 300px !important; margin-left: -25px">
 									<button class="btn btn-outline-dark flex-shrink-0"
+										onclick="document.getElementById('addCart').submit(); return false;"
 										type="button">
 										<i class="bi-cart-fill me-1"></i> Add to cart
 									</button>

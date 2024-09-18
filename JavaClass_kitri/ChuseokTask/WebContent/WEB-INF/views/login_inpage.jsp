@@ -18,7 +18,7 @@
 <link href="${WEB_ROOT}/assert/css/productList.css" rel="stylesheet" />
 </head>
 <style>
-form input, button {
+.form-control {
 	margin-top: 10px;
 }
 </style>
@@ -42,7 +42,7 @@ form input, button {
 							placeholder="Password" name="password" required> <label
 							for="floatingPassword">비밀번호 입력</label>
 					</div>
-					<button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
+					<button class="w-100 btn btn-lg btn-primary" type="submit" style="margin-top:10px;">로그인</button>
 					<c:if test="${loginResult != null}">
 						<h1>${loginResult}</h1>
 						<script type="text/javascript">

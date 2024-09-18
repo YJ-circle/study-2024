@@ -29,23 +29,26 @@ public class MainController extends HttpServlet{
 		ctrlMap.put("/product", new ProductMainCtrl());
 		ctrlMap.put("/logout", new LogoutCtrl());
 		ctrlMap.put("/productDetail", new ProductDetailCtrl());
+		ctrlMap.put("/addCart", new CartAddCtrl());
+		ctrlMap.put("/cart", new CartListCtrl());
 	}
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) {
 		SessionFunc session = new SessionFunc(req);
+		System.out.println("메인컨트롤러");
 		session.setReqAttr(req);
 		View view = null;
 		
 		try {
 			String rootPath = req.getContextPath();
 			String inPath = req.getPathInfo();
-			System.out.println(inPath);
 			String servlet = rootPath + req.getServletPath();
 			req.setAttribute("WEB_ROOT", rootPath);
 			req.setAttribute("servlet", servlet);
 			req.setAttribute("inPath", inPath);
 			req.setAttribute("requrl", req.getRequestURL());
+			
 
 			if(inPath == null) {
 				new View(servlet + "/product",ViewMethod.REDIRECT).render(req, resp);

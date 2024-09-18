@@ -8,9 +8,12 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.ICartDao;
+import dao.impl.CartDao;
 import dao.impl.MemberDao;
 import dto.IMemberDto;
 import dto.impl.MemberDto;
+import entity.CartEntity;
 import entity.MemberEntity;
 import error.login.LoginError;
 import service.ILoginService;
@@ -29,7 +32,7 @@ public class LoginService implements ILoginService {
 	}
 
 	public IMemberDto login(HttpServletRequest req, HttpServletResponse resp) throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, IOException{
-		
+		String sessionId = (String) req.getAttribute("sessionId");
 		memberInfo = new MemberDao().getMemberInfoById(inputId);
 		if(idErrorCheck()) {
 			throw new LoginError("등록 되지 않은 사용자 입니다.");

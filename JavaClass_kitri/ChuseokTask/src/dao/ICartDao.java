@@ -7,5 +7,6 @@ import java.util.List;
 import entity.CartEntity;
 
 public interface ICartDao {
-	public CartEntity getExistCartItem(CartEntity newCart) throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException;
+	public List<CartEntity> getExitstCart(String method, String id) throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException;
+	public boolean addCart(CartEntity newCart) throws SQLException;
 }

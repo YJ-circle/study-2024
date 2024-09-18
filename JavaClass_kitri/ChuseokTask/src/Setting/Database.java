@@ -7,7 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import entity.IEntity;
 import entity.MemberEntity;
@@ -58,11 +60,36 @@ public class Database implements AutoCloseable{
 		return entityList;
 	}
 	
-
+	
+	public boolean sqlUpdateOnlyOne() throws SQLException {
+		conn.setAutoCommit(false);
+		int cnt = pstmt.executeUpdate();
+		
+		if (cnt == 1) {
+			conn.commit();
+		} else if (cnt > 1) {
+			new SQLException("SQL 업데이트 과정에서 행이 2개 이상 바뀌었습니다");
+			conn.rollback();
+		} else {
+			new SQLException("업데이트 된 행이 없습니다");
+		}
+		
+		return true;
+		
+	}
+	public boolean sqlUpdate() throws SQLException {
+		conn.setAutoCommit(false);
+		pstmt.executeUpdate();
+		conn.commit();
+		return true;
+		
+	}
 	@Override
 	public void close() throws SQLException {
-		System.out.println("클로즈");
-		rs.close();
+		if(rs!=null) {
+			rs.close();	
+		}
+		
 		pstmt.close();
 		conn.close();
 		

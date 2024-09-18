@@ -25,11 +25,11 @@ public class SessionFunc {
 		if(isLogin()) {
 			req.setAttribute("userId", getUserId());
 			req.setAttribute("userName", getUserName());
-			req.setAttribute("sessionId", session.getId());
-			System.out.println("session = " + session.getId());
 		} else {
 			req.setAttribute("userName", "손님");
 		}
+
+		req.setAttribute("sessionId", session.getId());
 	}
 	
 }

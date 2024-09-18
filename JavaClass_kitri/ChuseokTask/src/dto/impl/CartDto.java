@@ -1,5 +1,7 @@
 package dto.impl;
 
+import java.text.NumberFormat;
+
 import dto.ICartDto;
 import entity.CartEntity;
 import entity.IEntity;
@@ -7,6 +9,7 @@ import error.DtoConvertError;
 
 public class CartDto implements ICartDto {
 	String goodscode;
+	String goodsname;
 	int qty;
 	int cartPrice;
 	String category;
@@ -22,21 +25,27 @@ public class CartDto implements ICartDto {
 		}
 		CartEntity cart = (CartEntity) entity;
 		this.goodscode = cart.getGoodscode();
+		this.goodsname = cart.getGoodsName();
 		this.qty = cart.getQty();
 		this.cartPrice = cart.getPrice();
 		this.category = cart.getCategory();
 		this.imgPath = cart.getImgPath();
 	}
 
+	
 	public String getGoodscode() {
 		return goodscode;
+	}
+
+	public String getGoodsname() {
+		return goodsname;
 	}
 	public int getQty() {
 		return qty;
 	}
 
-	public int getCartPrice() {
-		return cartPrice;
+	public String getCartPrice() {
+		return NumberFormat.getInstance().format(cartPrice);
 	}
 
 	public String getCategory() {

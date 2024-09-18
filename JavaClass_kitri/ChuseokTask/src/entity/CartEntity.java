@@ -11,6 +11,7 @@ import java.util.Formatter;
 public class CartEntity implements IEntity {
 	private boolean init;
 	private String goodscode;
+	private String goodsName;
 	private String userid;
 	private String sessionid;
 	private int qty;
@@ -28,9 +29,11 @@ public class CartEntity implements IEntity {
 	@Override
 	public void setEntity(ResultSet sqlResult) throws SQLException {
 		goodscode = sqlResult.getString("goodscode");
+		goodsName = sqlResult.getString("goodsName");
 		userid = sqlResult.getString("userid");
 		sessionid = sqlResult.getString("sessionid");
 		qty = sqlResult.getInt("qty");
+		price = sqlResult.getInt("price");
 		active = sqlResult.getString("active");
 		recentdate = sqlResult.getString("recentdate");
 		category = sqlResult.getString("category");
@@ -92,6 +95,14 @@ public class CartEntity implements IEntity {
 		this.qty = qty;
 	}
 	
+	
+	
+	public String getGoodsName() {
+		return goodsName;
+	}
+	public void setGoodsName(String goodsName) {
+		this.goodsName = goodsName;
+	}
 	public void oldToNew(CartEntity oldCart) {
 		if(oldCart!=null) {
 			this.qty = this.qty + oldCart.getQty();

@@ -2,6 +2,7 @@ package service.impl;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,24 +16,30 @@ import entity.CartEntity;
 import service.ICartService;
 
 public class CartService implements ICartService{
-	public boolean addCart(HttpServletRequest req, HttpServletResponse resp) throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+	public boolean addCart(HttpServletRequest req, HttpServletResponse resp) throws SQLException{
 		CartEntity newCart = new CartEntity();
-		// Check already added cart
-		String item = req.getParameter("items");
-		String userId = (String) req.getAttribute("userId");
-		String sessionId = (String) req.getAttribute("sessionId");
-		int qty = (int) req.getAttribute("qty");
-		
-		newCart.setGoodscode(item);
-		newCart.setUserid(userId);
-		newCart.setSessionid(sessionId);
+
+		newCart.setGoodscode(req.getParameter("items"));
+		newCart.setUserid((String)req.getAttribute("userId"));
+		newCart.setSessionid((String) req.getAttribute("sessionId"));
+		newCart.setQty(Integer.parseInt(req.getParameter("qty")));
 		
 		ICartDao dao = new CartDao();
-		CartEntity oldCart = dao.getExistCartItem(newCart);
+		return dao.addCart(newCart);
+	}
+	
+	public List<ICartDto> getCart(HttpServletRequest req, HttpServletResponse resp) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, SQLException{
+		ICartDao dao = new CartDao();
+		List<CartEntity> entityList = dao.getExitstCart("userid", (String)req.getAttribute("userId"));
+		List<ICartDto> dtoList = new ArrayList<>();
+		for(CartEntity e : entityList) {
+			ICartDto dto = new CartDto();
+			dto.setDto(e);
+			dtoList.add(dto);
+			
+		}
+		return dtoList;
 		
-		newCart.oldToNew(oldCart);
-		
-		return dao.addCart(newCart);		
 	}
 
 
