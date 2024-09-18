@@ -1,4 +1,4 @@
-package controller;
+package controller.impl;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpUtils;
 
 import Setting.SessionFunc;
+import controller.IController;
+import controller.ProductMainCtrl;
 import error.AccessViolation;
 import error.login.LoginError;
 import view.View;

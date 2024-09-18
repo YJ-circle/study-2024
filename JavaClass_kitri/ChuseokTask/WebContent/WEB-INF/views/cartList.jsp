@@ -44,30 +44,30 @@ tr input {
 				<tr>
 					<th></th>
 					<th>분류</th>
-					<th>상품</th>
+					<th colspan=2>상품</th>
 					<th>수량</th>
-					<th>단가</th>
 					<th>가격</th>
 				</tr>
 				<c:forEach var="product" items="${cart}">
 					<form action="/cartChange" method="POST">
 					<tr>
-						<th scope="row"><input type="checkbox" name="selectItem"
+						<th scope="row" style="width: 15px;"><input type="checkbox" name="selectItem"
 							value="${product.getGoodscode()}" /></th>
-						<td>${product.getCategory()}</td>
-						<td style="width: 35%;"><input type="hidden" name="goodsCode"
-							value="${product.getGoodscode()}" /> <img
-							src="${WEB_ROOT}/assert/img/${product.getImgPath()}"
-							style="width: 70%;"><br /> ${product.getGoodsname()}</td>
-						<td style="width: 100px;">${product.getCartPrice()}원</td>
-						<td style="width: 100px;"><input type="num" name="qty"
+						<td style="width: 10%;">${product.getCategory()}</td>
+						<td style="width: 25%;"><img src="${WEB_ROOT}/assert/img/${product.getImgPath()}" style="width: 60%;"></td>
+						<td style="width: 45%; text-align:left;">
+							${product.getGoodsname()}
+							<input type="hidden" name="goodsCode" value="${product.getGoodscode()}" />
+						</td>
+						
+						<td style="width: 10%;"><input type="number" name="qty"
 							value="${product.getQty()}" oninput="calculatePrice(this)"
 							data-price="${product.getCatPriceInt()}"
-							style="width: 25px; margin: 0 auto;" />개<br />
-						<input class="btn btn-dark btn-sm" type="submit" value="변경"></td>
+							style="width: 35px; text-align:right;" />개<br/>
+						<input class="btn btn-dark btn-sm" type="submit" value=" 변경 " style="margin-left: 15px; margin-right: auto;"></td>
 
-						<td style="width: 100px;"><input type="text"
-							value="${product.getCartTotalPrice()} 원" readonly /></td>
+						<td style="width: 10%;"><input type="text"
+							value="${product.getCartTotalPrice()} 원" readonly disabled/></td>
 
 					</tr>
 					</form>
