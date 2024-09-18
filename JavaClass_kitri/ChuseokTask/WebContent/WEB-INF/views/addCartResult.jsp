@@ -27,8 +27,11 @@ form input, button {
 	<jsp:include page="navi.jsp" />
 	<!-- Section-->
 	<script type="text/javascript">
-		alert('${addResult}');
+		if(confirm('${addResult}\n장바구니로 이동하시겠습니까?')){
+			location.href = '${servlet}/cart';
+		} else{
 		location.href = '${returnPage}';
+		}
 	</script>
 </body>
 </html>

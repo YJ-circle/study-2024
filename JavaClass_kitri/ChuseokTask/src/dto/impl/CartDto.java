@@ -47,6 +47,10 @@ public class CartDto implements ICartDto {
 	public String getCartPrice() {
 		return NumberFormat.getInstance().format(cartPrice);
 	}
+	
+	public String getCartTotalPrice() {
+		return NumberFormat.getInstance().format(cartPrice*qty);
+	}
 
 	public String getCategory() {
 		return category;
@@ -60,6 +64,11 @@ public class CartDto implements ICartDto {
 	public String toString() {
 		return "CartDto [goodscode=" + goodscode + ", qty=" + qty + ", cartPrice=" + cartPrice + ", category="
 				+ category + ", imgPath=" + imgPath + "]";
+	}
+
+	@Override
+	public int getCatPriceInt() {
+		return cartPrice;
 	}
 
 

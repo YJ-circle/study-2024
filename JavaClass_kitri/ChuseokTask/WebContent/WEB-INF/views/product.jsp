@@ -26,7 +26,8 @@
 			<div
 				class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 				<c:forEach var="product" items="${list}">
-					<div class="col mb-5"  onclick="location.href='${servlet}/productDetail?items=${product.getCode()}';">
+					<div class="col mb-5"
+						onclick="location.href='${servlet}/productDetail?items=${product.getCode()}';">
 						<div class="card h-100">
 							<!-- Product image-->
 							<img class="card-img-top"
@@ -45,17 +46,17 @@
 							<!-- Product actions-->
 							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 								<div class="text-center">
-									<form action="/yjshop/shop/purchase" method="POST"
+									<form action="${servlet}/addCart" method="POST"
 										id="purchaseForm">
-										<input type="hidden" name="price"
-											value="${product.getPrice()}"> <input type="hidden"
-											name="code" value="${product.getCode()}"> <input
-											type="hidden" name="userId"
-											value="<%=session.getAttribute("userId")%>"> <input
-											type="hidden" name="sessionId" value="<%=session.getId()%>">
-										<a class="btn btn-outline-dark mt-auto" href="#"
-											onclick="document.getElementById('purchaseForm').submit(); return false;">자세히
-											보기</a>
+										<input type="hidden" name="price" value="${product.getPrice()}"/>
+										<input type="hidden" name="items" value="${product.getCode()}"/>
+										<input type="hidden" name="qty" value="1"/> 
+										<input type="hidden" name="userId" value="<%=session.getAttribute("userId")%>"/> 
+										<input type="hidden" name="sessionId" value="<%=session.getId()%>"/>
+										<input type="hidden" name="return" value="${requrl}" />
+										<button class="btn btn-outline-dark mt-auto" href="#"
+											onclick="document.getElementById('addCart').submit(); return false;">자세히
+											보기</button>
 									</form>
 								</div>
 							</div>

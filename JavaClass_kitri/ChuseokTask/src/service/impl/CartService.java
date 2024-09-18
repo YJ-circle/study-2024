@@ -29,8 +29,17 @@ public class CartService implements ICartService{
 	}
 	
 	public List<ICartDto> getCart(HttpServletRequest req, HttpServletResponse resp) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, SQLException{
+		String userid = (String)req.getAttribute("userId");
 		ICartDao dao = new CartDao();
-		List<CartEntity> entityList = dao.getExitstCart("userid", (String)req.getAttribute("userId"));
+		List<CartEntity> entityList = null;
+		if(userid != null) {
+			entityList = dao.getExitstCart("userid", userid);
+		} else {
+			entityList = dao.getExitstCart("sessionid", (String) req.getAttribute("sessionId"));
+			System.out.println(req.getAttribute("sessionId") + "\n" + entityList.size());
+			
+		}
+				
 		List<ICartDto> dtoList = new ArrayList<>();
 		for(CartEntity e : entityList) {
 			ICartDto dto = new CartDto();
