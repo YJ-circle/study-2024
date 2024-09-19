@@ -2,6 +2,8 @@ package time;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoField;
+import java.util.Arrays;
+import java.util.List;
 
 public class GetTimeMain {
     public static void main(String[] args) {
@@ -25,6 +27,5 @@ public class GetTimeMain {
         System.out.println("편의 메소드에 없음");
         System.out.println("MINUTE_OF_DAY = " + dt.get(ChronoField.MINUTE_OF_DAY));
         System.out.println("SECOND_OF_DAY = " + dt.get(ChronoField.SECOND_OF_DAY));
-
     }
 }
