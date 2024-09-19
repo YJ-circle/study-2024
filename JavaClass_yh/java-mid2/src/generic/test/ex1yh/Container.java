@@ -5,7 +5,7 @@ public class Container<T> {
 
 
 
-    public void setItem(T data1) {
+    public void setItem(T item) {
         this.item = item;
     }
 
