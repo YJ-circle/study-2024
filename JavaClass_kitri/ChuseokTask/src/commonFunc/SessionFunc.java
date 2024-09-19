@@ -1,4 +1,4 @@
-package Setting;
+package commonFunc;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -7,6 +7,9 @@ public class SessionFunc {
 	private HttpSession session;
 	public SessionFunc(HttpServletRequest req) {
 		session = req.getSession();
+//		session.setMaxInactiveInterval(5);
+//		System.out.println("세션시간 5초로 설정됨");
+//		System.out.println(session.getId());
 	}
 	
 	public String getUserId() {

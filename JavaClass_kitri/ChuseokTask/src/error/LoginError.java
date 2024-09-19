@@ -1,4 +1,4 @@
-package error.login;
+package error;
 
 public class LoginError extends RuntimeException{
 	private static final long serialVersionUID = 1L;

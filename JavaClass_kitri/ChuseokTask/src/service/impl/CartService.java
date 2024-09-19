@@ -36,7 +36,6 @@ public class CartService implements ICartService{
 			entityList = dao.getExitstCart("userid", userid);
 		} else {
 			entityList = dao.getExitstCart("sessionid", (String) req.getAttribute("sessionId"));
-			System.out.println(req.getAttribute("sessionId") + "\n" + entityList.size());
 			
 		}
 				
@@ -49,6 +48,16 @@ public class CartService implements ICartService{
 		}
 		return dtoList;
 		
+	}
+	
+	public boolean changeQty(HttpServletRequest req, HttpServletResponse resp) {
+		ICartDao dao = new CartDao();
+		CartEntity cart = new CartEntity();
+		cart.setGoodscode(req.getParameter("goodsCode"));
+		cart.setUserid((String)req.getAttribute("userId"));
+	    cart.setQty(Integer.parseInt(req.getParameter("qty")));
+		dao.changeQty(cart);
+		return false;
 	}
 
 

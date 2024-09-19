@@ -21,7 +21,7 @@
 					href="./product?category=2">TOP</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="./product?category=3">BOTTOM</a></li>
-				<li class="nav-item"><a class="nav-link" href="./purchaseList">구매
+				<li class="nav-item"><a class="nav-link" href="#">구매
 						내역</a></li>
 			</ul>
 			<div class="d-flex">

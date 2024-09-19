@@ -1,6 +1,5 @@
 package controller.impl;
 
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.List;
@@ -20,9 +19,6 @@ public class CartListCtrl implements IController{
 	public View process(HttpServletRequest req, HttpServletResponse resp) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, SQLException {
 		ICartService svc = new CartService();
 		List<ICartDto> list = svc.getCart(req, resp);
-		for(ICartDto dto:list) {
-			System.out.println(dto);
-		}
 		req.setAttribute("cart", list);
 		return new View("/WEB-INF/views/cartList.jsp");
 	}

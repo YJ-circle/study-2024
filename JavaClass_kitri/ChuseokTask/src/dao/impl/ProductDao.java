@@ -4,7 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.List;
 
-import Setting.Database;
+import commonFunc.Database;
 import dao.IProductDao;
 import entity.ProductEntity;
 

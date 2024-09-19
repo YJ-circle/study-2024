@@ -15,7 +15,7 @@ import dto.IMemberDto;
 import dto.impl.MemberDto;
 import entity.CartEntity;
 import entity.MemberEntity;
-import error.login.LoginError;
+import error.LoginError;
 import service.ILoginService;
 
 public class LoginService implements ILoginService {

@@ -36,44 +36,58 @@ tr input {
 		<div class="container px-4 px-lg-5 mt-5">
 			<table border="1"
 				class="table align-middle table-striped table-hover">
-				<tr>
-					<th colspan="6"
-						style="background: #3d3d3d; color: #fff; text-align: center;">
-						장바구니</th>
-				</tr>
-				<tr>
-					<th></th>
-					<th>분류</th>
-					<th colspan=2>상품</th>
-					<th>수량</th>
-					<th>가격</th>
-				</tr>
-				<c:forEach var="product" items="${cart}">
-					<form action="/cartChange" method="POST">
-					<tr>
-						<th scope="row" style="width: 15px;"><input type="checkbox" name="selectItem"
-							value="${product.getGoodscode()}" /></th>
-						<td style="width: 10%;">${product.getCategory()}</td>
-						<td style="width: 25%;"><img src="${WEB_ROOT}/assert/img/${product.getImgPath()}" style="width: 60%;"></td>
-						<td style="width: 45%; text-align:left;">
-							${product.getGoodsname()}
-							<input type="hidden" name="goodsCode" value="${product.getGoodscode()}" />
-						</td>
-						
-						<td style="width: 10%;"><input type="number" name="qty"
-							value="${product.getQty()}" oninput="calculatePrice(this)"
-							data-price="${product.getCatPriceInt()}"
-							style="width: 35px; text-align:right;" />개<br/>
-						<input class="btn btn-dark btn-sm" type="submit" value=" 변경 " style="margin-left: 15px; margin-right: auto;"></td>
+				<form action="${servlet}/cartChange" method="POST" id="cartForm">
+					<thead>
+						<tr>
+							<td colspan="6" style="text-align: right;"><input
+								class="btn btn-dark btn-sm" type="button" onclick="del(this)"
+								value="삭제" /></td>
+						</tr>
+						<tr>
+							<th colspan="6"
+								style="background: #3d3d3d; color: #fff; text-align: center;">
+								장바구니</th>
+						</tr>
 
-						<td style="width: 10%;"><input type="text"
-							value="${product.getCartTotalPrice()} 원" readonly disabled/></td>
+						<tr>
+							<th></th>
+							<th>분류</th>
+							<th colspan="2">상품</th>
+							<th>수량</th>
+							<th>가격</th>
+						</tr>
 
-					</tr>
-					</form>
-				</c:forEach>
+					</thead>
+					<tbody>
+						<c:forEach var="product" items="${cart}">
+							<tr>
+								<th scope="row" style="width: 15px;"><input type="checkbox"
+									id="selectItem" name="selectItem" value="${product.getGoodscode()}" /></th>
+								<td style="width: 10%;">${product.getCategory()}</td>
+								<td style="width: 25%;"><img
+									src="${WEB_ROOT}/assert/img/${product.getImgPath()}"
+									style="width: 60%;"></td>
+								<td style="width: 45%; text-align: left;">
+									${product.getGoodsname()} <input type="hidden" name="goodsCode"
+									value="${product.getGoodscode()}" />
+								</td>
+								<td style="width: 10%;"><input type="number" name="qty"
+									value="${product.getQty()}" oninput="calculatePrice(this)"
+									data-price="${product.getCatPriceInt()}"
+									style="width: 35px; text-align: right;" />개<br /> <input
+									class="btn btn-dark btn-sm" type="button" value="변경"
+									style="margin-left: 15px; margin-right: auto;"
+									onclick="editQty(this)"></td>
+								<td style="width: 10%;"><input type="text"
+									value="${product.getCartTotalPrice()} 원" readonly disabled />
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</form>
 			</table>
-			
+
+
 		</div>
 	</section>
 	<!-- Footer-->
@@ -99,7 +113,71 @@ tr input {
 					'td:last-child input');
 			priceField.value = totalPrice.toLocaleString() + ' 원';
 		}
-	</script>
 
+	    function editQty(btn) {
+	        const form = document.getElementById('cartForm');
+	        const formData = new FormData();// new URLSearchParams();
+
+	        formData.append('method', '1');
+	        formData.append('goodsCode', btn.closest('tr').querySelector('input[name="goodsCode"]').value);
+	        formData.append('qty', btn.closest('tr').querySelector('input[name="qty"]').value);
+	        
+
+	        fetch(form.action, {
+	            method: 'POST',
+	            //headers: {
+	            //    'Content-Type': 'application/x-www-form-urlencoded'
+	            //},
+	            body: formData //.toString()
+	        })
+	        .then(response => {
+	        	if (!response.ok) {
+	        		throw new Error('Error');
+	        	}
+	            alert("변경 성공");
+	        })
+	        .catch(error => {
+	        	alert("변경 실패");
+	            console.error('Error:', error);
+	        });
+	    }
+	    
+	    function del(btn) {
+	        const form = document.getElementById('cartForm');
+	        const formData = new FormData();
+	        formData.append('method', '2');
+	        
+	        const checkboxes = form.elements['selectItem'];
+
+	  
+	        if (checkboxes) {
+	            for (let checkbox of checkboxes) {
+	                if (checkbox.checked) {
+	                    formData.append(checkbox.name, checkbox.value);
+	                }
+	            }
+	        }
+
+	       
+
+	        fetch(form.action, {
+	            method: 'POST',
+	            body: formData
+	        })
+	        .then(response => {
+	        	if (!response.ok) {
+	        		throw new Error('Error');
+	        	}
+	            alert("삭제 성공");
+	            console.log(data);
+	            location.reload();
+	        })
+	        .catch(error => {
+	            alert("삭제 실패");
+	            console.error('Error:', error.message);
+	        });
+	    }
+
+	</script>
 </body>
 </html>

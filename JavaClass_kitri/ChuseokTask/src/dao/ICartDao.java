@@ -9,4 +9,5 @@ import entity.CartEntity;
 public interface ICartDao {
 	public List<CartEntity> getExitstCart(String method, String id) throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException;
 	public boolean addCart(CartEntity newCart) throws SQLException;
+	public boolean changeQty(CartEntity newCart) ;
 }

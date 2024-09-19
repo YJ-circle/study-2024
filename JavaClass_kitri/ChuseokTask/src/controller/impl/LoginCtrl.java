@@ -8,12 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import controller.IController;
-import dto.Dto;
 import dto.IMemberDto;
-import dto.impl.MemberDto;
-import entity.MemberEntity;
 import error.AccessViolation;
-import error.login.LoginError;
+import error.LoginError;
 import service.ILoginService;
 import service.impl.LoginService;
 import view.View;

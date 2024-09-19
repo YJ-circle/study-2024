@@ -6,11 +6,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import Setting.Database;
-import Setting.SessionFunc;
+import commonFunc.Database;
+import commonFunc.SessionFunc;
 import dao.ICartDao;
 import entity.CartEntity;
-import error.login.LoginError;
+import error.LoginError;
 
 public class CartDao implements ICartDao {
 	public List<CartEntity> addCart() throws SQLException {
@@ -94,5 +94,9 @@ public class CartDao implements ICartDao {
 			db.sqlAddInt(10, qty);
 			return db.sqlUpdateOnlyOne();
 		}
+	}
+	
+	public boolean changeQty(CartEntity newCart) {
+		return false;
 	}
 }

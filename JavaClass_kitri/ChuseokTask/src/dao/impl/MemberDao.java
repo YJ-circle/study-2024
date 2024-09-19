@@ -4,10 +4,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.List;
 
-import Setting.Database;
+import commonFunc.Database;
 import dao.IMemberDao;
 import entity.MemberEntity;
-import error.login.LoginError;
+import error.LoginError;
 
 public class MemberDao implements IMemberDao {
 

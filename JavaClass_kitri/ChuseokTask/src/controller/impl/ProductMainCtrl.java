@@ -1,4 +1,4 @@
-package controller;
+package controller.impl;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -8,16 +8,14 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controller.IController;
 import dto.IProductDto;
-import dto.impl.ProductDto;
 import service.IProductSerivce;
 import service.impl.ProductSerivice;
 import view.View;
 
 
 public class ProductMainCtrl implements IController{
-	private static final long serialVersionUID = 1L;
-
 	@Override
 	public View process(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, InstantiationException, IllegalAccessException, IllegalArgumentException,
@@ -28,9 +26,4 @@ public class ProductMainCtrl implements IController{
 		req.setAttribute("list", product);
 		return new View("/WEB-INF/views/product.jsp");
 	}
-	
-
-
-
-	
 }

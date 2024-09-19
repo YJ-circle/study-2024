@@ -1,4 +1,4 @@
-package Setting;
+package commonFunc;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
@@ -7,12 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import entity.IEntity;
-import entity.MemberEntity;
 
 public class Database implements AutoCloseable{
 	static {

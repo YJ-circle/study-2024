@@ -1,4 +1,4 @@
-package controller.impl;
+package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -12,11 +12,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpUtils;
 
-import Setting.SessionFunc;
-import controller.IController;
-import controller.ProductMainCtrl;
+import commonFunc.SessionFunc;
+import controller.impl.CartAddCtrl;
+import controller.impl.CartChange;
+import controller.impl.CartListCtrl;
+import controller.impl.LoginCtrl;
+import controller.impl.LogoutCtrl;
+import controller.impl.ProductDetailCtrl;
+import controller.impl.ProductMainCtrl;
 import error.AccessViolation;
-import error.login.LoginError;
+import error.LoginError;
 import view.View;
 import view.ViewMethod;
 
@@ -33,12 +38,12 @@ public class MainController extends HttpServlet{
 		ctrlMap.put("/productDetail", new ProductDetailCtrl());
 		ctrlMap.put("/addCart", new CartAddCtrl());
 		ctrlMap.put("/cart", new CartListCtrl());
+		ctrlMap.put("/cartChange", new CartChange());
 	}
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) {
 		SessionFunc session = new SessionFunc(req);
-		System.out.println("메인컨트롤러");
 		session.setReqAttr(req);
 		View view = null;
 		
@@ -83,7 +88,7 @@ public class MainController extends HttpServlet{
 	private void errorHandler(Exception e, HttpServletRequest req, HttpServletResponse resp) {
 
 		View view = new View("/WEB-INF/views/error.jsp");
-		
+		resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 		if(e instanceof AccessViolation) {
 			req.setAttribute("errorMsg", "잘못된 접근입니다.");
 		}

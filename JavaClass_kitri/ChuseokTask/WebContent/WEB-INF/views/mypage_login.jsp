@@ -8,7 +8,6 @@
 			<li><a class="dropdown-item" href="${servlet}/login">로그인</a></li>
 			<li><hr class="dropdown-divider" /></li>
 			<li><a class="dropdown-item" href="#!">구매 내역</a></li>
-			<li><a class="dropdown-item" href="${servlet}/cart">장바구니</a></li>
 		</ul></li>
 	<form class="d-flex"  action="${servlet}/cart">
 		<button class="btn btn-outline-dark" >
