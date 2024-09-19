@@ -20,8 +20,8 @@ public class BioUnit {
     @Override
     public String toString() {
         return "BioUnit{" +
-                "name='" + name + '\'' +
-                ", hp=" + hp +
+                "이름: " + name + '\'' +
+                ", HP: " + hp +
                 '}';
     }
 }
