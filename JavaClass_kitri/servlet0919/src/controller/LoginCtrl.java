@@ -24,7 +24,7 @@ public class LoginCtrl extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		if(session.getAttribute("id") != null) {
-			new View("./product", ViewMethod.REDIRECT).render(req, resp);
+			new View("./form", ViewMethod.REDIRECT).render(req, resp);
 			return;
 		}
 		
@@ -36,7 +36,7 @@ public class LoginCtrl extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			if(tryLogin(req, resp)) {
-				new View("./product", ViewMethod.REDIRECT).render(req, resp);
+				new View("./form", ViewMethod.REDIRECT).render(req, resp);
 				return;
 			}
 		} catch (Exception	e) {
