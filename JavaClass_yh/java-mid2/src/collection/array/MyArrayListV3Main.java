@@ -27,6 +27,5 @@ public class MyArrayListV3Main {
         Object removed2 = list.remove(2);//remove Firest
         System.out.println("removed(0) = " + removed2);
         System.out.println(list);
-        ArrayList
     }
 }
