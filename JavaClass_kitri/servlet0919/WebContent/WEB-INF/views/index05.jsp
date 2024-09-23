@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +31,16 @@
 		이메일: <input type="text" name="email" value="${email}" ${saved}/> <br/>
 		연락처: <input type="text" name="phone" value="${phone}" ${saved}/> <br/>
 	</fieldset>
-	<input type="submit" value="전송" />
+	<input type="hidden" name="method" value="add"/>
+	<input type="submit" value="저장하기" />
 	</form>
+	
+	<c:if test="${saved != null}">
+	<form action="/servlet0919/form" method="post">
+		<input type="hidden" name="method" value="add"/>
+		<input type="submit" value="삭제하기" />
+	</form>
+	</c:if>
+
 </body>
 </html>
