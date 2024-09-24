@@ -53,10 +53,16 @@ public class OpenAIChat {
             in.close();
 
             // 응답 처리
-            String jsonResponse = response.toString();
             JSONParser parser = new JSONParser();
-            JSONObject jsonObject = (JSONObject) parser.parse(jsonResponse);
-            String resultMsg = (String)((JSONObject)((JSONObject) ((JSONArray) jsonObject.get("choices")).get(0)).get("message")).get("content");
+            JSONObject responseObject = (JSONObject) parser.parse(response.toString());
+            System.out.println("responseObject = " + responseObject);
+            JSONArray choicesArray = (JSONArray) responseObject.get("choices");
+            System.out.println("choicesArray = " + choicesArray);
+            JSONObject firstChoice = (JSONObject) choicesArray.get(0);
+            System.out.println("firstChoice = " + firstChoice);
+            JSONObject messageObject = (JSONObject) firstChoice.get("message");
+            System.out.println("messageObject = " + messageObject);
+            String resultMsg = (String) messageObject.get("content");
             System.out.println("resultMsg = " + resultMsg);
             // 필요한 데이터 추출
 //            String messageContent = jsonObject.jso
