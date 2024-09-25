@@ -1,0 +1,12 @@
+이럴땐 오라클의 DBMS_LOB.INSTR(컬럼명, '찾을문자열') 을 사용해보자 ! 속도는 2배 이상 빨라지는 듯하다.
+
+사용방법은 대략아래와 같다
+
+ 
+
+ 
+
+SELECT 컬럼1 FROM TABLE
+
+WHERE DBMS_LOB.INSTR(컬럼1, '찾을문자열') >0
+[출처] [오라클 Tip] 조건걸린 CLOB 데이터 빠르게 조회하기 (DBMS_LOB.INSTR()함수)|작성자 맨체스터시티
