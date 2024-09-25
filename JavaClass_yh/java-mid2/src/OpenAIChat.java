@@ -1,4 +1,4 @@
-/*
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -10,22 +10,24 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class OpenAIChat {
-    private static final String API_KEY = "";
+    private final String API_KEY;
     private static final String API_URL = "https://api.openai.com/v1/chat/completions";
 
-    public static void main(String[] args) {
+    public OpenAIChat(String key) {
+        API_KEY = key;
+    }
+
+    public String prompt(String request) {
         try {
             // JSON payload 생성
             String jsonInputString = "{"
                     + "\"model\": \"gpt-4o-mini\","
                     + "\"messages\": ["
-                    + "{ \"role\": \"system\", \"content\": \"You are a master of quotes\" },"
-                    + "{ \"role\": \"user\", \"content\": \"famous saying " +
-                    "Only one Briefly in Korean " +
-                    "return it in the form as below. " +
-                    "{msg: wise words}\" }"
-                    + "]"
-                    + "}";
+                    + "{ \"role\": \"system\", \"content\": \"You are useful assistant\" },"
+                    + "{ \"role\": \"user\", \"content\": \""
+                    + request
+                    + "\"}"
+                    + "]}";
 
 
             // URL 객체 생성
@@ -64,6 +66,9 @@ public class OpenAIChat {
             System.out.println("messageObject = " + messageObject);
             String resultMsg = (String) messageObject.get("content");
             System.out.println("resultMsg = " + resultMsg);
+
+
+            return resultMsg;
             // 필요한 데이터 추출
 //            String messageContent = jsonObject.jso
 //            System.out.println("Response: " + messageContent);
@@ -71,6 +76,6 @@ public class OpenAIChat {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
     }
 }
-*/
