@@ -2,6 +2,7 @@
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -10,8 +11,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class OpenAIChat {
-    private final String API_KEY;
+    private static String API_KEY;
     private static final String API_URL = "https://api.openai.com/v1/chat/completions";
+    private String stringResponse;
+    private Object jsonResponse;
 
     public OpenAIChat(String key) {
         API_KEY = key;
@@ -55,17 +58,7 @@ public class OpenAIChat {
             in.close();
 
             // 응답 처리
-            JSONParser parser = new JSONParser();
-            JSONObject responseObject = (JSONObject) parser.parse(response.toString());
-            System.out.println("responseObject = " + responseObject);
-            JSONArray choicesArray = (JSONArray) responseObject.get("choices");
-            System.out.println("choicesArray = " + choicesArray);
-            JSONObject firstChoice = (JSONObject) choicesArray.get(0);
-            System.out.println("firstChoice = " + firstChoice);
-            JSONObject messageObject = (JSONObject) firstChoice.get("message");
-            System.out.println("messageObject = " + messageObject);
-            String resultMsg = (String) messageObject.get("content");
-            System.out.println("resultMsg = " + resultMsg);
+            String resultMsg = getResponseString(response);
 
 
             return resultMsg;
@@ -77,5 +70,36 @@ public class OpenAIChat {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public String getResponseString(StringBuilder response) throws ParseException {
+        return response.toString();
+    }
+    public JSONObject getResponseJson(String stringResponse) {
+        JSONParser parser = new JSONParser();
+        JSONObject responseObject = null;
+        try {
+            responseObject = (JSONObject) parser.parse(stringResponse.toString());
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        return responseObject;
+    }
+
+//    public void getETC(){
+//        JSONArray choicesArray = (JSONArray) responseObject.get("choices");
+//        System.out.println("choicesArray = " + choicesArray);
+//        JSONObject firstChoice = (JSONObject) choicesArray.get(0);
+//        System.out.println("firstChoice = " + firstChoice);
+//        JSONObject messageObject = (JSONObject) firstChoice.get("message");
+//        System.out.println("messageObject = " + messageObject);
+//        String resultMsg = (String) messageObject.get("content");
+//        System.out.println("resultMsg = " + resultMsg);
+////        return resultMsg;
+//    }
+
+    private void resp(StringBuilder response){
+
+
     }
 }
