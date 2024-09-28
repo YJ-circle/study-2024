@@ -1,20 +1,15 @@
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class OpenAIChat {
     private static String API_KEY;
     private static final String API_URL = "https://api.openai.com/v1/chat/completions";
     private String stringResponse;
-    private Object jsonResponse;
 
     public OpenAIChat(String key) {
         API_KEY = key;
@@ -22,7 +17,6 @@ public class OpenAIChat {
 
     public String prompt(String request) {
         try {
-            // JSON payload 생성
             String jsonInputString = "{"
                     + "\"model\": \"gpt-4o-mini\","
                     + "\"messages\": ["
@@ -33,7 +27,6 @@ public class OpenAIChat {
                     + "]}";
 
 
-            // URL 객체 생성
             URL url = new URL(API_URL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
@@ -41,7 +34,6 @@ public class OpenAIChat {
             conn.setRequestProperty("Content-Type", "application/json");
             conn.setDoOutput(true);
 
-            // 요청 본문 작성
             try (OutputStream os = conn.getOutputStream()) {
                 os.write(jsonInputString.getBytes());
                 os.flush();
@@ -56,15 +48,7 @@ public class OpenAIChat {
                 response.append(inputLine);
             }
             in.close();
-
-            // 응답 처리
-            String resultMsg = getResponseString(response);
-
-
-            return resultMsg;
-            // 필요한 데이터 추출
-//            String messageContent = jsonObject.jso
-//            System.out.println("Response: " + messageContent);
+            stringResponse = response.toString();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -72,34 +56,13 @@ public class OpenAIChat {
         return null;
     }
 
-    public String getResponseString(StringBuilder response) throws ParseException {
-        return response.toString();
-    }
-    public JSONObject getResponseJson(String stringResponse) {
-        JSONParser parser = new JSONParser();
-        JSONObject responseObject = null;
-        try {
-            responseObject = (JSONObject) parser.parse(stringResponse.toString());
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
+    public String getContent(){
+        String regex = String.format("\"%s\":\\s*\"?([^\",}]+)\"?", "content");
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(stringResponse);
+        if (matcher.find()) {
+            return matcher.group(1);
         }
-        return responseObject;
-    }
-
-//    public void getETC(){
-//        JSONArray choicesArray = (JSONArray) responseObject.get("choices");
-//        System.out.println("choicesArray = " + choicesArray);
-//        JSONObject firstChoice = (JSONObject) choicesArray.get(0);
-//        System.out.println("firstChoice = " + firstChoice);
-//        JSONObject messageObject = (JSONObject) firstChoice.get("message");
-//        System.out.println("messageObject = " + messageObject);
-//        String resultMsg = (String) messageObject.get("content");
-//        System.out.println("resultMsg = " + resultMsg);
-////        return resultMsg;
-//    }
-
-    private void resp(StringBuilder response){
-
-
+        return null;
     }
 }

@@ -54,11 +54,13 @@ public class GameMain {
 
                         } else{
                             System.out.println("공을 던지지 않기로 결정했습니다.");
+                            resultList.add(result);
                             break;
                         }
                         resultList.add(result);
                     }
                 } else {
+                    result = new Result(gameCount + "번째 골대", "1번째 게임", target.getTargetId());
                     System.out.println("공이 없어요.");
                 }
                 System.out.println(gameCount + "게임 종료~");
@@ -73,25 +75,22 @@ public class GameMain {
 
         }
         printResult(resultList);
-//
-//        System.out.println("getTotalScore() = " + getTotalScore(result));
-
+        printTotalScore(resultList);
     }
     private static void printResult(List<Result> resultList){
+        System.out.println();
+        System.out.println("== 게임 결과 ==");
         for (Result result : resultList) {
-            System.out.println(result.getGameId());
-            System.out.println(result.getSubGameId());
-            System.out.println(result.getTargetId());
-            System.out.println(result.getPoint());
+            System.out.println(result.getGameId() + ", " +result.getSubGameId());
+            System.out.println("획득 점수: " + result.getPoint());
         }
     }
-    private static int getTotalScore(Result[] resultList){
+    private static void printTotalScore(List<Result> resultList){
         int sum = 0;
         for (Result result : resultList) {
             sum += result.getPoint();
         }
-        return sum;
-
+        System.out.println("\n총 점수 : " + sum);
     }
     private static int getThrowResult(){
         return random.nextInt(3);
