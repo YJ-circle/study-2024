@@ -29,7 +29,7 @@ public class GameMain {
             int ballCnt = target.getBallCnt();
             double point = target.getPoint();
             System.out.println(++gameCount + "번째 골대입니다.");
-            System.out.println(target.getTargetId());
+//            System.out.println(target.getTargetId()); // 골대 ID 출력
             Result result = null;
 
             if (target.isExistPost()) {
@@ -37,7 +37,7 @@ public class GameMain {
                     int subgameCount = 0;
                     for (int i = 0; i < target.getBallCnt(); i++) {
                         result = new Result(gameCount + "번째 골대", ++subgameCount + "번째 게임", target.getTargetId());
-                        System.out.print("공을 던지시겠습니까!? (Y: 예, N: 아니오) ");
+                        System.out.print("공을 던지시겠습니까!? (Y: 예, 다른 문자: 아니오) ");
                         String userSelect = sc.nextLine().toLowerCase();
                         if("y".equals(userSelect)){
                             System.out.println("공을 던졌습니다 !!");
