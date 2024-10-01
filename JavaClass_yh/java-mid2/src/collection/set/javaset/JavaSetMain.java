@@ -16,7 +16,7 @@ public class JavaSetMain {
         set.add("A");
         set.add("1");
         set.add("2");
-        
+
 
         Iterator<String> iterator = set.iterator();
         while (iterator.hasNext()) {
