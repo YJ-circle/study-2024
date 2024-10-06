@@ -16,12 +16,15 @@ position: absolute;
 top: 5px;
 right: 10px;
 }
+.justify-content-lg-start {
+	justify-content: center !important;
+}
 </style>
 <body>
 
-<div class="container mt-4">
+<div class="container mt-4" style="margin: 0 auto;">
 
-	<div class="card full mb-3 center" style="max-width:800px;">
+	<div class="card full mb-3 center" style="width:95%; margin-right: 5%;">
 	  <div class="card-body">
 	    <h5 class="card-title">Card title</h5>
 	    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -36,7 +39,7 @@ right: 10px;
 	  </div>
 	</div>
 
-	<div class="card full mb-5">
+	<div class="card full mb-5" style="width:95%; margin-left:5%;">
 	  <div class="card-body">
 	    <h5 class="card-title">Card title</h5>
 	    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -49,24 +52,8 @@ right: 10px;
 	    <a href="#" class="btn btn-primary"><i class="bi bi-check-circle me-1"></i>채택하기</a>
 	  </div>
 	</div>
-
-
-	<nav aria-label="...">
-	  <ul class="pagination">
-	    <li class="page-item disabled">
-	      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-	    </li>
-	    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-	    <li class="page-item" aria-current="page">
-	      <a class="page-link" href="#">2</a>
-	    </li>
-	    <li class="page-item"><a class="page-link" href="#">3</a></li>
-	    <li class="page-item">
-	      <a class="page-link" href="#">Next</a>
-	    </li>
-	  </ul>
-	</nav>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 /* 체크박스 버튼 연동*/

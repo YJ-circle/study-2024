@@ -50,7 +50,7 @@ public class Database implements AutoCloseable{
 		rs = pstmt.executeQuery();
 		List<T> entityList = new ArrayList<>();
 		while(rs.next()) {
-			T e = entity.getConstructor().newInstance();
+			T e = (T) entity.getConstructor().newInstance();
 			e.setEntity(rs);
 			entityList.add(e);
 		}

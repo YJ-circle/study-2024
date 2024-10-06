@@ -10,9 +10,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     <style>
-	    .justify-content-lg-start{
-			justify-content: center!important;
-		}
+.justify-content-lg-start {
+	justify-content: center !important;
+}
         .table-hover tbody tr:hover {
             background-color: #f5f5f5;
         }
@@ -43,6 +43,10 @@
             background-color: #d9edf7;
             color: #31708f;
         }
+        .qna-status.no-answer {
+		    background-color: #d5d5d5;
+		    color: #737373;
+        }
         .qna-heart {
             color: red;
         }
@@ -58,10 +62,10 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
         <div>Total <?php echo number_format($total_count); ?>건, <?php echo $page; ?> 페이지</div>
         <div class="btn">
-            <button onclick="" class="btn btn-outline-danger" disabled>
+            <button onclick="" class="btn btn-outline-danger btn-sm" disabled>
                 <i class="bi bi-trash"></i> 삭제
             </button>
-            <a href="" class="btn btn-outline-primary" title="글쓰기">
+            <a href="" class="btn btn-outline-primary btn-sm" title="글쓰기">
                 <i class="bi bi-pencil"></i> 글쓰기
             </a>
         </div>
@@ -85,11 +89,12 @@
             <tr>
                 <td colspan="5" class="text-center">게시물이 없습니다.</td>
             </tr>
-            <tr>
+            <tr onclick="location.href='./게시판3.jsp'">
                 <td class="text-center"><input type="checkbox" name="chk_wr_id[]" value="<?php echo $list[$i]['wr_id'] ?>"></td>
                 <td><span class="qna-status notice">공지사항</span>
-                    <span class="qna-status completed">답변완료</span>
-                    <span class="qna-status in-progress">접수완료</span>게시글 제목 안녕하세요. 감사해요</td>
+                    <span class="qna-status completed">채택완료</span>
+                    <span class="qna-status in-progress">답변중</span>
+                    <span class="qna-status no-answer">답변없음</span>게시글 제목 안녕하세요. 감사해요</td>
                 <td class="text-center">홍길동</td>
                 <td class="text-center">999</td>
                 <td class="text-center">2024-09-26</td>
@@ -105,22 +110,9 @@
             </tr>
         </tbody>
     </table>
-
-	<nav aria-label="...">
-	  <ul class="pagination">
-	    <li class="page-item disabled">
-	      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-	    </li>
-	    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-	    <li class="page-item" aria-current="page">
-	      <a class="page-link" href="#">2</a>
-	    </li>
-	    <li class="page-item"><a class="page-link" href="#">3</a></li>
-	    <li class="page-item">
-	      <a class="page-link" href="#">Next</a>
-	    </li>
-	  </ul>
-	</nav>
+	<div id="board_bottom" style="margin: 0 auto;">
+		<jsp:include page = "board_bottom.jsp" flush = "false"/>
+	</div>
 </div>
 1
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

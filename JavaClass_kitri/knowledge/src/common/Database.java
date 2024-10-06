@@ -8,12 +8,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 import entity.IEntity;
 
-public class Database<T extends IEntity> implements AutoCloseable{
+public class Database implements AutoCloseable{
 	static {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -25,13 +23,17 @@ public class Database<T extends IEntity> implements AutoCloseable{
 	private static final String DB_URL = "jdbc:oracle:thin:@192.168.10.247:1521:xe";
 	private static final String DB_ID = "coffee";
 	private static final String DB_PW = "1234";
-	private Class<T> entityClass;
+	private Class type;
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
-	public Database(Class<T> entityClass){
-		this.entityClass = entityClass;
+	
+	
+	
+	public <T extends IEntity> Database(Class<T> entity) {
+		this.type = entity;
 	}
+
 	public void setStatement(String sql) throws SQLException {
 		conn = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
 		pstmt = conn.prepareStatement(sql);
@@ -49,36 +51,17 @@ public class Database<T extends IEntity> implements AutoCloseable{
 	}
 	
 	
-	public List<T> sqlSelectList(){
+	public <T extends IEntity> List<T> sqlSelectList() 
+			throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, 
+			  	   InvocationTargetException, NoSuchMethodException, SecurityException {
+		rs = pstmt.executeQuery();
 		List<T> entityList = new ArrayList<>();
-		try{
-			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				T e = entityClass.getConstructor().newInstance();
-				e.setEntity(rs);
-				entityList.add(e);
-			}
-		} catch (Exception e) {
-			exceptionHandler(e);
+		while(rs.next()) {
+			T e = (T) type.getConstructor().newInstance();
+			e.setEntity(rs);
+			entityList.add(e);
 		}
-		
 		return entityList;
-	}
-	
-	public Map<String, T> sqlSelectMap(String keyColum) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
-		Map<String, T> entityMap = new TreeMap<>();
-		try {
-			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				T e = entityClass.getConstructor().newInstance();
-				e.setEntity(rs);
-				String key = rs.getString(keyColum);
-				entityMap.put(key, e);
-			}					
-		} catch (Exception e) {
-			exceptionHandler(e);
-		}
-		return entityMap;
 	}
 	
 	
@@ -105,15 +88,6 @@ public class Database<T extends IEntity> implements AutoCloseable{
 		return true;
 		
 	}
-	
-	private void exceptionHandler(Exception e) {
-		e.printStackTrace(System.out);
-		System.out.println("<< 오류 >>");
-		if(e instanceof SQLException) {
-			System.out.println("오류명: SQL 오류");
-			System.out.println("오류메시지: " + e.getMessage());
-		}
-	}
 	@Override
 	public void close() throws SQLException {
 		if(rs!=null) {
@@ -126,4 +100,11 @@ public class Database<T extends IEntity> implements AutoCloseable{
 	}
 	
 	
+	private static class DatabaseError extends RuntimeException{
+		
+		public DatabaseError(String message) {
+			super(message);
+		}
+	}
+
 }

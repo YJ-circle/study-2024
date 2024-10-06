@@ -29,7 +29,7 @@ public class formctrlTest extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		HttpSession session = req.getSession();
-	
+		
 		if(session != null && session.getAttribute("saved") != null) {
 			String path = ((String)session.getAttribute("saved")).split("WEB-INF")[1];
 			new View("/WEB-INF"+path).render(req, resp);

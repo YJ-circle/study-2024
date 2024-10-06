@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependencies>
+	<dependency>object.Attacker</dependency>
+	<dependency>object.Defender</dependency>
+	<dependency>object.Ruler</dependency>
+	
+</dependencies>
