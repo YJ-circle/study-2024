@@ -3,7 +3,7 @@ package controller;
 import java.sql.SQLException;
 import java.util.List;
 
-import common.Database;
+import common.database.Database;
 import entity.TourEntity;
 
 public class DBTest {

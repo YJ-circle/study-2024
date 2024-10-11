@@ -15,6 +15,10 @@ function out(){
 	var text = document.getElementById("message");
 	text.innerHTML = '<h3>블럭 탈출</h3>';
 }
+
+function down(str){
+	return str.toLowerCase();
+}
 </script>
 
 
@@ -27,5 +31,8 @@ function out(){
 <h2>블럭 안</h2>
 </div>
 <p id='message'></p>
+<% for(int i=1; i<=10; i++){
+	out.print(i + " ");
+}%>
 </body>
 </html>

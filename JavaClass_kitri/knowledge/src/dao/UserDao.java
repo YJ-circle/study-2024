@@ -5,8 +5,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import common.database.Database;
 import entity.UserEntity;
-import common.Database;
 
 public class UserDao {
 	
