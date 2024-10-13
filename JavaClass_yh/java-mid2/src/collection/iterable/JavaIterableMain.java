@@ -10,13 +10,28 @@ public class JavaIterableMain {
         list.add(3);
 
         printAll(list.iterator());
+        foreach(list);
 
         Set<Integer> set = new HashSet<>();
         set.add(1);
         set.add(2);
         set.add(3);
         printAll(set.iterator());
+        foreach(set);
     }
+
+    private static void foreach(Set<Integer> set) {
+        for (Integer i : set) {
+            System.out.println(i);
+        }
+    }
+
+    private static void foreach(List<Integer> list) {
+        for (Integer i : list) {
+            System.out.println(i);
+        }
+    }
+
     private static void printAll(Iterator<Integer> iterator) {
         System.out.println("Iterator = " + iterator.getClass());
         while (iterator.hasNext()) {
