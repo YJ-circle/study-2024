@@ -9,19 +9,18 @@ public class JavaIterableMain {
         list.add(2);
         list.add(3);
 
-        Iterator<Integer> listIter = list.iterator();
-        while (listIter.hasNext()) {
-            System.out.println(listIter.next());
-        }
+        printAll(list.iterator());
 
         Set<Integer> set = new HashSet<>();
         set.add(1);
         set.add(2);
         set.add(3);
-        Iterator<Integer> setIter = set.iterator();
-        while (setIter.hasNext()) {
-            System.out.println(setIter.next());
+        printAll(set.iterator());
+    }
+    private static void printAll(Iterator<Integer> iterator) {
+        System.out.println("Iterator = " + iterator.getClass());
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
         }
     }
-
 }
