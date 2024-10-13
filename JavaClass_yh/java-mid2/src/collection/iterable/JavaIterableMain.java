@@ -9,25 +9,20 @@ public class JavaIterableMain {
         list.add(2);
         list.add(3);
 
-        printAll(list.iterator());
+//        printAll(list.iterator());
         foreach(list);
 
         Set<Integer> set = new HashSet<>();
         set.add(1);
         set.add(2);
         set.add(3);
-        printAll(set.iterator());
+//        printAll(set.iterator());
         foreach(set);
     }
-
-    private static void foreach(Set<Integer> set) {
-        for (Integer i : set) {
-            System.out.println(i);
-        }
-    }
-
-    private static void foreach(List<Integer> list) {
-        for (Integer i : list) {
+    //foreach 2개를 합치려면 Iterable을 받으면 된다.
+    private static void foreach(Iterable<Integer> iter) {
+        System.out.println("iterable = " + iter.getClass());
+        for (Integer i : iter) {
             System.out.println(i);
         }
     }
