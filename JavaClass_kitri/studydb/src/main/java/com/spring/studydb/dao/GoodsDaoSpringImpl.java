@@ -51,4 +51,30 @@ public class GoodsDaoSpringImpl implements IGoodsDaoSpring, GoodsSQL{
 			return db.sqlSelectList();
 		}
 	}
+
+	@Override
+	public List<GoodsDto> read() {
+		String sql= "SELECT * FROM product ";
+		List<GoodsDto> dtoList = 
+				jdbc.query(sql, new ProductRowMapper());
+		return dtoList;
+	}
+
+	@Override
+	public GoodsDto read(String goodsname) {
+		String sql= "SELECT * FROM product WHERE name = ? ";
+		GoodsDto dto = 
+				jdbc.queryForObject(sql, new ProductRowMapper(), goodsname);
+		
+		return dto;
+	}
+
+	@Override
+	public List<GoodsDto> readByCategory(String category) {
+		String sql= "SELECT * FROM product WHERE FACTORY = ? ";
+		List<GoodsDto> dtoList = 
+				jdbc.query(sql, new ProductRowMapper(), category);
+		
+		return dtoList;
+	}
 }

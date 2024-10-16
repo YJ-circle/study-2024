@@ -12,20 +12,29 @@ public class GoodsDto {
 	public String getGoodscd() {
 		return goodscd;
 	}
-	public void setGoodscd(String goodscd) {
+	public GoodsDto setGoodscd(String goodscd) {
 		this.goodscd = goodscd;
+		return this;
 	}
 	public String getGoodsnm() {
 		return goodsnm;
 	}
-	public void setGoodsnm(String goodsnm) {
+	public GoodsDto setGoodsnm(String goodsnm) {
 		this.goodsnm = goodsnm;
+		return this;
 	}
 	public int getGoodsprice() {
 		return goodsprice;
 	}
-	public void setGoodsprice(int goodsprice) {
+	public GoodsDto setGoodsprice(int goodsprice) {
 		this.goodsprice = goodsprice;
+		return this;
 	}
+	@Override
+	public String toString() {
+		return "GoodsDto [goodscd=" + goodscd + ", goodsnm=" + goodsnm + ", goodsprice=" + goodsprice + "]";
+	}
+	
+	
 
 }

@@ -1,9 +1,12 @@
 package com.spring.studydb;
 
 import java.sql.SQLException;
+import java.util.List;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.spring.studydb.config.BeanFactory;
+import com.spring.studydb.dto.GoodsDto;
 import com.spring.studydb.service.IGoodsSvc;
 
 
@@ -28,6 +31,26 @@ public class RunMain {
 			  int deleteRow2 = goodsSvc.deleteByName("좋은 상품22");
 			  System.out.println("삭제된 행 = " + deleteRow2);
 			  
+			  /* 모두 조회 */
+			  
+			  System.out.println("전체 상품 조회");
+			  List<GoodsDto> goodsList = goodsSvc.read();
+			  for (GoodsDto goodsDto : goodsList) {
+				System.out.println(goodsDto);
+			   }
+			  
+			  /* 카테고리 조회 */ 
+			  System.out.println();
+			  System.out.println("공장이 '오슬' 제품 조회");
+			  List<GoodsDto> goodsList2 = goodsSvc.readByCategory("오슬");
+			  for (GoodsDto goodsDto : goodsList2) {
+					System.out.println(goodsDto);
+				}
+			  
+			  System.out.println();
+			  System.out.println("제품명이 [웬유무브] 오버사이즈 나일론 스냅 자켓 조회");
+			  String selectName = "[웬유무브] 오버사이즈 나일론 스냅 자켓";
+			  System.out.println(goodsSvc.read(selectName));
 			  BeanFactory.close();
 			  
 //			  

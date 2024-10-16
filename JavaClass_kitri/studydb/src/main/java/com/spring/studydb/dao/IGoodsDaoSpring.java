@@ -6,12 +6,15 @@ import com.spring.studydb.dto.GoodsDto;
 import com.spring.studydb.entity.GoodsEntity;
 
 public interface IGoodsDaoSpring {
-	public List<GoodsEntity> getGoodsList();
+	List<GoodsEntity> getGoodsList();
 
-	public int insertGoods(GoodsDto goodsDto);
+	int insertGoods(GoodsDto goodsDto);
 
-	public int updatePriceByName(GoodsDto goodsDto);
+	int updatePriceByName(GoodsDto goodsDto);
 
 	int deleteByName(GoodsDto goodsdto);
 	
+	List<GoodsDto> read();
+	GoodsDto read(String goodsname);
+	List<GoodsDto> readByCategory(String Category);
 }

@@ -10,5 +10,6 @@ public interface IGoodsDao {
 	int insertGoods(String goodscd, String goodsnm, int goodsprice) throws SQLException;
 
 	List<GoodsEntity> getGoodsList() ;
+	
 
 }

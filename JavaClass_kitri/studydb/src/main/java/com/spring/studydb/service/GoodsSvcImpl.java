@@ -53,5 +53,20 @@ public class GoodsSvcImpl implements IGoodsSvc{
 		 goodsDto.setGoodsnm(name);
 		return dao.deleteByName(goodsDto);
 	}
+
+	@Override
+	public List<GoodsDto> readByCategory(String category) {
+		return dao.readByCategory(category);
+	}
+
+	@Override
+	public GoodsDto read(String goodsname) {
+		return dao.read(goodsname);
+	}
+
+	@Override
+	public List<GoodsDto> read() {
+		return dao.read();
+	}
 	
 }
