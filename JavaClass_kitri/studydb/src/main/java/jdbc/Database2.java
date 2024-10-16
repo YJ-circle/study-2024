@@ -34,49 +34,80 @@ public abstract class Database2<T> implements AutoCloseable{
 	abstract public T getBean();
 	
 	abstract public T setEntity(T entity, ResultSet rs);
-	public void setStatement(String sql) throws SQLException {
-		conn = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
-		pstmt = conn.prepareStatement(sql);
+	public void setStatement(String sql)  {
+		try {
+			conn = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
+			pstmt = conn.prepareStatement(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void sqlAddString(int index, String input)  {
+		try {
+			pstmt.setString(index, input);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return;
 	}
 	
-	public void sqlAddString(int index, String input) throws SQLException {
-		pstmt.setString(index, input);
+	public void sqlAddInt(int index, int input)  {
+		try {
+			pstmt.setInt(index, input);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return;
 	}
 	
-	public void sqlAddInt(int index, int input) throws SQLException {
-		pstmt.setInt(index, input);
-		return;
-	}
 	
-	
-	public List<T> sqlSelectList() throws SQLException {
+	public List<T> sqlSelectList() {
 		
 	    
-		rs = pstmt.executeQuery();
-		while(rs.next()) {
-			T entity = getBean();
-			T result = setEntity(entity, rs);
-			list.add(result);
+		try {
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+				T entity = getBean();
+				T result = setEntity(entity, rs);
+				list.add(result);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return list;
 	}
 	
 
-	public int sqlUpdate() throws SQLException {
-		return pstmt.executeUpdate();
+	public int sqlUpdate()  {
+		try {
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return -1;
+		}
 		
 	}
 	@Override
-	public void close() throws SQLException {
-		if(rs!=null) {
-			rs.close();	
-		}
-		
-		pstmt.close();
-		conn.close();
-		
+	public void close() {
+
+		try {
+			if(rs!=null) {
+			rs.close();
+			pstmt.close();
+			conn.close();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 	}
 	
 	

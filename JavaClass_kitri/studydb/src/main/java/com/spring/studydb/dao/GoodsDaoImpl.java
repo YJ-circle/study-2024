@@ -17,11 +17,10 @@ import jdbc.Database2;
 import jdbc.GoodsDB;
 import jdbc.GoodsSQL;
 
-@Component("dao")
-@Scope("prototype")
+
 public class GoodsDaoImpl implements IGoodsDao, GoodsSQL{
 	
-	@Autowired
+
 	GoodsEntity goodsEntity;
 
 	@Override
@@ -36,7 +35,7 @@ public class GoodsDaoImpl implements IGoodsDao, GoodsSQL{
 	}
 	
 	@Override
-	public List<GoodsEntity> getGoodsList() throws SQLException{
+	public List<GoodsEntity> getGoodsList(){
 		try(GoodsDB db = new GoodsDB()){
 			db.setStatement(SQL_GET_GOODS_LIST);
 			return db.sqlSelectList();

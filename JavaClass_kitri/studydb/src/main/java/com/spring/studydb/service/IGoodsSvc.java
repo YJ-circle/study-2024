@@ -9,6 +9,10 @@ public interface IGoodsSvc {
 
 	int insertGoods(String goodscd, String goodsnm, int goodsprice) throws SQLException;
 
-	List<GoodsEntity> getGoodsList() throws SQLException;
+	List<GoodsEntity> getGoodsList();
+
+	int updatePriceByName(String name, int price);
+
+	int deleteByName(String string);
 
 }
