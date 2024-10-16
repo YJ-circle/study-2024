@@ -1,6 +1,12 @@
-package com.kitri.spring.prescription;
+package com.kitri.spring.springlifecycle;
 
-public class Patient {
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+
+public class PatientInterface implements InitializingBean, DisposableBean{
 	/**
 	 * <<필드명>>
 	 * 환자명
@@ -45,10 +51,6 @@ public class Patient {
 		this.treatmentPeriod = treatmentPeriod;
 	}
 	
-	private String getStringPeriod() {
-		return treatmentPeriod + "일";
-	}
-	
 	@Override
 	public String toString() {
 		String patient = String.format(
@@ -56,9 +58,20 @@ public class Patient {
 			  + "환자명: %-6s   주소: %-5s\n"
 			  + " 병명 : %-8s  치료기간: %-5s\n", 
 			  name, address, 
-			  diseasename, getStringPeriod());
+			  diseasename, treatmentPeriod + "일");
 		return patient;
 		}
+	
+	
+	@Override
+	public void destroy() throws Exception {
+		System.out.println("빈 삭제");
+	}
+
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		System.out.println("빈 생성");
+	}
 }
 
 	

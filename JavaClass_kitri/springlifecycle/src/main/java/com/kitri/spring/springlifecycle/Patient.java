@@ -1,4 +1,7 @@
-package com.kitri.spring.prescription;
+package com.kitri.spring.springlifecycle;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 public class Patient {
 	/**
@@ -45,10 +48,6 @@ public class Patient {
 		this.treatmentPeriod = treatmentPeriod;
 	}
 	
-	private String getStringPeriod() {
-		return treatmentPeriod + "일";
-	}
-	
 	@Override
 	public String toString() {
 		String patient = String.format(
@@ -56,9 +55,22 @@ public class Patient {
 			  + "환자명: %-6s   주소: %-5s\n"
 			  + " 병명 : %-8s  치료기간: %-5s\n", 
 			  name, address, 
-			  diseasename, getStringPeriod());
+			  diseasename, treatmentPeriod + "일");
 		return patient;
 		}
+	
+	
+	//Bean이 생성된 직후
+	
+	@PostConstruct
+	public void afterCreateBean() {
+		System.out.println("빈 생성");
+	}
+	
+	@PreDestroy
+	public void afterDisposalBean() {
+		System.out.println("빈 삭제");
+	}
 }
 
 	

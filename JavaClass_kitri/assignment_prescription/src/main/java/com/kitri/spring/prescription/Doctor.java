@@ -45,13 +45,17 @@ public class Doctor {
 		this.careerPeriod = careerPeriod;
 	}
 	
+	private String getStringPeriod() {
+		return careerPeriod + "년";
+	}
+	
 	@Override
 	public String toString() {
 		String doctorToString = String.format(
 				"<<의사 정보>>\n"
-			  + "의사명: %-6s    병원명: %s\n"
-			  + "진료과: %-6s    경력기간: %s년\n", 
-			  name, hospitalname, department, careerPeriod);
+			  + "의사명: %-6s   병원명: %-5s\n"
+			  + "진료과: %-6s    경력기간: %-5s\n", 
+			  name, hospitalname, department, getStringPeriod());
 		return doctorToString;
 	}
 }
