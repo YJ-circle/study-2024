@@ -1,8 +1,10 @@
 package collection.set.test;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class UniqueNamesTest1 {
     public static void main(String[] args) {
@@ -17,5 +19,25 @@ public class UniqueNamesTest1 {
         Set<Integer> set = new HashSet<>();
         set.addAll(Arrays.asList(inputArr));
         System.out.println(set);
+
+        //해답
+        Set<Integer> result = new HashSet<>();
+        for (Integer i : inputArr) {
+            result.add(i);
+        }
+        System.out.println(result);
+
+
+        // 추천코드
+        Set<Integer> gpt1 = new HashSet<>(Arrays.asList(inputArr));
+        System.out.println(gpt1);
+
+        Set<Integer> gpt2 = new HashSet<>();
+        Collections.addAll(gpt2, inputArr);
+        System.out.println(gpt2);
+
+        // 스트림 : 변환, 필터링에 유리하다... 성능은 ?
+        Set<Integer> gpt3 = Arrays.stream(inputArr).collect(Collectors.toSet());
+        System.out.println(gpt3);
     }
 }
