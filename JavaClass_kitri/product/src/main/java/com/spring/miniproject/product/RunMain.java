@@ -13,7 +13,6 @@ import com.spring.miniproject.product.service.IOrderSvc;
 
 public class RunMain {
 	/* 6시간 */
-	private static ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:/com/spring/miniproject/product/config/config.xml");
 	private static String userid;
 	private static TestUser testUser = new TestUser();
 	private static IGoodsSvc goodsSvc;
@@ -22,8 +21,8 @@ public class RunMain {
 	
 	
 	public static void main(String[] args) {
-		goodsSvc = (IGoodsSvc) ctx.getBean("goodsSvc");
-		orderSvc = (IOrderSvc) ctx.getBean("orderSvc");
+		
+		getServiceBean();
 		while(true) {
 			if(loginCheck()) {
 				switch(printMainMenu()) {
@@ -39,22 +38,25 @@ public class RunMain {
 					      
 				case 5: /* 전체 주문 조회 */
 					      getOrderAll(); break;
+					      
+				case 7: /* 로그아웃 */
+					    System.out.println("로그아웃합니다\n");
+				        userid = null; break;
 				}
 			} else {
 				login();
 			}	
 		}
-		
-//		
-//		/* 상품 주문 */
-
-//		/* 주문 조회 */
-//		
-//		sc.close();
-
-		
 	}
 	
+
+
+	private static void getServiceBean() {
+		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:/com/spring/miniproject/product/config/config.xml");
+		goodsSvc = (IGoodsSvc) ctx.getBean("goodsSvc");
+		orderSvc = (IOrderSvc) ctx.getBean("orderSvc");
+	}
+
 
 
 	/* 메인 메뉴 */
@@ -65,11 +67,12 @@ public class RunMain {
 		System.out.println("4. 상품 주문");
 		System.out.println("5. 전체 주문 조회");
 		System.out.println("6. 회원 주문 조회");
+		System.out.println("7. 로그아웃");
 		System.out.println("-1. 종료");		
 		
 		int userInput = inputInt("\n원하는 메뉴 번호를 입력하세요: ");
 		if(userInput == -1) {
-			System.exit(0);
+			exit();
 		}
 		return userInput;
 		
@@ -156,11 +159,24 @@ public class RunMain {
 		
 	}
 	
+	private static void exit() {
+		if(sc!=null) {
+			sc.close();
+		}
+		
+		System.out.println("\n\n프로그램을 종료 합니다.");
+		System.exit(0);
+	}
 	
 	private static void login() {
-		System.out.println("== 로그인 메뉴 ==");
+		System.out.println("\n\n== 로그인 메뉴 ==");
 		while(true) {
-			String inputId = inputString("아이디를 입력하세요: ");
+			System.out.println("테스트ID : hong, park 중 선택하세요\n"
+							 + "-1을 입력하면 프로그램을 종료합니다");
+			String inputId = inputString("아이디를 입력하세요:");
+			if("-1".equals(inputId)) {
+				exit();
+			}
 			if(testUser.getUser(inputId)!=null) {
 				userid = inputId;
 				System.out.println("\n ==== 환영합니다 " + 

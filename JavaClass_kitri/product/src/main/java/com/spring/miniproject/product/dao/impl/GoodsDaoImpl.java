@@ -73,7 +73,11 @@ public class GoodsDaoImpl implements IGoodsDao, GoodsSQL{
 		return orderResult;
 		 
 	}
-
-
-
+	
+	
+	
+	 public List<GoodsEntity> getLowStockGoods(){
+		 int lowStockInt = 5;
+		 return jdbc.query(SQL_LOW_STOCK_GOODS, new ProductRowMapper(), lowStockInt);
+	 }
 }

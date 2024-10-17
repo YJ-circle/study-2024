@@ -8,12 +8,12 @@ public class TestUser {
 	private static Map<String, User> userMap = new HashMap<String, TestUser.User>();
 	
 	public TestUser(){
-		userMap.put("hong", new User("hong", "1234", "홍길동", "id1"));
-		userMap.put("park", new User("park", "1234", "박길동", "id2"));
+		userMap.put("hong", new User("hong", "1234", "홍길동", "5355679001"));
+		userMap.put("park", new User("park", "1234", "박길동", "5355679001"));
 	}
 	
 	
-	public User getUser(String userId) {
+	public static User getUser(String userId) {
 		if(userMap.containsKey(userId)) {
 			return userMap.get(userId);
 		}

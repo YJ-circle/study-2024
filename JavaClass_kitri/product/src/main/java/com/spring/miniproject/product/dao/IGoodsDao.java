@@ -18,4 +18,6 @@ public interface IGoodsDao {
 
 	int orderGoods(OrderCart orderCart);
 
+	List<GoodsEntity> getLowStockGoods();
+
 }

@@ -13,4 +13,6 @@ public interface GoodsSQL {
 			                                    + "FROM goods "
 			                                    + "WHERE id = ? ) "
 			                             + "WHERE id = ? ";
+	static final String SQL_LOW_STOCK_GOODS = "SELECT * FROM goods "
+			                                + "WHERE stock <= ? ";
 }

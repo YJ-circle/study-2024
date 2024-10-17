@@ -1,19 +1,17 @@
 package com.spring.miniproject.product.service.impl;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.spring.miniproject.product.dao.IGoodsDao;
 import com.spring.miniproject.product.dao.IOrderDao;
-import com.spring.miniproject.product.dao.mapper.ProductRowMapper;
-import com.spring.miniproject.product.dto.GoodsDto;
 import com.spring.miniproject.product.dto.OrderCart;
 import com.spring.miniproject.product.dto.OrderDto;
-import com.spring.miniproject.product.entity.GoodsEntity;
 import com.spring.miniproject.product.entity.OrderEntity;
+import com.spring.miniproject.product.service.INotificationSvc;
 import com.spring.miniproject.product.service.IOrderSvc;
 
 
@@ -22,6 +20,9 @@ public class OrderSvcImpl implements IOrderSvc{
 	
 	@Autowired
 	private IOrderDao orderDao;
+	
+	@Autowired
+	private INotificationSvc notiSvc;
 
 
 	@Override
@@ -43,6 +44,13 @@ public class OrderSvcImpl implements IOrderSvc{
 	public boolean insertOrder(OrderCart orderCart) {
 		int orderInsertRow = orderDao.insertOrder(orderCart);
 		if(orderInsertRow == orderCart.getOrderList().size() * 2) {
+			try {
+				notiSvc.sendOrderMsg(orderCart);
+				notiSvc.sendLowStock();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return true;
 		}
 		return false;

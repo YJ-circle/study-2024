@@ -14,6 +14,7 @@ import com.spring.miniproject.product.dao.mapper.ProductRowMapper;
 import com.spring.miniproject.product.dao.sql.OrderSQL;
 import com.spring.miniproject.product.dto.OrderCart;
 import com.spring.miniproject.product.dto.OrderDto;
+import com.spring.miniproject.product.entity.GoodsEntity;
 import com.spring.miniproject.product.entity.OrderEntity;
 
 @Component("orderDao")
@@ -45,6 +46,11 @@ public class OrderDaoImpl implements IOrderDao, OrderSQL{
 		}
 		
 		orderResult += goodsDao.orderGoods(orderCart);
+		
+		List<GoodsEntity> lowStockGoods = goodsDao.getLowStockGoods();
+		if(lowStockGoods.size() > 0) {
+			
+		}
 		
 		return orderResult;
 	}
