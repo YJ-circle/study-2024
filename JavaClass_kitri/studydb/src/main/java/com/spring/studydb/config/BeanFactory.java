@@ -1,5 +1,8 @@
 package com.spring.studydb.config;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.spring.studydb.dto.GoodsDto;
@@ -15,6 +18,7 @@ public class BeanFactory {
 	
 	static public GoodsDto getDtoBean() {
 		 return (GoodsDto) ctx.getBean("dto");
+		 Arrays.asList(null)
 	}
 	
 	static public IGoodsSvc getSvcBean() {

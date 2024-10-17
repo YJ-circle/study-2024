@@ -14,7 +14,7 @@ public interface IGoodsDaoSpring {
 
 	int deleteByName(GoodsDto goodsdto);
 	
-	List<GoodsDto> read();
+	List<GoodsEntity> read();
 	GoodsDto read(String goodsname);
 	List<GoodsDto> readByCategory(String Category);
 }

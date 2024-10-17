@@ -63,10 +63,5 @@ public class GoodsSvcImpl implements IGoodsSvc{
 	public GoodsDto read(String goodsname) {
 		return dao.read(goodsname);
 	}
-
-	@Override
-	public List<GoodsDto> read() {
-		return dao.read();
-	}
 	
 }
