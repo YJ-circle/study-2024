@@ -14,7 +14,6 @@ public class SetOperationsTest {
              */
 
             Set<Integer> set1 = new HashSet<>(List.of(1, 2, 3, 4, 5));
-            set1.retainAll()
             Set<Integer> set2 = new HashSet<>(List.of(3, 4, 5, 6, 7));
             System.out.println("합집합");
             Set<Integer> result1 = new HashSet<>();
