@@ -10,36 +10,35 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.spring.miniproject.product.config.NotificationSetting;
 import com.spring.miniproject.product.config.TestUser;
 import com.spring.miniproject.product.dao.IGoodsDao;
 import com.spring.miniproject.product.dto.OrderCart;
 import com.spring.miniproject.product.dto.OrderDto;
 import com.spring.miniproject.product.entity.GoodsEntity;
 import com.spring.miniproject.product.service.INotificationSvc;
-import com.spring.miniproject.product.service.NotificationSetting;
 
 @Component("notiSvc")
 public class NotificationSvcImpl implements INotificationSvc, NotificationSetting{
-	private static interface NotificationInfo {
-		static String END_POINT = "https://api.telegram.org/" + TELEGRAM_BOT_TOKEN  + "/sendMessage";
-	}
-	
+	static String END_POINT = "https://api.telegram.org/" + TELEGRAM_BOT_TOKEN  + "/sendMessage";
 	private static URL endPoint;
+	private static TestUser testUser = TestUser.getInstance();
 	@Autowired
 	private IGoodsDao goodsDao;
+	
 	public NotificationSvcImpl() throws MalformedURLException {
-		endPoint = new URL(NotificationInfo.END_POINT);
+		endPoint = new URL(END_POINT);
 	}
 
 	
 	@Override
 	public boolean sendOrderMsg(OrderCart orderCart) throws IOException {
-		String chatId = TestUser.getUser(orderCart.getUserId())
+		String chatId = testUser.getUser(orderCart.getUserId())
                                 .getChatId();
 
 		
 		StringBuilder orderMsg = new StringBuilder();
-		orderMsg.append(TestUser.getUser(orderCart.getUserId())
+		orderMsg.append(testUser.getUser(orderCart.getUserId())
 				                .getName()
 				        + "님 주문해주셔서 감사합니다\n\n");
 		orderMsg.append("=== 주문 내역 ===\n");
@@ -83,20 +82,19 @@ public class NotificationSvcImpl implements INotificationSvc, NotificationSettin
 		conn.setRequestMethod("POST");
 		conn.setRequestProperty("Content-Type", "application/json");
 		conn.setDoOutput(true);
+		String jsonPayload = String.format("{\"chat_id\": \"%s\", \"text\": \"%s\"}", 
+							 chatId, msg);
 		try(OutputStream out = conn.getOutputStream()){
-			out.write("{\"chat_id\": \"".getBytes());
-			out.write(chatId.getBytes());
-			out.write("\", \"text\": \"".getBytes());
-			out.write(msg.getBytes());
-			out.write("\"}".getBytes());
+			out.write(jsonPayload.getBytes("UTF-8"));
+			out.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
-		System.out.println("code = " + conn.getResponseCode());
 		if(conn.getResponseCode() == 200) {
 			result = true;
+		} else {
+			System.out.println("code = " + conn.getResponseCode());
+			System.out.println(conn.getResponseMessage());
 		}
 		conn.disconnect();
 		return result;

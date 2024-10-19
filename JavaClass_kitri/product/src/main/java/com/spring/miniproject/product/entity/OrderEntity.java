@@ -4,6 +4,7 @@ public class OrderEntity {
 	int orderId;
 	String userId;
 	int goodsId;
+	String goodsName;
 	int qty;
 
 	public int getOrderId() {
@@ -41,10 +42,12 @@ public class OrderEntity {
 		this.qty = qty;
 		return this;
 	}
-
-	@Override
-	public String toString() {
-		return "OrderEntity [orderId=" + orderId + ", userId=" + userId + ", goodsId=" + goodsId + ", qty=" + qty + "]";
+	public OrderEntity setGoodsName(String goodsName) {
+		this.goodsName = goodsName;
+		return this;
+	}
+	public String getGoodsName() {
+		return goodsName;
 	}
 
 	@Override

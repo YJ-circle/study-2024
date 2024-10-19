@@ -57,13 +57,14 @@ public class OrderDaoImpl implements IOrderDao, OrderSQL{
 
 	@Override
 	public List<OrderEntity> getOrderByUserId(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbc.query(SQL_GET_ORDER_LIST_USERID, 
+		          		  new OrderRowMapper(),
+		                  userId);
 	}
 
 	@Override
 	public List<OrderEntity> getOrderAll() {
-		return jdbc.query(SQL_GET_ORDER_LIST, 
+		return jdbc.query(SQL_GET_ORDER_LIST_ALL, 
 				          new OrderRowMapper());
 	}
 

@@ -1,10 +1,12 @@
 package com.spring.miniproject.product.dto;
 
-public class OrderDto {
+public class OrderDto implements Comparable<OrderDto> {
 	int orderId;
 	String userId;
 	int goodsId;
+	String goodsName;
 	int qty;
+	
 
 	public int getOrderId() {
 		return orderId;
@@ -20,6 +22,14 @@ public class OrderDto {
 
 	public int getQty() {
 		return qty;
+	}
+	
+	public OrderDto setGoodsName(String goodsName) {
+		this.goodsName = goodsName;
+		return this;
+	}
+	public String getGoodsName() {
+		return goodsName;
 	}
 
 	public OrderDto setOrderId(int orderId) {
@@ -44,10 +54,19 @@ public class OrderDto {
 
 	@Override
 	public String toString() {
-		return "\n\nOrderDto [orderId=" + orderId + "\n" 
-				+ "userId=" + userId +  "\n"
-				+ "goodsId=" + goodsId + "\n"
-				+ "qty=" + qty + "]";
+		return String.format(
+				"주문id: %d%n"
+			  + "주문자id: %s%n"
+			  + "상품명: %s%n"
+			  + "주문수량: %d",
+			  orderId, userId, goodsName, qty
+			  );
 	}
+
+	@Override
+	public int compareTo(OrderDto o) {
+		return orderId < o.orderId ? -1 : (orderId == o.orderId ? 0 : 1);
+	}
+	
 	
 }

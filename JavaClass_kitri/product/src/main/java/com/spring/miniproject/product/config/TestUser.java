@@ -5,15 +5,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TestUser {
+	private static TestUser testUser;
 	private static Map<String, User> userMap = new HashMap<String, TestUser.User>();
 	
-	public TestUser(){
+	private TestUser(){
 		userMap.put("hong", new User("hong", "1234", "홍길동", "5355679001"));
 		userMap.put("park", new User("park", "1234", "박길동", "5355679001"));
 	}
 	
-	
-	public static User getUser(String userId) {
+	public static TestUser getInstance() {
+		if(testUser == null) {
+			testUser = new TestUser();
+		}
+		return testUser;
+	}
+	public User getUser(String userId) {
 		if(userMap.containsKey(userId)) {
 			return userMap.get(userId);
 		}
@@ -21,60 +27,33 @@ public class TestUser {
 		return null;
 	}
 	
-	public class User{
-		String id;
-		String password;
-		String name;
-		String chatId;
+	public static class User{
+		private String id;
+		private String password;
+		private String name;
+		private String chatId;
+		
 		public User(String id, String password, String name, String chatId) {
 			this.id = id;
 			this.password = password;
 			this.name = name;
 			this.chatId = chatId;
 		}
+		
 		public String getId() {
 			return id;
 		}
-		public void setId(String id) {
-			this.id = id;
-		}
+		
 		public String getPassword() {
 			return password;
 		}
-		public void setPassword(String password) {
-			this.password = password;
-		}
+		
 		public String getName() {
 			return name;
 		}
-		public void setName(String name) {
-			this.name = name;
-		}
+		
 		public String getChatId() {
 			return chatId;
-		}
-		public void setChatId(String chatId) {
-			this.chatId = chatId;
-		}
-
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			
-			if (obj == null)
-				return false;
-			
-			if (getClass() != obj.getClass())
-				return false;
-			
-			User other = (User) obj;
-			if (id == null) {
-				if (other.id != null)
-					return false;
-			} else if (!id.equals(other.id))
-				return false;
-			return true;
 		}		
 		
 	}

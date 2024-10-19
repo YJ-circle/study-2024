@@ -41,12 +41,20 @@ public class GoodsSvcImpl implements IGoodsSvc {
 	public List<GoodsDto> getGoodsAll(){
 		List<GoodsEntity> entityList = goodsDao.getGoodsList();
 		List<GoodsDto> dtoList = new ArrayList<GoodsDto>();
+		
 		for(GoodsEntity e: entityList) {
 			dtoList.add(convertToDto(e));
 		}
+		
 		return dtoList;
 	}
 
+	@Override
+	public GoodsDto getGoodsById(int goodsId) {
+		GoodsEntity entity = goodsDao.getGoodsById(goodsId);
+		return convertToDto(entity);
+	}
+	
 	private GoodsDto convertToDto(GoodsEntity entity) {
 		return new GoodsDto()
 				.setId(entity.getId())
@@ -56,9 +64,4 @@ public class GoodsSvcImpl implements IGoodsSvc {
 				.setStock(entity.getStock());
 	}
 
-	@Override
-	public GoodsDto getGoodsById(int goodsId) {
-		GoodsEntity entity = goodsDao.getGoodsById(goodsId);
-		return convertToDto(entity);
-	}
 }

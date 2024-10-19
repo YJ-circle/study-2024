@@ -24,21 +24,17 @@ public class OrderSvcImpl implements IOrderSvc{
 	@Autowired
 	private INotificationSvc notiSvc;
 
-
 	@Override
-	public OrderDto getOrderById(String orderId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<OrderDto> getOrderAll(){
+		return convertToDto(orderDao.getOrderAll());
 	}
 	
 	@Override
-	public List<OrderDto> getOrderAll(){
-		List<OrderDto> dto = new ArrayList<OrderDto>();
-		for(OrderEntity e: orderDao.getOrderAll()) {
-			dto.add(convertToDto(e));
-		}
-		return dto;
+	public List<OrderDto> getOrderById(String orderId) {
+		return convertToDto(orderDao.getOrderByUserId(orderId));
 	}
+	
+
 
 	@Override
 	public boolean insertOrder(OrderCart orderCart) {
@@ -48,7 +44,6 @@ public class OrderSvcImpl implements IOrderSvc{
 				notiSvc.sendOrderMsg(orderCart);
 				notiSvc.sendLowStock();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			return true;
@@ -56,11 +51,17 @@ public class OrderSvcImpl implements IOrderSvc{
 		return false;
 	}
 	
-	private OrderDto convertToDto(OrderEntity entity) {
-		return new OrderDto()
-				.setGoodsId(entity.getGoodsId())
-				.setOrderId(entity.getOrderId())
-				.setQty(entity.getQty())
-				.setUserId(entity.getUserId());
+	private List<OrderDto> convertToDto(List<OrderEntity> entityList) {
+		List<OrderDto> dto = new ArrayList<OrderDto>();
+		for(OrderEntity entity: entityList) {
+			dto.add(new OrderDto()
+					.setGoodsId(entity.getGoodsId())
+					.setOrderId(entity.getOrderId())
+					.setQty(entity.getQty())
+					.setUserId(entity.getUserId())
+					.setGoodsName(entity.getGoodsName())
+					);
+		}
+		return dto;
 	}
 }

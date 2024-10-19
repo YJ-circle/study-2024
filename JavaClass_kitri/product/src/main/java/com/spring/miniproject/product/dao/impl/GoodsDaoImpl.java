@@ -65,7 +65,6 @@ public class GoodsDaoImpl implements IGoodsDao, GoodsSQL{
 		
 		int orderResult = 0;
 		for(int[] i : intArrays) {
-			System.out.println("i = " + i);
 			for(int j : i) {
 				orderResult++;
 			}
@@ -75,7 +74,7 @@ public class GoodsDaoImpl implements IGoodsDao, GoodsSQL{
 	}
 	
 	
-	
+	@Override
 	 public List<GoodsEntity> getLowStockGoods(){
 		 int lowStockInt = 5;
 		 return jdbc.query(SQL_LOW_STOCK_GOODS, new ProductRowMapper(), lowStockInt);

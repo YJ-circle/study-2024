@@ -6,8 +6,9 @@ import com.spring.miniproject.product.dto.OrderCart;
 import com.spring.miniproject.product.dto.OrderDto;
 
 public interface IOrderSvc {
-	boolean insertOrder(OrderCart orderCart);
-	OrderDto getOrderById(String orderId);
+	List<OrderDto> getOrderById(String orderId);
 	List<OrderDto> getOrderAll();
+	boolean insertOrder(OrderCart orderCart);
+
 	
 }

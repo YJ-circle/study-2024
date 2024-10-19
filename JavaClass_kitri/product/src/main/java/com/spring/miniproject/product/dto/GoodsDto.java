@@ -1,6 +1,6 @@
 package com.spring.miniproject.product.dto;
 
-public class GoodsDto {
+public class GoodsDto implements Comparable<GoodsDto>{
 	int id;
 	String name;
 	String category;
@@ -54,8 +54,20 @@ public class GoodsDto {
 
 	@Override
 	public String toString() {
-		return "GoodsDto [id=" + id + ", name=" + name + ", category=" + category + ", price=" + price + ", stock="
-				+ stock + "]";
+		
+		return String.format(
+				"상품id: %d%n"
+			  + "상품명: %s%n"
+			  + "카테고리: %s%n"
+			  + "가격: %d%n"
+			  + "재고: %d",
+			     id, name, category, price, stock
+			  );
+	}
+
+	@Override
+	public int compareTo(GoodsDto o) {
+		return id < o.id ? -1 : (id == o.id ? 0 : 1);
 	}
 
 
