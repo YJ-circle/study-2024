@@ -186,6 +186,11 @@ public class RunMain {
 			System.out.println();
 		}
 		
+		if(cart.getOrderList().size() == 0) {
+			System.out.println("주문 실패..\n");
+			System.out.println("주문할 상품이 없습니다.");
+			return;
+		}
 		if(orderSvc.insertOrder(cart)) {
 			System.out.println("주문 성공!");
 		} else {

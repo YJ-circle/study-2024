@@ -3,6 +3,8 @@ package com.spring.miniproject.product.dto;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.spring.miniproject.product.RunMain;
 import com.spring.miniproject.product.dao.IGoodsDao;
 import com.spring.miniproject.product.dao.IOrderDao;
@@ -12,6 +14,7 @@ public class OrderCart {
 	private String userId;
 	private List<OrderDto> orderList = new ArrayList<OrderDto>();
 	
+	@Autowired
 	private IGoodsDao goodsDao = RunMain.getGoodsDao();
 
 	/***
