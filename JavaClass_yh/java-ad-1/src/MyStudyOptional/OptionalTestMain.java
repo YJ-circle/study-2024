@@ -16,7 +16,8 @@ public class OptionalTestMain {
         
         // 방법2: Null > 기본값
         // 무조건 검증하기 때문에 객체가 생성된다. 무.조.건
-        Person person3 = findById(1L).orElse(new Person(0L, "UNKNOWN_PERSON"));
+//        Person person3 = findById(1L).orElse(new Person(0L, "UNKNOWN_PERSON"));
+        Person person3 = findById(1L).orElse(Person.getEmptyMember());
         System.out.println("person3 = " + person3.getId() + ", " + person3.getName());
 
         //값이 없을 때만 생성함. 람다로 인자를 받음
@@ -29,8 +30,8 @@ public class OptionalTestMain {
         }
         return Optional.empty();
     }
-
     static class Person{
+        private static final Person EMPTY_MEMBER = new Person(0L, "NO_MEMBER");
         Long id;
         String name;
 
@@ -45,6 +46,10 @@ public class OptionalTestMain {
 
         public String getName() {
             return name;
+        }
+
+        public static Person getEmptyMember(){
+            return EMPTY_MEMBER;
         }
     }
 }
