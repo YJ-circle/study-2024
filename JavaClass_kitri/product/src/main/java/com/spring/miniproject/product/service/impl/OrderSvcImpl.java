@@ -11,6 +11,8 @@ import com.spring.miniproject.product.dao.IOrderDao;
 import com.spring.miniproject.product.dto.OrderCart;
 import com.spring.miniproject.product.dto.OrderDto;
 import com.spring.miniproject.product.entity.OrderEntity;
+import com.spring.miniproject.product.mybatis.paramdto.GoodsIdDto;
+import com.spring.miniproject.product.mybatis.paramdto.UserIdDto;
 import com.spring.miniproject.product.service.INotificationSvc;
 import com.spring.miniproject.product.service.IOrderSvc;
 
@@ -30,18 +32,19 @@ public class OrderSvcImpl implements IOrderSvc{
 	}
 	
 	@Override
-	public List<OrderDto> getOrderById(String orderId) {
-		return convertToDto(orderDao.getOrderByUserId(orderId));
+	public List<OrderDto> getOrderById(String userId) {
+		return convertToDto(orderDao.getOrderByUserId(new UserIdDto(userId)));
 	}
 	
 
 
 	@Override
-	public boolean insertOrder(OrderCart orderCart) {
-		int orderInsertRow = orderDao.insertOrder(orderCart);
-		if(orderInsertRow == orderCart.getOrderList().size() * 2) {
+	public boolean insertOrder(List<OrderCart> orderList) {
+		int orderInsertRow = orderDao.insertOrder(orderList);
+		System.out.println(orderInsertRow);
+		if(orderInsertRow == orderList.size() * 2) {
 			try {
-				notiSvc.sendOrderMsg(orderCart);
+				notiSvc.sendOrderMsg(orderList);
 				notiSvc.sendLowStock();
 			} catch (IOException e) {
 				e.printStackTrace();

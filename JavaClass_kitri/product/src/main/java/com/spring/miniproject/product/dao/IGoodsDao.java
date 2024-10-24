@@ -6,6 +6,7 @@ import com.spring.miniproject.product.dto.GoodsDto;
 import com.spring.miniproject.product.dto.OrderCart;
 import com.spring.miniproject.product.dto.OrderDto;
 import com.spring.miniproject.product.entity.GoodsEntity;
+import com.spring.miniproject.product.mybatis.paramdto.GoodsIdDto;
 
 
 public interface IGoodsDao {
@@ -32,7 +33,7 @@ public interface IGoodsDao {
 	 * @author 함예정
 	 * @since 2024.10.18
 	 */
-	GoodsEntity getGoodsById(int id);
+	GoodsEntity getGoodsById(GoodsIdDto searchDto);
 
 	/***
 	 * 주문이 실행이 된 이후, 재고 감소를 수행합니다.
@@ -42,7 +43,6 @@ public interface IGoodsDao {
 	 * @author 함예정
 	 * @since 2024.10.18
 	 */
-	int orderGoods(OrderCart orderCart);
 
 	
 	/***
@@ -52,5 +52,6 @@ public interface IGoodsDao {
 	 * @since 2024.10.18
 	 */
 	List<GoodsEntity> getLowStockGoods();
+
 
 }

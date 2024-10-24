@@ -32,18 +32,19 @@ public class NotificationSvcImpl implements INotificationSvc, NotificationSettin
 
 	
 	@Override
-	public boolean sendOrderMsg(OrderCart orderCart) throws IOException {
-		String chatId = testUser.getUser(orderCart.getUserId())
+	public boolean sendOrderMsg(List<OrderCart> orderList) throws IOException {
+		String userId = orderList.get(0).getUserId();
+		String chatId = testUser.getUser(userId)
                                 .getChatId();
 
 		
 		StringBuilder orderMsg = new StringBuilder();
-		orderMsg.append(testUser.getUser(orderCart.getUserId())
+		orderMsg.append(testUser.getUser(userId)
 				                .getName()
 				        + "님 주문해주셔서 감사합니다\n\n");
 		orderMsg.append("=== 주문 내역 ===\n");
 		
-		for(OrderDto order: orderCart.getOrderList()) {
+		for(OrderCart order: orderList) {
 			orderMsg.append("상품번호: ");
 			orderMsg.append(order.getGoodsId());
 			orderMsg.append(" / 구매수량: ");

@@ -1,21 +1,25 @@
 package com.spring.miniproject.product.dto;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.spring.miniproject.product.RunMain;
 import com.spring.miniproject.product.dao.IGoodsDao;
 import com.spring.miniproject.product.dao.IOrderDao;
-import com.spring.miniproject.product.service.IOrderSvc;
+import com.spring.miniproject.product.mybatis.paramdto.GoodsIdDto;
 
 public class OrderCart {
+	private static IGoodsDao goodsDao;
 	private String userId;
-	private List<OrderDto> orderList = new ArrayList<OrderDto>();
+	private int goodsId;
+	private int qty;
+
+
 	
-	@Autowired
-	private IGoodsDao goodsDao = RunMain.getGoodsDao();
+	
+
+	private OrderCart(String userId, int goodsId, int qty) {
+		super();
+		this.userId = userId;
+		this.goodsId = goodsId;
+		this.qty = qty;
+	}
 
 	/***
 	 * 상품id와 주문 수량을 인자로 받아 <br/>
@@ -30,27 +34,16 @@ public class OrderCart {
 	 * @since 2024.10.18
 	 * @see IOrderDao#insertOrder(OrderCart)
 	 */
-	public void addCart(int goodsId, int qty) {
+	public static OrderCart addCart(String userId, int goodsId, int qty) {
+		
 		int stock = getGoodsStock(goodsId);
 		if(stock < qty) {
-			System.out.println("선택한 상품은 재고가 부족합니다");
-			return;
+			return null;
 		}
-		orderList.add(new OrderDto().setGoodsId(goodsId)
-		              				.setQty(qty));
-		System.out.println("상품을 장바구니에 담았습니다.");
+		OrderCart order = new OrderCart(userId, goodsId, qty);
+		return order;
 	}
 	
-	/***
-	 * OrderCart 필드 orderList를 반환합니다 
-	 * @return List<OrderDto>
-	 * @since 2024.10.18
-	 * @author 함예정
-	 * @see IOrderDao#insertOrder(OrderCart)
-	 */
-	public List<OrderDto> getOrderList() {
-		return orderList;
-	}
 	
 	public OrderCart setUserId(String userId) {
 		this.userId = userId;
@@ -61,6 +54,14 @@ public class OrderCart {
 	}
 	
 	
+	public int getGoodsId() {
+		return goodsId;
+	}
+
+	public int getQty() {
+		return qty;
+	}
+
 	/***
 	 * 상품을 장바구니에 담기 전, 재고를 확인합니다. <br/>
 	 * 이 메소드는 GoodsDao를 호출하여, 해당 상품의 재고 수량을 가져옵니다.
@@ -71,8 +72,12 @@ public class OrderCart {
 	 * @author 함예정
 	 * @see IGoodsDao#getGoodsById(int)
 	 */
-	private int getGoodsStock(int goodsId) {
-		return goodsDao.getGoodsById(goodsId)
+	private static int getGoodsStock(int goodsId) {
+		return goodsDao.getGoodsById(new GoodsIdDto(goodsId))
 				         .getStock();
+	}
+
+	public static void setGoodsDao(IGoodsDao goodsDao) {
+		OrderCart.goodsDao = goodsDao;
 	}
 }

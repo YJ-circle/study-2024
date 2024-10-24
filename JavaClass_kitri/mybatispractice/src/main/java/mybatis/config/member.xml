@@ -6,21 +6,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="member">
 
-	<select id="findMemberId" resultType="com.spring.springorm.mybatis.mybatispractice.dao.Member">
+	<select id="findMemberId" resultType="member">
 		SELECT id, password, name, address
 		FROM member
 		WHERE id=#{value}
 	</select>
 	
-	<select id="findMemberAll" resultType="com.spring.springorm.mybatis.mybatispractice.dao.Member">
+	<select id="findMemberAll" resultType="member">
 		SELECT id, password, name, address
 		FROM member
 	</select>
 	
-	<insert id="addMember" parameterType="com.spring.springorm.mybatis.mybatispractice.dao.Member">
+	<insert id="addMember" parameterType="member">
 		INSERT INTO "SPRINGJDBC"."MEMBER" (ID, PASSWORD, NAME, ADDRESS) VALUES (#{id}, #{password}, #{name}, #{address})
 	</insert> 
 	
-	<update id="updateMember" parameterType="com.spring.springorm.mybatis.mybatispractice.dao.Member">
-	</update>
+	
+	<select id="findCustom" resultType="member"
+	  parameterType="selectCond">
+		SELECT id, password, name, address
+		FROM member
+		WHERE name=#{name}
+		AND address = #{address}
+	</select>
 </mapper>

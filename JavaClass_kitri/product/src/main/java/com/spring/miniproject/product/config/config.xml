@@ -13,18 +13,29 @@
     http://www.springframework.org/schema/util/spring-util.xsd">
 
 <context:component-scan base-package="com.spring.miniproject.product"/>
-<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-      name="dataSource"
-      p:driverClassName="oracle.jdbc.driver.OracleDriver"
-      p:url="jdbc:oracle:thin:@192.168.10.247:1521:xe"
-      p:username="springjdbc"
-      p:password="1234"
-      />
-      
-<bean class="org.springframework.jdbc.core.JdbcTemplate"
-      name="jdbcTemplate"
-      p:dataSource-ref="dataSource"
-      />
+	<!-- DB정보 -->
+	<bean class="org.apache.commons.dbcp2.BasicDataSource"
+	      name="dataSource"
+	      p:driverClassName="oracle.jdbc.driver.OracleDriver"
+	      p:url="jdbc:oracle:thin:@192.168.10.247:1521:xe"
+	      p:username="springjdbc"
+	      p:password="1234"
+	      />
+
+     <!-- SessionFactory Bean -->
+	<bean name="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean"
+	      p:dataSource-ref="dataSource"
+	      p:mapperLocations="classpath:/com/spring/miniproject/product/mybatis/config/**/*.xml"
+	      p:typeAliasesPackage="com.spring.miniproject.product.entity"/>
+    
+    <bean class="org.mybatis.spring.SqlSessionTemplate"
+      name="sqlSessionTemplate"
+      c:sqlSessionFactory-ref="sqlSessionFactoryBean" />
+	
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="dataSource"/>
+    </bean>
       
 </beans>
 

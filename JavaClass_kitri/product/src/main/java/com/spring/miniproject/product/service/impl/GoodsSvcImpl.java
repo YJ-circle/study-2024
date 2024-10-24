@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import com.spring.miniproject.product.dao.IGoodsDao;
 import com.spring.miniproject.product.dto.GoodsDto;
 import com.spring.miniproject.product.entity.GoodsEntity;
+import com.spring.miniproject.product.mybatis.paramdto.GoodsIdDto;
 import com.spring.miniproject.product.service.IGoodsSvc;
 import com.spring.miniproject.product.service.INotificationSvc;
 
@@ -51,7 +52,7 @@ public class GoodsSvcImpl implements IGoodsSvc {
 
 	@Override
 	public GoodsDto getGoodsById(int goodsId) {
-		GoodsEntity entity = goodsDao.getGoodsById(goodsId);
+		GoodsEntity entity = goodsDao.getGoodsById(new GoodsIdDto(goodsId));
 		return convertToDto(entity);
 	}
 	

@@ -47,11 +47,9 @@ public class Member {
 
     @Override
     public String toString() {
-        return "Member{" +
-                "id='" + id + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                '}';
+        return "\nid: " + id + "\n" +
+                "password='" + password + "\n" +
+                "name='" + name + "\n" +
+                "address='" + address;
     }
 }

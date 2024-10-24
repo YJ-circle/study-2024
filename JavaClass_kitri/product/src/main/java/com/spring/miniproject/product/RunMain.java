@@ -1,5 +1,6 @@
 package com.spring.miniproject.product;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -56,13 +57,7 @@ public class RunMain {
 	private static void getServiceBean() {
 		goodsSvc = (IGoodsSvc) ctx.getBean("goodsSvc");
 		orderSvc = (IOrderSvc) ctx.getBean("orderSvc");
-	}
-	
-	/* GoodsDao Bean을 반환해주는 메소드 
-	   OrderCart에서 GoodsDao를 사용할 수 있도록 메소드를 만들었습니다
-	 */
-	public static IGoodsDao getGoodsDao() {
-		return (IGoodsDao) ctx.getBean("goodsDao");
+		OrderCart.setGoodsDao((IGoodsDao) ctx.getBean("goodsDao"));
 	}
 
 	/* 로그인 여부 체크*/
@@ -169,29 +164,30 @@ public class RunMain {
 
 	/* 상품 주문 */
 	private static void orderGoods() {
-		
-		OrderCart cart = new OrderCart()
-				         .setUserId(userid);
-						 
+
+		List<OrderCart> orderList = new ArrayList<>();
 		while(true) {
 			System.out.println("-1가 입력되면 상품 담기가 종료 되고 주문 됩니다.");
 			
-			int userInput = inputInt("상품 id: ");
+			int userInputGoods = inputInt("상품 id: ");
 			
-			if(userInput == -1 ) { break;}
-			
-			cart.addCart(userInput,
-					     inputInt("상품 수량: "));
-			
-			System.out.println();
+			if(userInputGoods == -1 ) { break;}
+			int userInputQty = inputInt("상품 수량: ");
+			OrderCart cart;
+			if((cart = OrderCart.addCart(userid, userInputGoods, userInputQty)) == null) {
+				System.out.println("선택한 상품은 재고가 부족합니다");
+			}
+			orderList.add(cart);
+			System.out.println("상품을 장바구니에 담았습니다.");
 		}
 		
-		if(cart.getOrderList().size() == 0) {
+		if(orderList.size() == 0) {
 			System.out.println("주문 실패..\n");
 			System.out.println("주문할 상품이 없습니다.");
 			return;
 		}
-		if(orderSvc.insertOrder(cart)) {
+		
+		if(orderSvc.insertOrder(orderList)) {
 			System.out.println("주문 성공!");
 		} else {
 			System.out.println("주문 실패..");
