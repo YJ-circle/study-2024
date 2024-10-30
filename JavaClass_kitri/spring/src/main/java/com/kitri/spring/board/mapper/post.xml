@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="post">
+	<select id="getPostAll" resultType="post">
+		SELECT p.post_id postId, 
+		       p.post_title postTitle,
+		       p.board_id boardId,
+		       m.name writerName,
+		       p.writer_id writerId,
+		       write_date writeDate,
+		       active
+		FROM post p, member m
+		WHERE p.writer_id = m.id 
+		AND active = 'Y'
+	</select>
+	
+	<select id="getPostById" resultType="post">
+		SELECT p.post_id postId, 
+		       p.post_title postTitle,
+		       p.board_id boardId,
+		       m.name writerName,
+		       p.writer_id writerId,
+		       p.write_date writeDate,
+		       p.active
+		FROM post p, member m
+		WHERE p.post_id = #{postId}
+		AND p.writer_id = m.id  
+		AND p.active = 'Y'
+	</select>
+	
+	<select id="getPostDetailById" resultType="PostDetail">
+		SELECT post_id postId, 
+		       contents
+		FROM post_detail
+		WHERE post_id = #{postId}
+	</select>
+	<insert id="writePost">
+		INSERT INTO POST (POST_ID, POST_TITLE, WRITER_ID, WRITE_DATE, ACTIVE, BOARD_ID) 
+		VALUES (postid.NEXTVAL, #{title}, #{writer}, SYSDATE, 'Y', 1)
+	</insert>
+	<insert id="writePostDetail">
+		INSERT INTO POST_DETAIL (POST_ID, CONTENTS) 
+		VALUES (postid.CURRVAL, #{contents})
+	</insert>
+	
+	<update id="deletePost">
+		UPDATE POST
+		SET ACTIVE = 'N'
+		WHERE post_id = #{postId}
+	</update>
+	<update id="updatePost">
+		UPDATE POST
+		SET POST_TITLE = #{title}, EDIT_DATE = SYSDATE
+		WHERE post_id = ${postId}
+	</update>
+	<update id="updatePostDetail">
+		UPDATE POST_DETAIL
+		SET CONTENTS = #{contents}
+		WHERE post_id = ${postId}
+	</update>	
+</mapper>
