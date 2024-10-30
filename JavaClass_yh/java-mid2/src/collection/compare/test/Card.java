@@ -1,5 +1,8 @@
 package collection.compare.test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Card implements Comparable{
     private String shape;
     private int num;
@@ -25,6 +28,26 @@ public class Card implements Comparable{
     @Override
     public int compareTo(Object o) {
         Card obj = (Card) o;
-        return getNum() < obj.getNum() ? -1 : (getNum() == obj.getNum() ? 0 : 1);
+        List<String> shapeList = List.of("\u2660","\u2665","\u2666","\u2663");
+
+        if(getNum() < obj.getNum()){
+            return -1;
+        }
+        else if(getNum() > obj.getNum()){
+            return 1;
+        }
+
+        else{
+            if(shapeList.indexOf(getShape()) < shapeList.indexOf(obj.getShape())){
+                return -1;
+            }
+            else if(shapeList.indexOf(getShape()) > shapeList.indexOf(obj.getShape())){
+                return 1;
+            }
+            else {
+                return 0;
+            }
+        }
+
     }
 }

@@ -11,6 +11,9 @@ public class CardGameMain {
         }
         player1.printCard();
         player2.printCard();
+        System.out.println(
+                player1.cardSum() < player2.cardSum() ? "player2 승리!" : player1.cardSum() == player2.cardSum() ? "무승부" : "player1 승리!"
+        );
 
     }
 }
