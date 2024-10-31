@@ -3,13 +3,13 @@ package thread.control.interrupt;
 import static thread.control.ThreadUtils.sleep;
 import static util.MyLogger.log;
 
-public class ThreadStopMainV2 {
+public class ThreadStopMainV3 {
     public static void main(String[] args) {
         MyTask task = new MyTask();
         Thread thread = new Thread(task, "work");
         thread.start();
 
-        sleep(4000);
+        sleep(100);
 
         log("작업 중단 지시 thread.interrupt()");
         thread.interrupt();
@@ -23,18 +23,23 @@ public class ThreadStopMainV2 {
 
         @Override
         public void run() {
-            try {
-                while (true) {
-                    log("작업 중");
-                    Thread.sleep(3000); // <- 여기서만 인터럽트 발생 sleep이 인터럽트를 발생시킨다.
-                }
-            } catch (InterruptedException e) {
-                log("work 스레드 인터럽트 상태 2 = " + Thread.currentThread().isInterrupted());
-                log("interrupt message" + e.getMessage());
-                log("state= " + Thread.currentThread().getState());
+
+            while (!Thread.currentThread().isInterrupted()) { // 인터럽트 상태 확인 : 변경 X
+                log("작업 중");
             }
-            log("자원 정리");
-            log("작업 종료");
+            
+            //인터럽트 상태가 바뀌지 않음
+
+            try {
+                log("work 스레드 인터럽트 상태 2 = " + Thread.currentThread().isInterrupted());
+                log("자원 정리");
+                Thread.sleep(1000);
+                log("작업 종료");
+            } catch (InterruptedException e) {
+                log("자원 정리 실패 - 자원 정리 중 인터럽트 발생");
+                log("work 스레드 인터럽트 상태3 = " + Thread.currentThread().isInterrupted());
+            }
+
         }
     }
 }
