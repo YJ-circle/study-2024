@@ -87,8 +87,8 @@ public class BoardController {
 	/* 게시글 수정 폼 */
 	@GetMapping("/board/modify")
 	public String showModifyForm(Model model,
-								@SessionAttribute(value = "login_id", required = false)
-								Optional<String> userId,
+								@SessionAttribute(value = "login_id", 
+												  required = false)	Optional<String> userId,
 								@RequestParam("post_id") int postId
 								) {
 		
@@ -102,8 +102,8 @@ public class BoardController {
 	/* 게시글 수정 수행 */
 	@PostMapping("/board/modify")
 	public String modifyPost(Model model,
-							@SessionAttribute(value = "login_id", required = false)
-							Optional<String> userId,
+							@SessionAttribute(value = "login_id", 
+											  required = false)	Optional<String> userId,
 							@RequestParam("post_id") int postId,
 							@ModelAttribute PostViewDto postDto) {
 		if(!isLogin(model, userId)) {return "login";}
