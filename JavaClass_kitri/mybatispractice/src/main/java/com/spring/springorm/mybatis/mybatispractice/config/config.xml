@@ -23,7 +23,7 @@
 	<bean class="org.apache.commons.dbcp2.BasicDataSource"
 	      name="dataSource"
 	      p:driverClassName="oracle.jdbc.driver.OracleDriver"
-	      p:url="jdbc:oracle:thin:@192.168.10.247:1521:xe"
+	      p:url="jdbc:oracle:thin:@192.168.0.32:1521:xe"
 	      p:username="springjdbc"
 	      p:password="1234"
 	      />
