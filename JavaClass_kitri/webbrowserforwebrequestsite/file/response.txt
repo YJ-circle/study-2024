@@ -1,0 +1,432 @@
+date: Mon, 04 Nov 2024 22:24:06 GMT
+x-frame-options: SAMEORIGIN
+content-language: en-US
+transfer-encoding: chunked
+content-type: text/html;charset=UTF-8
+referrer-policy: unsafe-url
+server: nfront
+
+1B6D
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=dege;">
+<meta property="og:site_name" content="newsstand"/>
+<meta property="og:title" content="네이버 뉴스스탠드: 주요 언론사 보기"/>
+<meta property="og:image" content="https://ssl.pstatic.net/static.news/image/news/ogtag/navernews_stand_20160802.png"/>
+<meta property="og:url" content="http://newsstand.naver.com/?list=ct1"/>
+<meta property="og:description" content="주요 언론사 보기"/>
+<meta property="og:content_id" content=""/>
+<meta property="nv:serviceName" content="네이버 뉴스스탠드"/>
+<meta property="nv:serviceUrl" content="newsstand.naver.com"/>
+<meta property="og:type" content="article"/>
+<meta property="og:article:thumbnailUrl" content="https://image.bookmark.naver.com/img/naver_profile.png"/>
+<meta property="og:article:author" content="네이버"/>
+<meta property="og:article:author:url" content="http://newsstand.naver.com"/>
+<meta name="viewport" content="initial-scale=0.7,maximum-scale=2,minimum-scale=0.5,user-scalable=yes">
+<title>
+주요언론사 : 네이버 뉴스스탠드
+</title>
+<link rel="stylesheet" type="text/css" href="/css/nsd_v20180723.css"/>
+<link rel="shortcut icon" href="https://ssl.pstatic.net/static.news/image/news/2014/favicon/favicon.ico" />
+<link rel="apple-touch-icon" href="https://ssl.pstatic.net/static.news/image/news/2014/favicon/favicon.ico" />
+<link rel="apple-touch-icon-precomposed" href="https://ssl.pstatic.net/static.news/image/news/2014/favicon/favicon.ico" />
+<script type="text/javascript">
+var nsc = "news.stand";
+</script>
+<!-- 우측 상단 광고 loader -->
+<script async src="https://ssl.pstatic.net/tveta/libs/ndpsdk/prod/ndp-loader.js"></script>
+<script>
+	window.ndpsdk = window.ndpsdk || { cmd: [], polyfill: { cmd: [] } };
+</script>
+<!-- //우측 상단 광고 loader -->
+</head>
+<body>
+
+<input type="hidden" id="ad_history" />
+
+<div class="setup_layer lyr_unsubscribe" id="confirmPopup" style="display:none" tabindex="0">
+	<h5 class="blind">구독해지 레이어</h5>
+	<p class="msg">를 구독해지 하시겠습니까?<br>MY뉴스 리스트에서 바로 사라집니다.</p>
+	<div class="btn_box">
+		<a href="#" class="btn_confirm"><span class="blind">확인</span></a>
+		<a href="#" class="btn_cancel"><span class="blind">취소</span></a>
+	</div>
+</div>
+
+<div class="setup_layer lyr_userguide" id="noticePopup" style="display:none">
+    <h5 class="blind">마우스/키보드 사용안내 레이어</h5>
+	<p class="blind">마우스 휠이나 키보드 방향키를 이용해서 뉴스를 이전, 다음으로 이동하며 보실 수 있습니다.</p>
+        
+    <div class="close_box">
+        <input id="no_more" type="checkbox" class="_expire_view">
+        <label for="no_more">다시보지않기</label>
+        <span class="bar"></span>
+        <a href="#" class="_close">닫기</a>
+    </div>
+</div>
+
+<!-- 스킵네비게이션 -->
+<div id="u_skip">
+<a href="#snb"><span>메인 메뉴로 바로가기</span></a><a href="#content"><span>본문으로 바로가기</span></a>
+</div>
+<!-- //스킵네비게이션 -->
+<div id="wrap" class="">
+
+	<!-- header -->
+	<div id="header">
+			<a href="#" class="h1"><h1>뉴스스탠드</h1></a>
+			<p class="msg_h1">뉴스스탠드 기사는 각 언론사에서 직접 편집합니다.</p>
+			<div id="lnb">
+			</div>
+			<div class="opt">
+				<span class="bar">|</span><a href="#" class="btn_rfsh">새로고침</a><span class="bar">|</span><a href="#" class="btn_stt">설정</a><span class="bar">|</span><a href="http://www.naver.com" class="btn_naver" onclick="clickcr(this,'top.naver','','',event)">NAVER</a>
+			</div>
+			<div class="gnb_wrap">
+			<div id="gnb">
+				<script charset="utf8" type="text/javascript" src="https://ssl.pstatic.net/static.gn/templates/gnb_utf8.nhn?2024110507"></script>
+			</div>
+		</div>
+	</div>
+	<!-- //header -->
+	<h2 class="blind" id="h2_tab"></h2>
+	<div id="container">
+	<!-- content -->
+		<div id="content" class="ct_viewer">
+				<div id="snb" class="snb" style="display:none;">
+					<h2 class="blind">주제별 보기</h2>
+					<ul class="lst_snb">
+					<li class="ct1"><a href="#">주요언론사</a></li>
+					<li class="ct2"><a href="#">종합/경제</a></li>
+					<li class="ct3"><a href="#">방송/통신</a></li>
+					<li class="ct4"><a href="#">영자지</a></li>
+					<li class="ct5"><a href="#">IT</a></li>
+					<li class="ct6"><a href="#">스포츠/연예</a></li>
+					<li class="ct7"><a href="#">매거진/전문지</a></li>
+					<li class="ct8"><a href="#">지역</a></li>
+					</ul>
+				</div>				
+                <h2 class="blind" id="h2_category"></h2>				
+				<div class="spot">
+					<div class="rolling">
+						<div class="rolling_inn" id="rolling_inn" style="margin-left:0%;">
+						<div class="panel panel_dmm">
+	<span class="frm_dmm"></span>
+	<div class="panel_inner">
+	<h3><a href="http://www.imaeil.com/" target="_blank" onclick="Newsstand.Panel.onClickLogo(this, event, '매일신문')"><img src="https://ssl.pstatic.net/static/newsstand/up/2016/0818/nsd164941546.png" width="260" height="55" alt="매일신문"></a></h3>
+	<div class="sc_tp">
+		<div class="fr">
+			<a href="#" class="btn_sbc" id="btn_088">MY언론사로 구독하기</a>
+			<div class="tooltip2 tt_btn_sbc" style="top:23px;left:-41px;display:none;"><p class="msg2">구독하신 언론사는 MY뉴스에서 확인할 수 있습니다.</p></div>
+			<div class="tooltip2 tt_btn_unsbc" style="top:23px;left:-41px;display:none;"><p class="msg5">MY뉴스 언론사 목록에서 제외됩니다.</p></div>
+			<a href="http://cafe.naver.com/navernewscast/menu/69" class="btn_ombs" target="_blank" onclick="Newsstand.Panel.onClickOmbs(event)"><span class="blind">이용자 한마디</span><span class="rd"></span></a>
+			<div class="tooltip2 tt_btn_ombs" style="top: 23px; left: 24px; display: none;">
+				<p class="msg6">뉴스 편집판에 대해 의견 주시면 옴부즈맨의 자료로 활용됩니다.</p>
+			</div>
+			<a href="#" class="btn_social" onclick="Newsstand.Panel.openSns(event)" title="소셜보내기"><span class="blind">소셜보내기</span></a>
+			<div class="tooltip2 social_tooltip" style="top:26px;left:38px; display:none;">
+			<div class="lyr_social">
+			<a href="#" class="btn_band" title="밴드로 뉴스보내기" onclick="Newsstand.Panel.onClickPost(event, 'band')"><span class="btn_ico"></span>밴드</a>
+			<a href="#" class="btn_twit" title="트위터로 뉴스보내기" target="_blank" onclick="Newsstand.Panel.onClickPost(event, 'twitter')"><span class="btn_ico"></span>트위터</a>
+			<a href="#" class="btn_facebook" title="페이스북으로 뉴스보내기" target="_blank" onclick="Newsstand.Panel.onClickPost(event, 'facebook')"><span class="btn_ico"></span>페이스북</a>
+			</div>
+			</div>
+		</div>
+		<span class="fl"><em>11-05 05:55</em>편집</span>
+	</div>
+	<if
+48B
+rame src="about:blank" width="840" height="380" frameborder="0" scrolling="no" class="ifr_arc" allowTransparency="true"></iframe>
+	<div id="stand_ad_088" class="ifr_ad2"></div>
+    <a href="http://www.imaeil.com/" target="_blank" class="btn_gomedia"><strong>매일신문</strong> 사이트 바로가기<span class="ico"></span></a>
+</div></div><div id="focusPanelCenter" class="panel"><div class="panel_inner">
+	<h3><a href="http://news.sbs.co.kr/indexes/news_index.html" target="_blank" onclick="Newsstand.Panel.onClickLogo(this, event, 'SBS')"><img src="https://ssl.pstatic.net/static/newsstand/up/2013/0813/nsd11419129.gif" width="260" height="55" alt="SBS"></a></h3>
+	<div class="sc_tp">
+		<div class="fr">
+			<a href="#" class="btn_sbc" id="btn_055">MY언론사로 구독하기</a>
+			<div class="tooltip2 tt_btn_sbc" style="top:23px;left:-41px;display:none;"><p class="msg2">구독하신 언론사는 MY뉴스에서 확인할 수 있습니다.</p></div>
+			<div class="tooltip2 tt_btn_unsbc" style="top:23px;left:-41px;display:none;"><p class="msg5">MY뉴스 언론사 목록에서 제외됩니다.</p></div>
+			<a href="http://cafe.naver.com/nave
+1FF8
+rnewscast/menu/35" class="btn_ombs" target="_blank" onclick="Newsstand.Panel.onClickOmbs(event)"><span class="blind">이용자 한마디</span><span class="rd"></span></a>
+			<div class="tooltip2 tt_btn_ombs" style="top: 23px; left: 24px; display: none;">
+				<p class="msg6">뉴스 편집판에 대해 의견 주시면 옴부즈맨의 자료로 활용됩니다.</p>
+			</div>
+			<a href="#" class="btn_social" onclick="Newsstand.Panel.openSns(event)" title="소셜보내기"><span class="blind">소셜보내기</span></a>
+			<div class="tooltip2 social_tooltip" style="top:26px;left:38px; display:none;">
+			<div class="lyr_social">
+			<a href="#" class="btn_band" title="밴드로 뉴스보내기" onclick="Newsstand.Panel.onClickPost(event, 'band')"><span class="btn_ico"></span>밴드</a>
+			<a href="#" class="btn_twit" title="트위터로 뉴스보내기" target="_blank" onclick="Newsstand.Panel.onClickPost(event, 'twitter')"><span class="btn_ico"></span>트위터</a>
+			<a href="#" class="btn_facebook" title="페이스북으로 뉴스보내기" target="_blank" onclick="Newsstand.Panel.onClickPost(event, 'facebook')"><span class="btn_ico"></span>페이스북</a>
+			</div>
+			</div>
+		</div>
+		<span class="fl"><em>11-05 07:15</em>편집</span>
+	</div>
+	<iframe src="about:blank" width="840" height="380" frameborder="0" scrolling="no" class="ifr_arc" allowTransparency="true"></iframe>
+	<div id="stand_ad_055" class="ifr_ad2">
+		<script>
+			ndpsdk.cmd.push(function () {
+				var adSlot = ndpsdk.defineAdSlot({
+					adSlotElementId: 'stand_ad_' + '055',
+					adTagUrl: 'https://siape.veta.naver.com/fxshow?su=SU10796&newsstand=' + '055',
+					width: 468,
+					height: 60,
+				});
+				ndpsdk.displayAd('stand_ad_' + '055');
+
+				var adHistory = document.getElementById("ad_history");
+				if (adHistory) {
+					adHistory.setAttribute('ad_055', '');
+				}
+			});
+		</script>
+	</div>
+    <a href="http://news.sbs.co.kr/indexes/news_index.html" target="_blank" class="btn_gomedia"><strong>SBS</strong> 사이트 바로가기<span class="ico"></span></a>
+</div></div><div class="panel panel_dmm">
+	<span class="frm_dmm"></span>
+	<div class="panel_inner">
+	<h3><a href="http://www.munhwa.com/" target="_blank" onclick="Newsstand.Panel.onClickLogo(this, event, '문화일보')"><img src="https://ssl.pstatic.net/static/newsstand/up/2013/0813/nsd113634699.gif" width="260" height="55" alt="문화일보"></a></h3>
+	<div class="sc_tp">
+		<div class="fr">
+			<a href="#" class="btn_sbc" id="btn_021">MY언론사로 구독하기</a>
+			<div class="tooltip2 tt_btn_sbc" style="top:23px;left:-41px;display:none;"><p class="msg2">구독하신 언론사는 MY뉴스에서 확인할 수 있습니다.</p></div>
+			<div class="tooltip2 tt_btn_unsbc" style="top:23px;left:-41px;display:none;"><p class="msg5">MY뉴스 언론사 목록에서 제외됩니다.</p></div>
+			<a href="http://cafe.naver.com/navernewscast/menu/24" class="btn_ombs" target="_blank" onclick="Newsstand.Panel.onClickOmbs(event)"><span class="blind">이용자 한마디</span><span class="rd"></span></a>
+			<div class="tooltip2 tt_btn_ombs" style="top: 23px; left: 24px; display: none;">
+				<p class="msg6">뉴스 편집판에 대해 의견 주시면 옴부즈맨의 자료로 활용됩니다.</p>
+			</div>
+			<a href="#" class="btn_social" onclick="Newsstand.Panel.openSns(event)" title="소셜보내기"><span class="blind">소셜보내기</span></a>
+			<div class="tooltip2 social_tooltip" style="top:26px;left:38px; display:none;">
+			<div class="lyr_social">
+			<a href="#" class="btn_band" title="밴드로 뉴스보내기" onclick="Newsstand.Panel.onClickPost(event, 'band')"><span class="btn_ico"></span>밴드</a>
+			<a href="#" class="btn_twit" title="트위터로 뉴스보내기" target="_blank" onclick="Newsstand.Panel.onClickPost(event, 'twitter')"><span class="btn_ico"></span>트위터</a>
+			<a href="#" class="btn_facebook" title="페이스북으로 뉴스보내기" target="_blank" onclick="Newsstand.Panel.onClickPost(event, 'facebook')"><span class="btn_ico"></span>페이스북</a>
+			</div>
+			</div>
+		</div>
+		<span class="fl"><em>11-05 07:04</em>편집</span>
+	</div>
+	<iframe src="about:blank" width="840" height="380" frameborder="0" scrolling="no" class="ifr_arc" allowTransparency="true"></iframe>
+	<div id="stand_ad_021" class="ifr_ad2"></div>
+    <a href="http://www.munhwa.com/" target="_blank" class="btn_gomedia"><strong>문화일보</strong> 사이트 바로가기<span class="ico"></span></a>
+</div></div>
+						</div>
+						<div class="nav_nm">
+							<span class="nav_count"></span>
+							<div class="nav_btns">
+								<a href="#" class="_btn_prv ir nav_prev" title="이전" style="display:none;">이전</a>
+								<a href="#" class="_btn_nxt ir nav_next" title="다음" style="display:none;">다음</a>
+							</div>
+						</div>
+						<div class="auto_roll_set">
+							<h5 class="ir tit_ar"><span class="blind">자동넘김</span></h5>
+							
+							<!-- [D] 속도 바귈때 블라인드 텍스트 '빠르게(15초)' 부분 같이 변경 -->
+							<a href="#" class="ir btn_ar_setting set1"><span class="blind">현재 설정 : 빠르게(15초) 설정바꾸기</span></a>
+														
+							<ul class="lyr_ar_setting" style="display:none">
+								<li class="on"><a href="#" class="ir set1"><span class="blind">빠르게(15초)</span></a></li>
+								<li><a href="#" class="ir set2"><span class="blind">보통(35초)</span></a></li>
+								<li><a href="#" class="ir set3"><span class="blind">느리게(1분)</span></a></li>
+								<li><a href="#" class="ir set4"><span class="blind">끄기</span></a></li>
+							</ul>
+						</div>
+						<div class="nav">
+							<a href="#" class="_btn_prv btn_prv" style="display:none;"><span class="btn_ico">이전</span></a>
+							<a href="#" class="_btn_nxt btn_nxt" style="display:none;"><span class="btn_ico">다음</span></a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="lst_news">
+					<h3 class="blind">언론사 목록</h3>
+					<div class="lst_news_inn">
+						<div id="rolling" class="lst_news_wp">
+							<ul id="rollingUl"></ul>
+						</div>
+						<div id="excludeTooltip" class="tooltip2" style="display: none;">
+						<p class="msg3">악성코드 발생으로 기사 노출이 제외된 상태입니다.</p>
+						</div>
+						<div id="delayTooltip" class="tooltip2" style="display: none;">
+							<p class="msg4">해당 언론사에서 서비스를 준비중입니다.</p>
+						</div>
+					</div>
+					<a href="#" class="btn_prv3 dmm" title="이전 언론사 목록">이전 언론사 목록</a>
+					<a href="#" class="btn_nxt3 dmm" title="다음 언론사 목록">다음 언론사 목록</a>
+				</div>
+			</div>
+	<!-- //content -->
+	</div>
+
+	<!-- footer -->
+	<div id="footer">
+		
+		<p class="copyright">본 콘텐츠의 저작권은 제공처 또는 네이버에 있으며, 이를 무단 이용하는 경우 저작권법 등에 따라 법적책임을 질 수 있습니다.</p>
+		<address>Copyright ⓒ <strong><a href="http://www.navercorp.com/" target="_blank" onclick="clickcr(this,'fot.nhncorp','','',event)">NAVER Corp.</a></strong> All Rights Reserved</address>
+	</div>
+	<!-- //footer -->
+</div>
+
+<script type="text/javascript" src="/js/c/lib_20210204.min.js"></script>
+<script type="text/javascript" src="/js/c/common_20181126.min.js"></script>
+<script type="text/javascript" src="/js/c/nsd_20211221.min.js"></script>
+
+<script type="text/javascript">
+var pressList = [{"id":"055","nm":"SBS","home":"http:\/\/news.sbs.co.kr\/indexes\/news_index.html","shcutTitl":"SBS","shcutUrl":"http:\/\/news.sbs.co.kr\/indexes\/news_index.html","logo":"up\/2013\/0813\/nsd11419129.gif","chip":"up\/2014\/0715\/055.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/35","tooltip":"up\/2012\/1126\/nsd111916656.png","width":"52","panel":"\/include\/panel\/055.html","dimm":"\/include\/dimm\/055.html","page":"\/include\/page\/055.html","modified":"11-05 07:15","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"021","nm":"문화일보","home":"http:\/\/www.munhwa.com
+1FF8
+\/","shcutTitl":"문화일보","shcutUrl":"http:\/\/www.munhwa.com\/","logo":"up\/2013\/0813\/nsd113634699.gif","chip":"up\/2014\/0715\/021.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/24","tooltip":"up\/2012\/1125\/nsd2018837.png","width":"52","panel":"\/include\/panel\/021.html","dimm":"\/include\/dimm\/021.html","page":"\/include\/page\/021.html","modified":"11-05 07:04","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"029","nm":"디지털타임스","home":"http:\/\/www.dt.co.kr\/","shcutTitl":"디지털타임스","shcutUrl":"http:\/\/www.dt.co.kr\/","logo":"up\/2018\/0719\/nsd162452107.png","chip":"up\/2018\/0719\/nsd16245966.png","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/19","tooltip":"up\/2012\/1125\/nsd20131077.png","width":"70","panel":"\/include\/panel\/029.html","dimm":"\/include\/dimm\/029.html","page":"\/include\/page\/029.html","modified":"11-05 07:03","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"018","nm":"이데일리","home":"http:\/\/www.edaily.co.kr\/","shcutTitl":"이데일리","shcutUrl":"http:\/\/www.edaily.co.kr\/","logo":"up\/2016\/0325\/nsd18561249.png","chip":"up\/2015\/1005\/nsd10646165.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/41","tooltip":"up\/2012\/1205\/nsd111155664.png","width":"52","panel":"\/include\/panel\/018.html","dimm":"\/include\/dimm\/018.html","page":"\/include\/page\/018.html","modified":"11-05 07:13","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"215","nm":"한국경제TV","home":"http:\/\/www.wowtv.co.kr\/","shcutTitl":"한국경제TV","shcutUrl":"http:\/\/www.wowtv.co.kr\/","logo":"up\/2013\/0813\/nsd113954116.gif","chip":"up\/2014\/0715\/215.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/36","tooltip":"up\/2012\/1126\/nsd11164267.png","width":"70","panel":"\/include\/panel\/215.html","dimm":"\/include\/dimm\/215.html","page":"\/include\/page\/215.html","modified":"11-05 07:00","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"117","nm":"마이데일리","home":"http:\/\/www.mydaily.co.kr\/","shcutTitl":"마이데일리","shcutUrl":"http:\/\/www.mydaily.co.kr\/","logo":"up\/2013\/0813\/nsd114422154.gif","chip":"up\/2014\/0715\/117.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/55","tooltip":"up\/2012\/1125\/nsd201418129.png","width":"52","panel":"\/include\/panel\/117.html","dimm":"\/include\/dimm\/117.html","page":"\/include\/page\/117.html","modified":"11-05 06:30","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"904","nm":"JTBC","home":"http:\/\/news.jtbc.joins.com","shcutTitl":"JTBC","shcutUrl":"http:\/\/news.jtbc.joins.com","logo":"up\/2013\/0813\/nsd114014931.gif","chip":"up\/2014\/0715\/904.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/148","tooltip":"up\/2013\/0807\/nsd9188859.png","width":"52","panel":"\/include\/panel\/904.html","dimm":"\/include\/dimm\/904.html","page":"\/include\/page\/904.html","modified":"11-04 12:58","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"005","nm":"국민일보","home":"http:\/\/www.kmib.co.kr\/news\/index.asp","shcutTitl":"국민일보","shcutUrl":"http:\/\/www.kmib.co.kr\/news\/index.asp","logo":"up\/2013\/0813\/nsd111025525.gif","chip":"up\/2014\/0715\/005.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/17","tooltip":"up\/2012\/1125\/nsd20922149.png","width":"52","panel":"\/include\/panel\/005.html","dimm":"\/include\/dimm\/005.html","page":"\/include\/page\/005.html","modified":"11-05 07:06","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"025","nm":"중앙일보","home":"https:\/\/www.joongang.co.kr\/","shcutTitl":"중앙일보","shcutUrl":"https:\/\/www.joongang.co.kr\/","logo":"up\/2021\/0823\/nsd101658491.png","chip":"up\/2021\/0823\/nsd101716681.png","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/28","tooltip":"up\/2012\/1205\/nsd111836357.png","width":"0","panel":"\/include\/panel\/025.html","dimm":"\/include\/dimm\/025.html","page":"\/include\/page\/025.html","modified":"11-05 06:31","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"032","nm":"경향신문","home":"http:\/\/www.khan.co.kr\/","shcutTitl":"경향신문","shcutUrl":"http:\/\/www.khan.co.kr\/","logo":"up\/2014\/0213\/nsd13388620.gif","chip":"up\/2014\/0715\/032.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/16","tooltip":"up\/2012\/1125\/nsd2085957.png","width":"52","panel":"\/include\/panel\/032.html","dimm":"\/include\/dimm\/032.html","page":"\/include\/page\/032.html","modified":"11-05 06:42","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"366","nm":"조선비즈","home":"http:\/\/biz.chosun.com\/","shcutTitl":"조선비즈","shcutUrl":"http:\/\/biz.chosun.com\/","logo":"up\/2013\/0813\/nsd114329302.gif","chip":"up\/2014\/0715\/366.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/122","tooltip":"up\/2012\/1126\/nsd111057284.png","width":"52","panel":"\/include\/panel\/366.html","dimm":"\/include\/dimm\/366.html","page":"\/include\/page\/366.html","modified":"11-05 07:07","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"376","nm":"지지통신","home":"http:\/\/www.jiji.com\/","shcutTitl":"지지통신","shcutUrl":"http:\/\/www.jiji.com\/","logo":"up\/2016\/0403\/nsd10222649.png","chip":"up\/2016\/0403\/nsd102211388.png","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/125","tooltip":"up\/2012\/1206\/nsd1129478.png","width":"0","panel":"\/include\/panel\/376.html","dimm":"\/include\/dimm\/376.html","page":"\/include\/page\/376.html","modified":"11-05 07:10","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"079","nm":"노컷뉴스","home":"http:\/\/www.nocutnews.co.kr\/","shcutTitl":"노컷뉴스","shcutUrl":"http:\/\/www.nocutnews.co.kr\/","logo":"up\/2014\/0213\/nsd133826499.gif","chip":"up\/2014\/0715\/079.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/49","tooltip":"up\/2012\/1125\/nsd20103850.png","width":"52","panel":"\/include\/panel\/079.html","dimm":"\/include\/dimm\/079.html","page":"\/include\/page\/079.html","modified":"11-05 07:03","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"015","nm":"한국경제","home":"http:\/\/www.hankyung.com\/","shcutTitl":"한국경제","shcutUrl":"http:\/\/www.hankyung.com\/","logo":"up\/2013\/0813\/nsd11441103.gif","chip":"up\/2014\/0715\/015.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/45","tooltip":"up\/2012\/1126\/nsd111548276.png","width":"52","panel":"\/include\/panel\/015.html","dimm":"\/include\/dimm\/015.html","page":"\/include\/page\/015.html","modified":"11-04 23:32","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"326","nm":"KBS World","home":"http:\/\/world.kbs.co.kr\/english\/","shcutTitl":"KBS World","shcutUrl":"http:\/\/world.kbs.co.kr\/english\/","logo":"up\/2019\/0903\/nsd183451721.png","chip":"up\/2019\/0903\/nsd1835077.png","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/67","tooltip":"up\/2012\/1126\/nsd111745170.png","width":"70","panel":"\/include\/panel\/326.html","dimm":"\/include\/dimm\/326.html","page":"\/include\/page\/326.html","modified":"11-04 17:53","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"241","nm":"일간스포츠","home":"http:\/\/isplus.joins.com\/","shcutTitl":"일간스포츠","shcutUrl":"http:\/\/isplus.joins.com\/","logo":"up\/2023\/0112\/nsd92522946.png","chip":"up\/2023\/0112\/nsd92532276.png","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/59","tooltip":"up\/2012\/1205\/nsd113127116.png","width":"0","panel":"\/include\/panel\/241.html","dimm":"\/include\/dimm\/241.html","page":"\/include\/page\/241.html","modified":"11-05 07:11","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"030","nm":"전자신문","home":"http:\/\/www.etnews.com","shcutTitl":"전자신문","shcutUrl":"http:\/\/www.etnews.com","logo":"up\/2013\/0813\/nsd114836462.gif","chip":"up\/2016\/0311\/nsd10128574.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/42","tooltip":"up\/2012\/1126\/nsd111015176.png","width":"52","panel":"\/include\/panel\/030.html","dimm":"\/include\/dimm\/030.html","page":"\/include\/page\/030.html","modified":"11-05 07:10","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"293","nm":"블로터","home":"http:\/\/www.bloter.net\/","shcu
+1FF7
+tTitl":"블로터","shcutUrl":"http:\/\/www.bloter.net\/","logo":"up\/2018\/0316\/nsd17539713.png","chip":"up\/2018\/0316\/nsd17532997.png","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/47","tooltip":"up\/2014\/0912\/nsd144824197.png","width":"52","panel":"\/include\/panel\/293.html","dimm":"\/include\/dimm\/293.html","page":"\/include\/page\/293.html","modified":"11-05 07:10","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"057","nm":"MBN","home":"http:\/\/mbn.mk.co.kr\/pages\/news\/index.html","shcutTitl":"MBN","shcutUrl":"http:\/\/mbn.mk.co.kr\/pages\/news\/index.html","logo":"up\/2020\/0206\/nsd15554847.png","chip":"up\/2020\/0206\/nsd15555977.png","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/34","tooltip":"up\/2012\/1126\/nsd111820828.png","width":"52","panel":"\/include\/panel\/057.html","dimm":"\/include\/dimm\/057.html","page":"\/include\/page\/057.html","modified":"11-05 07:11","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"003","nm":"뉴시스","home":"http:\/\/www.newsis.com","shcutTitl":"뉴시스","shcutUrl":"http:\/\/www.newsis.com","logo":"up\/2024\/0731\/nsd141832295.png","chip":"up\/2024\/0731\/nsd141845384.png","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/109","tooltip":"up\/2012\/1125\/nsd201126825.png","width":"0","panel":"\/include\/panel\/003.html","dimm":"\/include\/dimm\/003.html","page":"\/include\/page\/003.html","modified":"11-05 07:04","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"308","nm":"시사IN","home":"http:\/\/www.sisain.co.kr\/","shcutTitl":"시사IN","shcutUrl":"http:\/\/www.sisain.co.kr\/","logo":"up\/2016\/0824\/nsd154332528.png","chip":"up\/2016\/0824\/nsd154344801.png","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/93","tooltip":"up\/2012\/1126\/nsd11145609.png","width":"0","panel":"\/include\/panel\/308.html","dimm":"\/include\/dimm\/308.html","page":"\/include\/page\/308.html","modified":"11-05 06:30","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"031","nm":"아이뉴스24","home":"http:\/\/www.inews24.com\/","shcutTitl":"아이뉴스24","shcutUrl":"http:\/\/www.inews24.com\/","logo":"up\/2020\/1112\/nsd1834869.jpg","chip":"up\/2020\/1112\/nsd183415131.jpg","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/40","tooltip":"up\/2012\/1126\/nsd11418194.png","width":"70","panel":"\/include\/panel\/031.html","dimm":"\/include\/dimm\/031.html","page":"\/include\/page\/031.html","modified":"11-05 07:01","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"081","nm":"서울신문","home":"http:\/\/www.seoul.co.kr\/","shcutTitl":"서울신문","shcutUrl":"http:\/\/www.seoul.co.kr\/","logo":"up\/2022\/0105\/nsd20116383.png","chip":"up\/2022\/0105\/nsd20125503.png","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/25","tooltip":"up\/2012\/1126\/nsd1058563.png","width":"0","panel":"\/include\/panel\/081.html","dimm":"\/include\/dimm\/081.html","page":"\/include\/page\/081.html","modified":"11-05 01:28","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"214","nm":"MBC","home":"http:\/\/imnews.imbc.com\/","shcutTitl":"MBC","shcutUrl":"http:\/\/imnews.imbc.com\/","logo":"up\/2013\/0813\/nsd114044142.gif","chip":"up\/2014\/0715\/214.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/33","tooltip":"up\/2012\/1126\/nsd11181391.png","width":"52","panel":"\/include\/panel\/214.html","dimm":"\/include\/dimm\/214.html","page":"\/include\/page\/214.html","modified":"11-05 06:52","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"022","nm":"세계일보","home":"http:\/\/www.segye.com\/","shcutTitl":"세계일보","shcutUrl":"http:\/\/www.segye.com\/","logo":"up\/2013\/1105\/nsd142549392.gif","chip":"up\/2014\/0715\/022.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/26","tooltip":"up\/2012\/1126\/nsd105915284.png","width":"52","panel":"\/include\/panel\/022.html","dimm":"\/include\/dimm\/022.html","page":"\/include\/page\/022.html","modified":"11-05 02:07","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"047","nm":"오마이뉴스","home":"http:\/\/www.ohmynews.com\/","shcutTitl":"오마이뉴스","shcutUrl":"http:\/\/www.ohmynews.com\/","logo":"up\/2013\/0813\/nsd114542158.gif","chip":"up\/2014\/0715\/047.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/52","tooltip":"up\/2012\/1126\/nsd11915654.png","width":"52","panel":"\/include\/panel\/047.html","dimm":"\/include\/dimm\/047.html","page":"\/include\/page\/047.html","modified":"11-05 07:05","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"052","nm":"YTN","home":"http:\/\/www.ytn.co.kr\/","shcutTitl":"YTN","shcutUrl":"http:\/\/www.ytn.co.kr\/","logo":"up\/2014\/0407\/nsd163932956.gif","chip":"up\/2015\/1112\/nsd184430988.jpg","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/37","tooltip":"up\/2012\/1126\/nsd111933193.png","width":"52","panel":"\/include\/panel\/052.html","dimm":"\/include\/dimm\/052.html","page":"\/include\/page\/052.html","modified":"11-05 06:56","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"023","nm":"조선일보","home":"http:\/\/www.chosun.com\/","shcutTitl":"조선일보","shcutUrl":"http:\/\/www.chosun.com\/","logo":"up\/2020\/1030\/nsd203636910.png","chip":"up\/2020\/0903\/nsd185231425.png","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/27","tooltip":"up\/2012\/1228\/nsd16126660.png","width":"52","panel":"\/include\/panel\/023.html","dimm":"\/include\/dimm\/023.html","page":"\/include\/page\/023.html","modified":"11-05 07:02","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"327","nm":"뉴데일리","home":"http:\/\/www.newdaily.co.kr\/","shcutTitl":"뉴데일리","shcutUrl":"http:\/\/www.newdaily.co.kr\/","logo":"up\/2024\/0124\/nsd95442940.png","chip":"up\/2024\/0124\/nsd95450699.png","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/50","tooltip":"up\/2012\/1125\/nsd201017791.png","width":"0","panel":"\/include\/panel\/327.html","dimm":"\/include\/dimm\/327.html","page":"\/include\/page\/327.html","modified":"11-05 07:11","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"014","nm":"파이낸셜뉴스","home":"http:\/\/www.fnnews.com\/","shcutTitl":"파이낸셜뉴스","shcutUrl":"http:\/\/www.fnnews.com\/","logo":"up\/2020\/0212\/nsd171312617.png","chip":"up\/2020\/0212\/nsd171322245.png","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/44","tooltip":"up\/2012\/1126\/nsd111353434.png","width":"70","panel":"\/include\/panel\/014.html","dimm":"\/include\/dimm\/014.html","page":"\/include\/page\/014.html","modified":"11-05 07:00","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"038","nm":"한국일보","home":"http:\/\/www.hankookilbo.com\/","shcutTitl":"한국일보","shcutUrl":"http:\/\/www.hankookilbo.com\/","logo":"up\/2016\/0325\/nsd185817651.png","chip":"up\/2015\/0612\/nsd144254191.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/30","tooltip":"up\/2012\/1126\/nsd111637748.png","width":"52","panel":"\/include\/panel\/038.html","dimm":"\/include\/dimm\/038.html","page":"\/include\/page\/038.html","modified":"11-05 07:00","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"028","nm":"한겨레","home":"http:\/\/www.hani.co.kr\/","shcutTitl":"한겨레","shcutUrl":"http:\/\/www.hani.co.kr\/","logo":"up\/2024\/0219\/nsd145749938.png","chip":"up\/2024\/0219\/nsd145721256.png","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/29","tooltip":"up\/2012\/1126\/nsd111450584.png","width":"0","panel":"\/include\/panel\/028.html","dimm":"\/include\/dimm\/028.html","page":"\/include\/page\/028.html","modified":"11-05 01:34","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"073","nm":"스포츠서울","home":"http:\/\/www.sportsseoul.com\/","shcutTitl":"스포츠서울","shcutUrl":"http:\/\/www.sportsseoul.com\/","logo":"up\/2020\/0708\/nsd94730770.png","chip":"up\/2020\/0708\/nsd948714.png","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/57","tooltip":"up\/2015\/0721\/nsd163337657.png","width":"49","panel":"\/include\/panel\/073.html","dimm":"\/include\/dimm\/073.html","page":"\/include\/page\/073.html","modified":"11-05 07:11","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"422","nm":"연합뉴스TV","home":"http:\/\/www.yonhapnewstv.co.kr","shcutTitl":"
+1FF8
+연합뉴스TV","shcutUrl":"http:\/\/www.yonhapnewstv.co.kr","logo":"up\/2023\/0302\/nsd104257594.png","chip":"up\/2015\/0224\/nsd185330918.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/147","tooltip":"up\/2015\/0224\/nsd185442269.png","width":"0","panel":"\/include\/panel\/422.html","dimm":"\/include\/dimm\/422.html","page":"\/include\/page\/422.html","modified":"11-05 07:15","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"006","nm":"미디어오늘","home":"http:\/\/www.mediatoday.co.kr\/","shcutTitl":"미디어오늘","shcutUrl":"http:\/\/www.mediatoday.co.kr\/","logo":"up\/2013\/0813\/nsd114522986.gif","chip":"up\/2014\/0715\/006.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/51","tooltip":"up\/2012\/1125\/nsd201821647.png","width":"52","panel":"\/include\/panel\/006.html","dimm":"\/include\/dimm\/006.html","page":"\/include\/page\/006.html","modified":"11-05 07:15","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"368","nm":"데일리안","home":"http:\/\/www.dailian.co.kr\/","shcutTitl":"데일리안","shcutUrl":"http:\/\/www.dailian.co.kr\/","logo":"up\/2013\/0813\/nsd114510359.gif","chip":"up\/2014\/0715\/368.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/121","tooltip":"up\/2012\/1125\/nsd2012734.png","width":"52","panel":"\/include\/panel\/368.html","dimm":"\/include\/dimm\/368.html","page":"\/include\/page\/368.html","modified":"11-05 07:11","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"008","nm":"머니투데이","home":"http:\/\/www.mt.co.kr\/","shcutTitl":"머니투데이","shcutUrl":"http:\/\/www.mt.co.kr\/","logo":"up\/2013\/0813\/nsd114217326.gif","chip":"up\/2014\/0715\/008.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/21","tooltip":"up\/2012\/1125\/nsd201753677.png","width":"52","panel":"\/include\/panel\/008.html","dimm":"\/include\/dimm\/008.html","page":"\/include\/page\/008.html","modified":"11-05 07:10","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"056","nm":"KBS","home":"http:\/\/news.kbs.co.kr","shcutTitl":"KBS","shcutUrl":"http:\/\/news.kbs.co.kr","logo":"up\/2013\/0813\/nsd114029379.gif","chip":"up\/2014\/0715\/056.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/32","tooltip":"up\/2012\/1206\/nsd113049510.png","width":"52","panel":"\/include\/panel\/056.html","dimm":"\/include\/dimm\/056.html","page":"\/include\/page\/056.html","modified":"11-05 07:14","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"044","nm":"코리아헤럴드","home":"http:\/\/www.koreaherald.com\/index.php","shcutTitl":"코리아헤럴드","shcutUrl":"http:\/\/www.koreaherald.com\/index.php","logo":"up\/2013\/0813\/nsd114926830.gif","chip":"up\/2014\/0715\/044.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/66","tooltip":"up\/2012\/1126\/nsd111331532.png","width":"0","panel":"\/include\/panel\/044.html","dimm":"\/include\/dimm\/044.html","page":"\/include\/page\/044.html","modified":"11-04 21:47","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"020","nm":"동아일보","home":"http:\/\/www.donga.com\/","shcutTitl":"동아일보","shcutUrl":"http:\/\/www.donga.com\/","logo":"up\/2013\/0813\/nsd111048277.gif","chip":"up\/2014\/0715\/020.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/23","tooltip":"up\/2012\/1125\/nsd201221745.png","width":"52","panel":"\/include\/panel\/020.html","dimm":"\/include\/dimm\/020.html","page":"\/include\/page\/020.html","modified":"11-05 06:55","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"002","nm":"프레시안","home":"https:\/\/www.pressian.com\/","shcutTitl":"프레시안","shcutUrl":"https:\/\/www.pressian.com\/","logo":"up\/2016\/0325\/nsd185740259.png","chip":"up\/2014\/0715\/002.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/53","tooltip":"up\/2012\/1126\/nsd111431794.png","width":"0","panel":"\/include\/panel\/002.html","dimm":"\/include\/dimm\/002.html","page":"\/include\/page\/002.html","modified":"11-05 05:02","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"139","nm":"스포탈코리아","home":"http:\/\/sportalkorea.com","shcutTitl":"스포탈코리아","shcutUrl":"http:\/\/sportalkorea.com","logo":"up\/2013\/0813\/nsd114556183.gif","chip":"up\/2014\/0715\/139.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/60","tooltip":"up\/2012\/1126\/nsd11126278.png","width":"70","panel":"\/include\/panel\/139.html","dimm":"\/include\/dimm\/139.html","page":"\/include\/page\/139.html","modified":"11-04 17:02","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"314","nm":"스포츠동아","home":"http:\/\/sports.donga.com\/","shcutTitl":"스포츠동아","shcutUrl":"http:\/\/sports.donga.com\/","logo":"up\/2013\/0813\/nsd114516931.gif","chip":"up\/2014\/0715\/314.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/56","tooltip":"up\/2012\/1226\/nsd12641141.png","width":"52","panel":"\/include\/panel\/314.html","dimm":"\/include\/dimm\/314.html","page":"\/include\/page\/314.html","modified":"11-04 22:04","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"076","nm":"스포츠조선","home":"https:\/\/sports.chosun.com\/","shcutTitl":"스포츠조선","shcutUrl":"https:\/\/sports.chosun.com\/","logo":"up\/2013\/0813\/nsd114544381.gif","chip":"up\/2014\/0715\/076.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/58","tooltip":"up\/2012\/1126\/nsd1119907.png","width":"52","panel":"\/include\/panel\/076.html","dimm":"\/include\/dimm\/076.html","page":"\/include\/page\/076.html","modified":"11-04 22:08","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"277","nm":"아시아경제","home":"https:\/\/www.asiae.co.kr\/","shcutTitl":"아시아경제","shcutUrl":"https:\/\/www.asiae.co.kr\/","logo":"up\/2013\/0813\/nsd114256122.gif","chip":"up\/2015\/0707\/nsd105132418.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/39","tooltip":"up\/2012\/1126\/nsd1122220.png","width":"52","panel":"\/include\/panel\/277.html","dimm":"\/include\/dimm\/277.html","page":"\/include\/page\/277.html","modified":"11-05 07:05","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"330","nm":"중앙데일리","home":"http:\/\/koreajoongangdaily.joins.com\/","shcutTitl":"중앙데일리","shcutUrl":"http:\/\/koreajoongangdaily.joins.com\/","logo":"up\/2020\/0402\/nsd212958455.png","chip":"up\/2020\/0402\/nsd213010870.png","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/65","tooltip":"up\/2012\/1205\/nsd113715376.png","width":"52","panel":"\/include\/panel\/330.html","dimm":"\/include\/dimm\/330.html","page":"\/include\/page\/330.html","modified":"11-05 00:08","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"011","nm":"서울경제","home":"http:\/\/www.sedaily.com\/","shcutTitl":"서울경제","shcutUrl":"http:\/\/www.sedaily.com\/","logo":"up\/2013\/0813\/nsd1142318.gif","chip":"up\/2018\/0313\/nsd175450969.png","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/38","tooltip":"up\/2012\/1126\/nsd105842483.png","width":"0","panel":"\/include\/panel\/011.html","dimm":"\/include\/dimm\/011.html","page":"\/include\/page\/011.html","modified":"11-05 06:08","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"016","nm":"헤럴드경제","home":"http:\/\/www.heraldbiz.com\/","shcutTitl":"헤럴드경제","shcutUrl":"http:\/\/www.heraldbiz.com\/","logo":"up\/2013\/0813\/nsd114420405.gif","chip":"up\/2014\/0715\/016.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/46","tooltip":"up\/2012\/1126\/nsd11165429.png","width":"52","panel":"\/include\/panel\/016.html","dimm":"\/include\/dimm\/016.html","page":"\/include\/page\/016.html","modified":"11-05 07:09","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"009","nm":"매일경제","home":"http:\/\/www.mk.co.kr\/","shcutTitl":"매일경제","shcutUrl":"http:\/\/www.mk.co.kr\/","logo":"up\/2016\/0325\/nsd185254610.png","chip":"up\/2014\/0715\/009.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/18","tooltip":"up\/2012\/1125\/nsd201438519.png","width":"0","panel":"\/include\/panel\/009.html","dimm":"\/include\/dimm\/009.html","page":"\/include\/page\/009.html","modified":"11-05 07:11","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"092","nm":"지디넷코리아","home":"ht
+1FF8
+tps:\/\/zdnet.co.kr\/","shcutTitl":"지디넷코리아","shcutUrl":"https:\/\/zdnet.co.kr\/","logo":"up\/2022\/0905\/nsd91428724.png","chip":"up\/2022\/0905\/nsd91156527.png","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/43","tooltip":"up\/2012\/1126\/nsd11127779.png","width":"0","panel":"\/include\/panel\/092.html","dimm":"\/include\/dimm\/092.html","page":"\/include\/page\/092.html","modified":"11-05 07:08","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"930","nm":"뉴스타파","home":"http:\/\/www.newstapa.org\/","shcutTitl":"뉴스타파","shcutUrl":"http:\/\/www.newstapa.org\/","logo":"up\/2016\/0325\/nsd18522899.png","chip":"up\/2014\/0715\/930.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/184","tooltip":"up\/2014\/0708\/nsd105810153.png","width":"52","panel":"\/include\/panel\/930.html","dimm":"\/include\/dimm\/930.html","page":"\/include\/page\/930.html","modified":"11-05 07:15","exclude":"N","delay":"N","paper":"","nw":"N"},{"id":"109","nm":"OSEN","home":"http:\/\/osen.mt.co.kr\/","shcutTitl":"OSEN","shcutUrl":"http:\/\/osen.mt.co.kr\/","logo":"up\/2013\/0813\/nsd114622159.gif","chip":"up\/2014\/0715\/109.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/61","tooltip":"up\/2012\/1126\/nsd11184672.png","width":"52","panel":"\/include\/panel\/109.html","dimm":"\/include\/dimm\/109.html","page":"\/include\/page\/109.html","modified":"11-04 10:02","exclude":"N","delay":"N","paper":"","nw":"N"}];
+var afterPress = {"id":"015","nm":"한국경제","home":"http:\/\/www.hankyung.com\/","shcutTitl":"한국경제","shcutUrl":"http:\/\/www.hankyung.com\/","logo":"up\/2013\/0813\/nsd11441103.gif","chip":"up\/2014\/0715\/015.gif","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/45","tooltip":"up\/2012\/1126\/nsd111548276.png","width":"52","panel":"\/include\/panel\/015.html","dimm":"\/include\/dimm\/015.html","page":"\/include\/page\/015.html","modified":"11-04 23:32","exclude":"N","delay":"N","paper":"","nw":"N"};
+var beforePress = {"id":"088","nm":"매일신문","home":"http:\/\/www.imaeil.com\/","shcutTitl":"매일신문","shcutUrl":"http:\/\/www.imaeil.com\/","logo":"up\/2016\/0818\/nsd164941546.png","chip":"up\/2016\/0818\/nsd162758295.png","ombs":"http:\/\/cafe.naver.com\/navernewscast\/menu\/69","tooltip":"up\/2012\/1125\/nsd201728282.png","width":"52","panel":"\/include\/panel\/088.html","dimm":"\/include\/dimm\/088.html","page":"\/include\/page\/088.html","modified":"11-05 05:55","exclude":"N","delay":"N","paper":"","nw":"N"};
+var myList = [];
+var exList = [];
+var deList = [];
+var isEmpty = false;
+var isLogin = false;
+var isCast = false;
+var isStand = false;
+var nick = "";
+var host = "newsstand.naver.com";
+var userInfoUrl = "https://user-newsstand.naver.com";
+var adSdkTagUrl = "https://siape.veta.naver.com/fxshow?su=SU10796&newsstand=";
+var todayNewspaperUrl = "newspaper.naver.com/viewer/index.nhn?pressCode=0";
+var categoryCode = "ct1";
+var beforeCategoryCode = "ct8";
+var afterCategoryCode = "ct2";
+var pcode = '055';
+
+var gnb_service = "newsstand";
+var gnb_template = "gnb_utf8";
+var gnb_brightness = 1;
+
+var adUrl = "https://veta.naver.com/fxshow?su=SU10197&newsstand=";
+var adUrlForDefault = "https://veta.naver.com/fxshow?su=SU10197&newsstand=";
+
+var tooltipTemplate = '{if left != null}{if left.width >= 70}<div class="tooltip" id="configToolTip" style="left: -23px; display: none;"><img src="https://ssl.pstatic.net/static/newsstand/{=left.tooltip}" width="70" height="12" alt="{=left.nm}"><span></span><em></em></div>{else}<div class="tooltip" id="configToolTip" style="left: -15px; display: none;"><img src="https://ssl.pstatic.net/static/newsstand/{=left.tooltip}" width="52" height="12" alt="{=left.nm}"><span></span><em></em></div>{/if}{elseif right != null}{if right.width >= 70}<div class="tooltip" id="configToolTip2" style="right: -21px; display: none;"><img src="https://ssl.pstatic.net/static/newsstand/{=right.tooltip}" width="70" height="12" alt="{=right.nm}"><span></span><em></em></div>{else}<div class="tooltip" id="configToolTip2" style="right: -13px; display: none;"><img src="https://ssl.pstatic.net/static/newsstand/{=right.tooltip}" width="52" height="12" alt="{=right.nm}"><span></span><em></em></div>{/if}{/if}';
+
+var footerTemplate = '{for num:press in pressList}{if press.id >= 0}{if press.exclude == "Y"}'+
+'<li class="disabled">'+
+	'<a id="f_{=num}"onMouseOver="this.parentNode.className=\'disabled over\'; Newsstand.Main.displayExcludeTooltip({=num})"onMouseOut="this.parentNode.className=\'disabled\'; Newsstand.Main.disapperExcludeTooltip()"onFocus="this.parentNode.className=\'disabled over\'; Newsstand.Main.displayExcludeTooltip({=num})"onBlur="this.parentNode.className=\'disabled\'; Newsstand.Main.disapperExcludeTooltip()" href="#">'+
+	'{if press.nw == "Y"}'+
+	'<span class="ico_new">NEW</span>'+
+	'{/if}'+
+	'<img src="https://ssl.pstatic.net/static/newsstand/{=press.chip}" width="81" height="73" alt="{=press.nm}">'+
+	'</a>'+
+'</li>'+
+'{elseif press.delay == "Y"}'+
+'<li class="disabled">'+
+	'<a id="f_{=num}"onMouseOver="this.parentNode.className=\'disabled over\'; Newsstand.Main.displayDelayTooltip({=num})"onMouseOut="this.parentNode.className=\'disabled\'; Newsstand.Main.disapperDelayTooltip()"onFocus="this.parentNode.className=\'disabled over\'; Newsstand.Main.displayDelayTooltip({=num})"onBlur="this.parentNode.className=\'disabled\'; Newsstand.Main.disapperDelayTooltip()" href="#">'+
+	'{if press.nw == "Y"}'+
+	'<span class="ico_new">NEW</span>'+
+	'{/if}'+
+	'<img src="https://ssl.pstatic.net/static/newsstand/{=press.chip}" width="81" height="73" alt="{=press.nm}">'+
+	'</a>'+
+'</li>'+
+'{else}'+
+'<li>'+
+	'<a href="#" id="f_{=num}">'+
+	'{if press.nw == "Y"}'+
+	'<span class="ico_new">NEW</span>'+
+	'{/if}'+
+	'<img src="https://ssl.pstatic.net/static/newsstand/{=press.chip}" width="81" height="73" alt="{=press.nm}">'+
+	'</a>'+
+	'{if press.paper != ""}'+
+	'<a href="{=press.paperUrl}" target="_blank" class="today" title="{=press.nm} 오늘의신문 보기" onclick="Newsstand.Footer.onClickTodayNewspaper(event, \'today\', \'{=press.nm}\')">{=press.nm} 오늘의신문 보기</a>'+
+	'{/if}'+
+'</li>'+
+'{/if}'+
+'{elseif press.id == -1}'+
+'<li><a href="#" class="btn_my">MY언론사 설정하기</a></li>'+
+'{elseif press.id == -2}'+
+'<li><a href="#" class="btn_add">MY언론사 추가</a></li>{/if}{/for}';
+
+var panelTemplate = '<div class="panel panel_dmm">'+
+'<span class="frm_dmm"></span>'+
+'<div class="panel_inner"><h3>'+
+'<a href="{=press.home}" target="_blank" onclick="Newsstand.Panel.onClickLogo(this, event, \'{=press.nm}\')">'+
+'<img src="https://ssl.pstatic.net/static/newsstand/{=press.logo}" width="260" height="55" alt="{=press.nm}">'+
+'</a>'+
+'</h3>'+
+'<div class="sc_tp"><div class="fr"><a href="#" class="btn_sbc" id="btn_{=press.id}">MY언론사로 구독하기</a>'+
+'<div class="tooltip2 tt_btn_sbc" style="top:23px;left:-41px;display:none;">'+
+'<p class="msg2">구독하신 언론사는 MY뉴스에서 확인할 수 있습니다.</p>'+
+'</div>'+
+'<div class="tooltip2 tt_btn_unsbc" style="top:23px;left:-41px;display:none;">'+
+'<p class="msg5">MY뉴스 언론사 목록에서 제외됩니다.</p>'+
+'</div>'+
+'{if press.paper != ""}'+
+'<a href="{=press.paperUrl}" class="btn_preview" title="{=press.nm} 오늘의신문 보기" target="_blank" onclick="Newsstand.Panel.onClickTodayNewspaper(event, \'today\', \'{=press.nm}\')">'+
+'<span class="blind">{=press.nm} 오늘의신문 보기</span>' +
+'</a>' +
+'<div id="tn_{=press.id}" class="tooltip2 today_preview" style="top: 20px; left: 12px; display: none;">'+
+'<h4 class="blind">웹에서 보는 오늘의 종이신문 레이어</h4>'+
+'<p class="msg_preview" style="position:relative">'+
+'<a href="{=press.paperUrl}" target="_blank" onclick="Newsstand.Panel.onClickTodayNewspaper(event, \'todayimg\', \'{=press.nm}\')">'+
+'<img src="https://ssl.pstatic.net/static/newsstand/{=press.paper}" alt="{=press.nm} 오늘의신문">'+
+'</a>'+
+'<span class="fix"></span>'+
+'</p>'+
+'<a href="#" class="btn_close"><span class="blind">레이어닫기</span></a>'+
+'</div>'+
+'<
+A59
+a href="{=press.ombs}" class="btn_ombs" target="_blank" onclick="Newsstand.Panel.onClickOmbs(event)">'+
+'<span class="blind">이용자 한마디</span><span class="rd"></span>'+
+'</a>'+
+'<div class="tooltip2 tt_btn_ombs" style="top: 23px; left: 106px; display: none;">'+
+'<p class="msg6">뉴스 편집판에 대해 의견 주시면 옴부즈맨의 자료로 활용됩니다.</p>'+
+'</div>'+
+'{else}'+
+'<a href="{=press.ombs}" class="btn_ombs" target="_blank" onclick="Newsstand.Panel.onClickOmbs(event)">'+
+'<span class="blind">이용자 한마디</span><span class="rd"></span>'+
+'</a>'+
+'<div class="tooltip2 tt_btn_ombs" style="top: 23px; left: 24px; display: none;">'+
+'<p class="msg6">뉴스 편집판에 대해 의견 주시면 옴부즈맨의 자료로 활용됩니다.</p>'+
+'</div>'+
+'{/if}'+
+'<a href="#" class="btn_social" onclick="Newsstand.Panel.openSns(event)" title="소셜보내기"><span class="blind">소셜보내기</span></a>' +
+'<div class="tooltip2 social_tooltip" style="top:26px;left:38px; display:none;">' +
+'<div class="lyr_social">' +
+'<a href="#" class="btn_band" title="밴드로 뉴스보내기" onclick="Newsstand.Panel.onClickPost(event, \'band\')"><span class="btn_ico"></span>밴드</a>'+
+'<a href="#" class="btn_twit" title="트위터로 뉴스보내기" target="_blank" onclick="Newsstand.Panel.onClickPost(event, \'twitter\')"><span class="btn_ico"></span>트위터</a>'+
+'<a href="#" class="btn_facebook" title="페이스북으로 뉴스보내기" target="_blank" onclick="Newsstand.Panel.onClickPost(event, \'facebook\')"><span class="btn_ico"></span>페이스북</a>'+
+'</div>' +
+'</div>' +
+'</div>'+
+'<p class="fl"><em>{=press.modified}</em>편집</p>'+
+'</div>'+
+'<iframe src="about:blank" width="840" height="380" frameborder="0" scrolling="no" class="ifr_arc" allowTransparency="true"></iframe>'+
+'<div id="stand_ad_{=press.id}" class="ifr_ad2">'+
+'</div>'+
+'<a href="{=press.shcutUrl}" target="_blank" class="btn_gomedia">'+
+'<strong>{=press.shcutTitl}</strong> 사이트 바로가기<span class="ico"></span>'+
+'</a>'+
+'</div>'+
+'</div>';
+
+$Fn(function() {
+    Newsstand.Main.init();
+    var doc = document.documentElement;
+    doc.setAttribute('data-useragent',navigator.userAgent);
+    Newsstand.Gnb.init();
+    Newsstand.Gnb.attachClickEvent();
+}, this).attach(window, "load");
+$Fn(function() {
+    window.scrollTo(0,0);
+}, this).attach(window, "resize");
+(function () {
+    var eventType = "onpageshow" in window ? "pageshow" : "load";
+    jindo.$Fn(function () {
+        lcs_do();
+    }).attach(window, eventType);
+})();
+</script>
+</body>
+</html>
