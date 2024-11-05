@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -14,14 +13,18 @@ import java.nio.charset.StandardCharsets;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 
-public class GetTest {
-	
+public class GetTest2 {
+
 	public static void main(String[] args) {
 		
 		String RESPONSE_FILE = "C:/Users/kitri03/Desktop/kitri/Git/JavaClass_Kitri/webbrowserforwebrequestsite/file/response.txt";
 		SSLSocketFactory factory = (SSLSocketFactory) SSLSocketFactory.getDefault();
 		try (SSLSocket socket = (SSLSocket) factory.createSocket("newsstand.naver.com", 443);
-			InputStream in_socket = socket.getInputStream();
+		     BufferedReader in_socket =	new BufferedReader(
+									           new InputStreamReader(
+									        		   socket.getInputStream(), 
+									        		   StandardCharsets.UTF_8)
+										);
 			 PrintWriter out_socket = new PrintWriter(
 			           						   new OutputStreamWriter(
 			           								   socket.getOutputStream(), 
@@ -56,24 +59,13 @@ public class GetTest {
 			
 			String sResponse = null;
 			System.out.println(in_socket);
-			byte[] buffer = new byte[1024];
-			StringBuilder str = new StringBuilder();
-			int i = 1;
-			while(true){
-				str.append((char) in_socket.read());
-				System.gc();
-				i++;
-				if (i == 500) {
-					break;
-				}
+			System.out.println(in_socket.readLine());
+
+			while((sResponse = in_socket.readLine()) != null) {
+				System.out.println(sResponse);
+				fileWriter.write(sResponse);
+				fileWriter.newLine();  
 			}
-			System.out.println(str);
-			
-//			while((sResponse = in_socket.re()) != null) {
-//				System.out.println(sResponse);
-//				fileWriter.write(sResponse);
-//				fileWriter.newLine();  
-//			}
 			
 			
 		} catch (UnknownHostException e) {

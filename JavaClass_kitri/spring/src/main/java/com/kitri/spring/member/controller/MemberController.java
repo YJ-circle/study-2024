@@ -1,5 +1,7 @@
 package com.kitri.spring.member.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
@@ -29,7 +31,7 @@ public class MemberController {
 	
 	@RequestMapping(value = "login", method=RequestMethod.GET)
 	public String loginPage(@SessionAttribute(value = "login_id", required = false) 
-						    Optional<String> id) {
+						    Optional<String> id, HttpSession session) {
 		if(id.isPresent()) {
 			return "redirect:/board/";
 		}
@@ -41,6 +43,8 @@ public class MemberController {
 	@RequestMapping(value = "logout", method=RequestMethod.GET)
 	public String logout(SessionStatus status, Model model) {
 		model.addAttribute("login_id", Optional.empty());
+		List<String> s = new ArrayList<>();
+		s.
 		return "redirect:/login";
 		
 	}
@@ -60,6 +64,6 @@ public class MemberController {
 		model.addAttribute("result", loginResult);
 		return "login";
 	}
-	
+	sessionScope.username
 	
 }
