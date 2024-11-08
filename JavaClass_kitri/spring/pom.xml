@@ -22,6 +22,14 @@
   </properties>
 
   <dependencies>
+  	<!--  컴파일 시에만 사용한다. -->
+  	<dependency>
+  		<groupId>javax.servlet</groupId>
+  		<artifactId>javax.servlet-api</artifactId>
+  		<version>3.1.0</version>
+  		<scope>provided</scope>
+  	</dependency>
+  	<!--  web xml 없어도 되게 설정 1 끝 -->
   	<dependency>
   		<groupId>org.springframework</groupId>
   		<artifactId>spring-webmvc</artifactId>
@@ -86,6 +94,18 @@
                         <target>11</target>
                     </configuration>
                 </plugin>
+                <!--  web xml 없어도 되게 설정 2 -->
+                <plugin>
+                	<groupId>org.apache.maven.plugins</groupId>
+                	<artifactId>maven-war-plugin</artifactId>
+                	<version>2.4</version>
+                	<configuration>
+                		<warSourceDirectory>/src/main/webapp</warSourceDirectory>
+                		<warName>webconfig</warName>
+                		<failOnMissingWebXml>false</failOnMissingWebXml>
+                	</configuration>
+                </plugin>
+                <!--  web xml 없어도 되게 설정 2 끝 -->
             </plugins>
         </pluginManagement>
     </build>
