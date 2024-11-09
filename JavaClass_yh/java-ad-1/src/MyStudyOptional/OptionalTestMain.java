@@ -1,10 +1,17 @@
 package MyStudyOptional;
 
+import java.lang.reflect.Constructor;
 import java.util.Optional;
 
 public class OptionalTestMain {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException {
+
+        //class 정보 가져오기
+        Class<?> person = Class.forName("util.MyLogger");
+        System.out.println("person.getClass() = " + person.getClass().getDeclaredMethods());
+
+
         //방법1: Null > 예외 던지기
         try{
 //            Person person1 = findById(1L).orElseThrow(RuntimeException::new);
@@ -23,6 +30,10 @@ public class OptionalTestMain {
         //값이 없을 때만 생성함. 람다로 인자를 받음
         Person person4 = findById(2L).orElseGet(() -> new Person(0L, "UNKNOWN_PERSON"));
         System.out.println("person4 = " + person4.getId() + ", " + person4.getName());
+
+
+
+
     }
     static Optional<Person> findById(Long id){
         if(id.equals(2L)){
