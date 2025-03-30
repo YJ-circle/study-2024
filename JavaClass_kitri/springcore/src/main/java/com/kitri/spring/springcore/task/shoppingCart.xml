@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:context="http://www.springframework.org/schema/context" 
+       xmlns:p="http://www.springframework.org/schema/p" 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd 
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context.xsd">
+       
+<bean name="item1" class="com.kitri.spring.springcore.task.Item"
+      p:id ="101" p:name="상품A" p:price="5000" p:quantity="2"/>
+      
+ <bean name="item2" class="com.kitri.spring.springcore.task.Item"
+ 	 p:id ="102" p:name="상품B" p:price="3000" p:quantity="5" />
+ 
+    <bean name="shoppingCart" class="com.kitri.spring.springcore.task.ShoppingCart">
+    	<property name="itemList">
+	    	<list>
+		    	 <ref bean="item1"/>
+		    	 <ref bean="item2"/>
+	    	</list>
+    	</property>
+    </bean>
+
+</beans>

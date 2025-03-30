@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:context="http://www.springframework.org/schema/context" 
+       xmlns:p="http://www.springframework.org/schema/p" 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd 
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context.xsd">
+<bean name="emp" class="com.kitri.spring.springcore.Employee"> 
+	<property name="id"> 
+		<value>20</value> 
+	</property> 
+	<property name="name"> 
+		<value>KHT</value> 
+	</property>  
+</bean> 
+<bean name="productList" class="com.kitri.spring.springcore.Product"> 
+	<property name="productIds">
+	<list>
+		<value>10</value>
+		<value>20</value>
+	</list>
+	</property> 
+
+</bean> 
+
+
+
+ <bean id="item1" class="com.kitri.spring.springcore.task.Item">
+     <property name="id">
+         <value>101</value>
+     </property>
+     <property name="name">
+         <value>상품A</value>
+     </property>
+     <property name="price">
+         <value>5000.0</value>
+     </property>
+     <property name="quantity">
+         <value>2</value>
+     </property>
+ </bean>
+ <bean id="item2" class="com.kitri.spring.springcore.task.Item">
+     <property name="id">
+         <value>102</value>
+     </property>
+     <property name="name">
+         <value>상품B</value>
+     </property>
+     <property name="price">
+         <value>3000.0</value>
+     </property>
+     <property name="quantity">
+         <value>5</value>
+     </property>
+ </bean>
+ 
+    <bean name="shoppingCart" class="com.kitri.spring.springcore.task.ShoppingCart"> 
+        <property name="itemList">
+            <list>
+             <ref bean="item1" />
+             <ref bean="item2" />
+            </list>
+        </property>
+    </bean>
+
+</beans>

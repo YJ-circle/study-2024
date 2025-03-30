@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+
+	<select id="findMemberId" resultType="member">
+		SELECT id, password, name, address
+		FROM member
+		WHERE id=#{value}
+	</select>
+	
+	<select id="findMemberAll" resultType="member">
+		SELECT id, password, name, address
+		FROM member
+	</select>
+	
+	<insert id="addMember" parameterType="member">
+		INSERT INTO "SPRINGJDBC"."MEMBER" (ID, PASSWORD, NAME, ADDRESS) VALUES (#{id}, #{password}, #{name}, #{address})
+	</insert> 
+	
+	
+	<select id="findCustom" resultType="member"
+	  parameterType="selectCond">
+		SELECT id, password, name, address
+		FROM member
+		WHERE name=#{name}
+		AND address = #{address}
+	</select>
+</mapper>

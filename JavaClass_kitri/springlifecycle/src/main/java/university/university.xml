@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:context="http://www.springframework.org/schema/context" 
+       xmlns:p="http://www.springframework.org/schema/p" 
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context.xsd">
+      
+<bean name="address" class="university.Address">
+	<constructor-arg value = "1" type="int"/>
+	<constructor-arg value = "서울" type="String" />
+	<constructor-arg value = "길거리" type="String"/>
+</bean>
+      
+<bean name="location" class="university.Location">
+	<constructor-arg ref = "address" type="Address"/>
+    <constructor-arg value = "127" type="int"/>
+    <constructor-arg value = "224" type="int"/>
+</bean>
+
+<bean name="university" class="university.University">
+	<constructor-arg value = "1" type="int"/>
+	<constructor-arg value = "한국대" type="String"/>
+	<constructor-arg ref = "location" type="Location"/>
+</bean>
+
+</beans>
+

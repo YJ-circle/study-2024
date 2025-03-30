@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context reloadable="true">
+    <Resource name="jdbc/oracle" 
+              auth="Container"
+              type="javax.sql.DataSource"
+              driverClassName="oracle.jdbc.OracleDriver"
+              url="jdbc:oracle:thin:@192.168.10.247:1521:xe"
+              username="servlet_kin"
+              password="1234"
+              maxActive="20"
+              maxIdle="10"
+              maxWait="-1" />
+</Context>
+
+<!--  https://softzam.atlassian.net/wiki/spaces/svrdoc/pages/12812395/DB+Connection+Pool -->
